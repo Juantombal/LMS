@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto,
+  "Helvetica Neue", sans-serif;
+  background-color: #e7e7e7;
+}
+
+h1 {
+  color: #6fa23a;
+}
+
+a, a:hover {
+  color:black;
+}
+
+@media (max-width: 767px) {
+  body {
+    margin-top:46px;
+  }
+}

@@ -1,0 +1,44 @@
+i.fa.fa-filter {
+  font-size: 50px;
+  float: right;
+  margin-top: 15px;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:first-child {
+  background-color: #dddddd;
+}
+.line {
+  border-top: 1px solid;
+  margin-bottom: 30px;
+  margin-top:10px;
+}
+
+.courses {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+
+@media (max-width: 767px) {
+  .course-overview h1 {
+    text-align: center;
+  }
+  i.fa.fa-filter {
+    float: none;
+    text-align: center;
+    display: block;
+  }
+}

@@ -1,0 +1,37 @@
+<div class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-4">
+        <a href="#"><img class="logo" src="/assets/logo.png" alt="image"></a>
+      </div>
+      <div class="col-xs-12 col-md-3">
+      </div>
+      <div class="col-xs-12 col-md-5">
+        <nav class="navbar navbar-default navbar-xs">
+          <div class="navbar-header visible-xs">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href="#"><img class="logo-mobile" src="/assets/logo.png" alt="image"></a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li data-active-if="Aanvragen">
+                <a routerLinkActive="is-active" routerLink="/aanvragen"><span>Aanvragen</span></a>
+              </li>
+              <li data-active-if="Pdp">
+                <a routerLinkActive="active-link" routerLink="/pdp">Pdp</a>
+              </li>
+              <li data-active-if="Cursusbeheer">
+                <a routerLinkActive="active-link" routerLink="/cursusbeheer">Cursusbeheer</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
