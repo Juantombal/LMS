@@ -1,0 +1,39 @@
+.course-detials {
+  width: 800px;
+}
+td {
+  vertical-align:top
+}
+.course-detials h1 {
+  margin-top:0px;
+  margin-bottom:30px;
+}
+table.course-completed-table {
+  float: right;
+}
+
+table.course-completed-table td {
+  padding: 0px 0px 7px 15px;
+}
+table.course-completed-table  td:first-child {
+  font-weight: bold;
+}
+table.course-details-table td:first-child {
+  width: 100px;
+  font-weight: bold;
+}
+table.course-details-table td {
+  padding: 0px 0px 7px 0px;
+}
+.course-detials button {
+  background: #77A546;
+  color: white;
+  border: none;
+  margin-right: 10px;
+  border-radius: 3px;
+  padding: 5px 18px;
+  margin-top: 20px;
+}
+.course-detials button:hover {
+  background: #678d3f;
+}

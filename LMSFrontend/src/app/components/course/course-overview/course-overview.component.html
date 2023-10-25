@@ -1,0 +1,39 @@
+<div class="course-overview">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <h1>Cursussen</h1>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="role-filter">
+          <select [(ngModel)]="selectedRole" (change)="filterCoursesByRole()" id="roleSelect">
+            <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="line"></div>
+        <div class="courses">
+          <table>
+            <tr>
+              <th>Item</th>
+              <th>Website</th>
+              <th>Prio</th>
+              <th>Type</th>
+              <th>Kosten</th>
+            </tr>
+            <tr class="tr-course-data" *ngFor="let course of courses; let i = index" (click)="courseDetails(course)">
+              <td>{{ course.item }}</td>
+              <td><a href="{{course.website}}" (click)="$event.stopPropagation()" target="_blank">{{ course.website }}</a></td>
+              <td>{{ course.prio }}</td>
+              <td>{{ course.type }}</td>
+              <td>{{ course.costAmount }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

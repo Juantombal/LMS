@@ -1,0 +1,33 @@
+<div class="course-detials">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Cursus details</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+          <table class="course-details-table">
+            <tr><td>Item:</td><td>{{course.item}}</td></tr>
+            <tr><td>Description:</td><td>{{course.description}}</td></tr>
+            <tr><td>Website:</td><td><a href="{{course.website}}" target="_blank">{{ course.website }}</a></td></tr>
+            <tr><td>Prio:</td><td>{{course.prio}}</td></tr>
+            <tr><td>Type:</td><td>{{course.type}}</td></tr>
+            <tr><td>Cost amount:</td><td>{{course.costAmount}}</td></tr>
+            <tr><td>Course days:</td><td>{{course.courseDays}}</td></tr>
+            <tr><td>Role:</td><td>{{course.role}}</td></tr>
+          </table>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <table class="course-completed-table">
+        <tr><td>Voltooid:</td><td>Nee</td></tr>
+        <tr><td>Voltooingsdatum:</td><td>N/A</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <button>Cursus aanvragen</button>
+      <button>Cursus voltooien</button>
+    </div>
+  </div>
+</div>

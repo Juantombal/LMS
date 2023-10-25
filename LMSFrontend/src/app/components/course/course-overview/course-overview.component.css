@@ -1,7 +1,7 @@
 i.fa.fa-filter {
-  font-size: 50px;
+  font-size: 40px;
   float: right;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 table {
   font-family: arial, sans-serif;
@@ -31,7 +31,22 @@ tr:first-child {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 
+tr.tr-course-data {
+  cursor: pointer;
+}
 
+tr.tr-course-data:hover {
+  background: #d9d9d9;
+}
+
+.role-filter {
+  text-align: right;
+  margin-top: 23px;
+}
+
+select {
+  padding: 7px 5px;
+}
 @media (max-width: 767px) {
   .course-overview h1 {
     text-align: center;

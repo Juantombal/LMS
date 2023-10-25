@@ -17,6 +17,9 @@ public class CourseEntity {
     @Column(name = "website")
     private String website;
 
+    @Column(name = "description")
+    private String description;
+
     @Column(name = "prio")
     private String prio;
 
@@ -35,10 +38,10 @@ public class CourseEntity {
     public CourseEntity() {
     }
 
-    public CourseEntity(int id, String item, String website, String prio, String type, float costAmount, int courseDays, String role) {
-        this.id = id;
+    public CourseEntity(String item, String website, String description, String prio, String type, float costAmount, int courseDays, String role) {
         this.item = item;
         this.website = website;
+        this.description = description;
         this.prio = prio;
         this.type = type;
         this.costAmount = costAmount;
@@ -46,11 +49,19 @@ public class CourseEntity {
         this.role = role;
     }
 
-    public int getId() {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
