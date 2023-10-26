@@ -1,0 +1,27 @@
+.edit-course-modal {
+  width: 800px;
+}
+.edit-course-modal h1{
+  margin-top:0px;
+  margin-bottom:30px;
+}
+.edit-course-modal input, .edit-course-modal textarea, .edit-course-modal select {
+  margin-bottom:15px;
+}
+.add-course-button {
+  background: #77A546;
+  color: white;
+  border: none;
+  margin-right: 10px;
+  border-radius: 3px;
+  padding: 5px 18px;
+  border: 1px solid #000;
+}
+.add-course-button:disabled {
+  cursor: not-allowed;
+  background: grey;
+}
+
+.add-course-button:enabled:hover {
+  background: #678d3f;
+}

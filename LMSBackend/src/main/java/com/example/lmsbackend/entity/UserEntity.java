@@ -1,10 +1,12 @@
 package com.example.lmsbackend.entity;
 
+import com.example.lmsbackend.enums.Role;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "_user")
 public class UserEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -23,18 +25,22 @@ public class UserEntity {
     private String jobRole;
 
     @Column(name = "role")
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    public UserEntity() {
-
-    }
-
-    public UserEntity(String name, String email, String password, String jobRole, String role) {
+    public UserEntity(String name, String email, String password, String jobRole, Role role) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.jobRole = jobRole;
         this.role = role;
+    }
+
+    public UserEntity() {
+    }
+
+    public Role getRole() {
+        return role;
     }
 
     public String getName() {
@@ -57,6 +63,7 @@ public class UserEntity {
         return password;
     }
 
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -67,13 +74,5 @@ public class UserEntity {
 
     public void setJobRole(String jobRole) {
         this.jobRole = jobRole;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 }

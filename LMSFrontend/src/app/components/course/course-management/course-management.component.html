@@ -1,10 +1,13 @@
 <div class="course-overview">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <h1>Cursussen</h1>
+      <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
+        <h1>Cursus beheer</h1>
       </div>
-      <div class="col-xs-12 col-sm-6">
+      <div class="col-xs-12 col-sm-3 col-md-4 col-lg-4">
+        <button (click)="addCourse()" class="add-course">Cursus toevoegen</button>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-md-4 col-lg-5">
         <div class="role-filter">
           <select [(ngModel)]="selectedRole" (change)="filterCoursesByRole()" id="roleSelect">
             <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
@@ -23,13 +26,18 @@
               <th>Prio</th>
               <th>Type</th>
               <th>Kosten</th>
+              <th>Acties</th>
             </tr>
-            <tr class="tr-course-data" *ngFor="let course of courses; let i = index" (click)="courseDetails(course)">
+            <tr class="tr-course-data" *ngFor="let course of courses; let i = index">
               <td>{{ course.item }}</td>
               <td><a href="{{course.website}}" (click)="$event.stopPropagation()" target="_blank">{{ course.website }}</a></td>
               <td>{{ course.prio }}</td>
               <td>{{ course.type }}</td>
               <td>€ {{ course.costAmount }}</td>
+              <td>
+                <i (click)="editCourse(course)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                <i (click)="DeleteCourse(course)" class="fa fa-trash-o" aria-hidden="true"></i>
+              </td>
             </tr>
           </table>
         </div>

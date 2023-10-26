@@ -1,0 +1,16 @@
+.delete-course-modal h4 {
+  margin-top: 0px;
+  margin-bottom:20px;
+}
+.delete-course-modal button {
+  background: red;
+  color: white;
+  border: none;
+  display: block;
+  margin: 0 auto;
+  border-radius: 3px;
+  padding: 7px 50px;
+}
+.delete-course-modal button:hover {
+  background: #c70000;
+}

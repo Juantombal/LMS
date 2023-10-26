@@ -3,44 +3,29 @@ import {Course} from "../../../model/course.model";
 import {CourseService} from "../../../services/course.service";
 import {MatDialog} from "@angular/material/dialog";
 import {CourseDetailsModalComponent} from "../course-details-modal/course-details-modal.component";
-import {User} from "../../../model/user.model";
-import {UserService} from "../../../services/user.service";
-import {Observable, switchMap} from "rxjs";
+import {AddCourseModalComponent} from "../add-course-modal/add-course-modal.component";
+import {EditCourseModalComponent} from "../edit-course-modal/edit-course-modal.component";
+import {DeleteCourseModalComponent} from "../delete-course-modal/delete-course-modal.component";
 
 @Component({
-  selector: 'app-course-overview',
-  templateUrl: './course-overview.component.html',
-  styleUrls: ['./course-overview.component.css']
+  selector: 'app-course-management',
+  templateUrl: './course-management.component.html',
+  styleUrls: ['./course-management.component.css']
 })
-export class CourseOverviewComponent implements OnInit {
-  loggedInUser: User;
+export class CourseManagementComponent implements OnInit {
   originalCourses: Course[] = [];
   courses: Course[] = [];
-  selectedRole: string = '';
+  selectedRole: string = 'Alle rollen';
   roles: string[] = [];
 
   constructor(
     private courseService: CourseService,
     public dialog: MatDialog,
-    private userService: UserService,
   ) {  }
 
   ngOnInit(): void {
     this.getCourses()
     this.roles = this.getUniqueRoles();
-    this.userService.getUser()
-      .pipe(
-        switchMap((user) => {
-          this.loggedInUser = user;
-          this.selectedRole = this.loggedInUser.jobRole;
-          return this.courseService.getCourses(); // Wacht op gebruikersgegevens en haal dan cursussen op
-        })
-      )
-      .subscribe((courses) => {
-        this.originalCourses = courses;
-        this.courses = courses;
-        this.filterCoursesByRole();
-      });
   }
 
   getUniqueRoles(): string[] {
@@ -59,16 +44,6 @@ export class CourseOverviewComponent implements OnInit {
       });
   }
 
-  courseDetails = (course: Course) => {
-    const dialogRefDatabaseDetails = this.dialog.open(CourseDetailsModalComponent, {data: course, autoFocus: false});
-
-    dialogRefDatabaseDetails.afterClosed().subscribe(result => {
-      if (result === 'A') {
-        this.getCourses();
-      }
-    });
-  }
-
   filterCoursesByRole(): void {
     if (this.selectedRole === 'Alle rollen') {
       this.courses = this.originalCourses;
@@ -76,5 +51,35 @@ export class CourseOverviewComponent implements OnInit {
       const selectedRole = this.selectedRole;
       this.courses = this.originalCourses.filter(course => course.role === selectedRole);
     }
+  }
+
+  addCourse = () => {
+    const dialogRefAddCourse = this.dialog.open(AddCourseModalComponent, {autoFocus: false});
+
+    dialogRefAddCourse.afterClosed().subscribe(result => {
+      if (result === 'A') {
+        this.getCourses();
+      }
+    });
+  }
+
+  editCourse = (course: Course) => {
+    const dialogRefEditCourse = this.dialog.open(EditCourseModalComponent, {data: course, autoFocus: false});
+
+    dialogRefEditCourse.afterClosed().subscribe(result => {
+      if (result === 'A') {
+        this.getCourses();
+      }
+    });
+  }
+
+  DeleteCourse = (course: Course) => {
+    const dialogRefDeleteCourse = this.dialog.open(DeleteCourseModalComponent, {data: course, autoFocus: false});
+
+    dialogRefDeleteCourse.afterClosed().subscribe(result => {
+      if (result === 'A') {
+        this.getCourses();
+      }
+    });
   }
 }

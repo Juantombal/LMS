@@ -18,24 +18,24 @@ public class CourseController{
     CourseRepository courseRepository;
 
     @GetMapping("")
-    public List<CourseEntity> getAllEmployees() {
+    public List<CourseEntity> getAllCourses() {
         return courseRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<CourseEntity> getEmployeeById(@PathVariable(value = "id") Long id) {
+    public Optional<CourseEntity> getCourseById(@PathVariable(value = "id") Long id) {
         return courseRepository.findById(id);
     }
 
     @PostMapping("")
-    public ResponseEntity<CourseEntity> createTutorial(@RequestBody CourseEntity course) {
+    public ResponseEntity<CourseEntity> createCourse(@RequestBody CourseEntity course) {
         CourseEntity _course = courseRepository.save(new CourseEntity(course.getItem(), course.getWebsite(), course.getDescription(), course.getPrio(),
                 course.getType(), course.getCostAmount(), course.getCourseDays(), course.getRole()));
         return new ResponseEntity<>(_course, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CourseEntity> updateEmployee(@PathVariable(value = "id") Long id, @RequestBody CourseEntity courseDetails){
+    public ResponseEntity<CourseEntity> updateCourse(@PathVariable(value = "id") Long id, @RequestBody CourseEntity courseDetails){
 
         Optional<CourseEntity> optionalCourse = courseRepository.findById(id);
         CourseEntity updatedCourse = null;
@@ -58,7 +58,7 @@ public class CourseController{
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id) {
+    public ResponseEntity<HttpStatus> deleteCourse(@PathVariable("id") long id) {
         try {
             courseRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
