@@ -1,1 +1,31 @@
-<p>pdp-overview works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Pdp</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="line"></div>
+      <table>
+        <tr>
+          <td><h2>Mijn pdp</h2></td>
+          <td><i (click)="editPdp(loggedInUser)" class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+        </tr>
+        <tr>
+          <td>Achtergrond:</td>
+          <td>{{loggedInUser.pdp.background}}</td>
+        </tr>
+        <tr>
+          <td>Heden:</td>
+          <td>{{loggedInUser.pdp.present}}</td>
+        </tr>
+        <tr>
+          <td>Toekomst:</td>
+          <td>{{loggedInUser.pdp.future}}</td>
+        </tr>
+      </table>
+      <div class="line2"></div>
+    </div>
+  </div>
+</div>

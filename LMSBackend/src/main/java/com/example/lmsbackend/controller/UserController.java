@@ -1,5 +1,6 @@
 package com.example.lmsbackend.controller;
 import com.example.lmsbackend.entity.CourseEntity;
+import com.example.lmsbackend.entity.PdpEntity;
 import com.example.lmsbackend.entity.UserEntity;
 import com.example.lmsbackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,11 @@ public class UserController {
 
     @PostMapping("")
     public ResponseEntity<UserEntity> createUser(@RequestBody UserEntity user) {
-        UserEntity _user = userRepository.save(new UserEntity(user.getName(), user.getEmail(), user.getPassword(), user.getJobRole(), user.getRole()));
+        PdpEntity pdp = new PdpEntity();
+        pdp.setBackground("-");
+        pdp.setPresent("-");
+        pdp.setFuture("-");
+        UserEntity _user = userRepository.save(new UserEntity(pdp, user.getName(), user.getEmail(), user.getPassword(), user.getJobRole(), user.getRole()));
         return new ResponseEntity<>(_user, HttpStatus.CREATED);
     }
 }

@@ -1,0 +1,27 @@
+.edit-pdp-modal {
+  width: 800px;
+}
+.edit-pdp-modal h1 {
+  margin-top:0px;
+  margin-bottom:30px;
+}
+.edit-pdp-modal textarea {
+  margin-bottom:30px;
+}
+button.edit-pdp-button {
+  background: #77A546;
+  color: white;
+  border: none;
+  margin-right: 10px;
+  border-radius: 3px;
+  padding: 5px 18px;
+  border: 1px solid #000;
+}
+button.edit-pdp-button:disabled {
+  cursor: not-allowed;
+  background: grey;
+}
+
+button.edit-pdp-button:enabled:hover {
+  background: #678d3f;
+}

@@ -12,6 +12,10 @@ public class UserEntity {
     @Column(name = "id")
     private Long id;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "pdp_id", referencedColumnName = "id")
+    private PdpEntity pdp;
+
     @Column(name = "name")
     private String name;
 
@@ -28,7 +32,8 @@ public class UserEntity {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public UserEntity(String name, String email, String password, String jobRole, Role role) {
+    public UserEntity(PdpEntity pdp, String name, String email, String password, String jobRole, Role role) {
+        this.pdp = pdp;
         this.name = name;
         this.email = email;
         this.password = password;
@@ -37,6 +42,14 @@ public class UserEntity {
     }
 
     public UserEntity() {
+    }
+
+    public PdpEntity getPdp() {
+        return pdp;
+    }
+
+    public void setPdp(PdpEntity pdp) {
+        this.pdp = pdp;
     }
 
     public Role getRole() {

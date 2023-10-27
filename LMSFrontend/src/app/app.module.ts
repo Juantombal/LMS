@@ -18,6 +18,8 @@ import { PdpOverviewComponent } from './components/pdp/pdp-overview/pdp-overview
 import { AddCourseModalComponent } from './components/course/add-course-modal/add-course-modal.component';
 import { EditCourseModalComponent } from './components/course/edit-course-modal/edit-course-modal.component';
 import { DeleteCourseModalComponent } from './components/course/delete-course-modal/delete-course-modal.component';
+import { EditPdpModalComponent } from './components/pdp/edit-pdp-modal/edit-pdp-modal.component';
+import {PdpService} from "./services/pdp.service";
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { DeleteCourseModalComponent } from './components/course/delete-course-mo
     PdpOverviewComponent,
     AddCourseModalComponent,
     EditCourseModalComponent,
-    DeleteCourseModalComponent
+    DeleteCourseModalComponent,
+    EditPdpModalComponent
   ],
     imports: [
         BrowserModule,
@@ -44,7 +47,8 @@ import { DeleteCourseModalComponent } from './components/course/delete-course-mo
   providers: [
     CourseService,
     ApiService,
-    UserService
+    UserService,
+    PdpService
   ],
   bootstrap: [AppComponent]
 })

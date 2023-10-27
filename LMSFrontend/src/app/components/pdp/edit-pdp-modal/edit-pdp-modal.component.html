@@ -1,0 +1,16 @@
+<div class="edit-pdp-modal">
+  <h1 class="edit-pdp-header-text">Pdp aanpassen</h1>
+  <form class="form-edit-course" [formGroup]="signupForm" (ngSubmit)="editPdp(data.pdp.id,'A')" novalidate>
+        <label>Achtergrond *</label>
+        <textarea class="form-control" rows="5" placeholder="Achtergrond.." formControlName="background"></textarea>
+        <label>Heden *</label>
+        <textarea class="form-control" rows="5" placeholder="Heden.." formControlName="present"></textarea>
+        <label>Toekomst *</label>
+        <textarea class="form-control" rows="5" placeholder="Toekomst.." formControlName="future"></textarea>
+
+    <button class="edit-pdp-button" [disabled]="!signupForm.valid" type="submit">
+      <span>Updaten</span>
+    </button>
+  </form>
+</div>
+
