@@ -1,0 +1,28 @@
+<div class="course-application-modal">
+  <div class="row" xmlns="http://www.w3.org/1999/html">
+    <div class="col-xs-12">
+      <h1>Cursus aanvraag</h1>
+      <h3>Cursus: {{course.item}}</h3>
+      <form class="form-application" [formGroup]="signupForm" (ngSubmit)="createApplication('A')" novalidate>
+        <label>Motivatie *</label>
+        <textarea class="form-control" rows="5" placeholder="Motivatie.." formControlName="comment" required></textarea>
+        <mat-form-field>
+          <input matInput [matDatepicker]="startdatepicker" placeholder="Start Datum" formControlName="startDate">
+          <mat-datepicker-toggle matSuffix [for]="startdatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #startdatepicker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="enddatepicker" placeholder="Eind Datum" formControlName="endDate">
+          <mat-datepicker-toggle matSuffix [for]="enddatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #enddatepicker></mat-datepicker>
+        </mat-form-field>
+
+        <button class="application-button" [disabled]="!signupForm.valid" type="submit">
+          <span>Aanvragen</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+

@@ -44,6 +44,14 @@ public class UserEntity {
     public UserEntity() {
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public PdpEntity getPdp() {
         return pdp;
     }

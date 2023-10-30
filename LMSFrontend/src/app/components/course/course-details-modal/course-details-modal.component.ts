@@ -1,6 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Course} from "../../../model/course.model";
+import {
+  CourseApplicationModalComponent
+} from "../../application/course-application-modal/course-application-modal.component";
 
 @Component({
   selector: 'app-course-details-modal',
@@ -12,9 +15,20 @@ export class CourseDetailsModalComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public course: Course,
     private dialogRef: MatDialogRef<CourseDetailsModalComponent>,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
   }
 
+
+  courseApplication = () => {
+    const dialogRefCourseApplication = this.dialog.open(CourseApplicationModalComponent, {data: this.course, autoFocus: false});
+
+    dialogRefCourseApplication.afterClosed().subscribe(result => {
+      if (result === 'A') {
+
+      }
+    });
+  }
 }

@@ -11,13 +11,13 @@ public class PdpEntity {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "background")
+    @Column(name = "background", columnDefinition = "TEXT")
     private String background;
 
-    @Column(name = "present")
+    @Column(name = "present", columnDefinition = "TEXT")
     private String present;
 
-    @Column(name = "future")
+    @Column(name = "future", columnDefinition = "TEXT")
     private String future;
 
     public PdpEntity() {
@@ -27,6 +27,14 @@ public class PdpEntity {
         this.background = background;
         this.present = present;
         this.future = future;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getBackground() {

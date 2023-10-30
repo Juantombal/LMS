@@ -1,0 +1,30 @@
+mat-form-field {
+  display: block;
+  margin-top: 15px;
+  width:200px;
+}
+
+.course-application-modal {
+  width: 800px;
+}
+.course-application-modal h1,h3 {
+  margin-top:0px;
+  margin-bottom:20px;
+}
+.application-button {
+  background: #77A546;
+  color: white;
+  border: none;
+  margin-right: 10px;
+  border-radius: 3px;
+  padding: 5px 18px;
+  margin-top: 20px;
+}
+.application-button:disabled {
+  cursor: not-allowed;
+  background: grey;
+}
+
+.application-button:enabled:hover {
+  background: #678d3f;
+}

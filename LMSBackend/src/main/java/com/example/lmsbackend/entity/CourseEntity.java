@@ -17,7 +17,7 @@ public class CourseEntity {
     @Column(name = "website")
     private String website;
 
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
     @Column(name = "prio")

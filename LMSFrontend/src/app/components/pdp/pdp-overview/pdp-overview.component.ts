@@ -5,6 +5,7 @@ import {Course} from "../../../model/course.model";
 import {CourseDetailsModalComponent} from "../../course/course-details-modal/course-details-modal.component";
 import {MatDialog} from "@angular/material/dialog";
 import {EditPdpModalComponent} from "../edit-pdp-modal/edit-pdp-modal.component";
+import {switchMap} from "rxjs";
 
 @Component({
   selector: 'app-pdp-overview',
@@ -20,6 +21,10 @@ export class PdpOverviewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getPdp()
+  }
+
+  getPdp = () => {
     this.userService.getUser().subscribe((user) => {
       this.loggedInUser = user;
     })
@@ -30,7 +35,7 @@ export class PdpOverviewComponent implements OnInit {
 
     dialogRefPdp.afterClosed().subscribe(result => {
       if (result === 'A') {
-
+        this.getPdp()
       }
     });
   }

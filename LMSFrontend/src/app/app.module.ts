@@ -20,6 +20,11 @@ import { EditCourseModalComponent } from './components/course/edit-course-modal/
 import { DeleteCourseModalComponent } from './components/course/delete-course-modal/delete-course-modal.component';
 import { EditPdpModalComponent } from './components/pdp/edit-pdp-modal/edit-pdp-modal.component';
 import {PdpService} from "./services/pdp.service";
+import { CourseApplicationModalComponent } from './components/application/course-application-modal/course-application-modal.component';
+import {ApplicationService} from "./services/application.service";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatInputModule} from "@angular/material/input";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -33,7 +38,8 @@ import {PdpService} from "./services/pdp.service";
     AddCourseModalComponent,
     EditCourseModalComponent,
     DeleteCourseModalComponent,
-    EditPdpModalComponent
+    EditPdpModalComponent,
+    CourseApplicationModalComponent
   ],
     imports: [
         BrowserModule,
@@ -43,12 +49,16 @@ import {PdpService} from "./services/pdp.service";
         MatDialogModule,
         FormsModule,
         ReactiveFormsModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatInputModule,
     ],
   providers: [
     CourseService,
     ApiService,
     UserService,
-    PdpService
+    PdpService,
+    ApplicationService
   ],
   bootstrap: [AppComponent]
 })
