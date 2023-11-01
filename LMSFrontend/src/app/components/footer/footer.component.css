@@ -1,10 +1,9 @@
 .footer {
   text-align: center;
-  position: absolute;
-  bottom: 0px;
   width: 100%;
   background: white;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  margin-top: 30px;
 }
 .footer p{
   margin: 10px 0px;

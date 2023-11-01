@@ -36,7 +36,9 @@ export class AddCourseModalComponent implements OnInit {
 
   addCourse = (button: string) => {
     this.courseService.postCourse(this.signupForm.value).subscribe((msg) => {
-      this.dialogRef.close(button)
+      if (button === 'A'){
+        this.dialogRef.close(button)
+      }
     })
   }
 

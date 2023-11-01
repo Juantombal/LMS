@@ -1,5 +1,8 @@
 <div class="delete-course-modal">
   <h4>Weet je zeker dat je de cursus {{data.item}} wilt verwijderen?</h4>
-  <button (click)="deleteCourse(data.id, 'A')">Verwijderen</button>
+  <div class="delete-buttons">
+    <button (click)="deleteCourse(data.id, 'A')">Verwijder record</button>
+    <button (click)="deleteCourses(data.item, 'A')">Verwijder cursus</button>
+  </div>
 </div>
 

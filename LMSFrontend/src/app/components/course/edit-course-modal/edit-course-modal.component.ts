@@ -37,7 +37,22 @@ export class EditCourseModalComponent implements OnInit {
   }
 
   editCourse = (id: number, button: string) => {
+    delete this.signupForm.value.item
+    delete this.signupForm.value.website
+    delete this.signupForm.value.description
+    delete this.signupForm.value.type
+    delete this.signupForm.value.costAmount
+    delete this.signupForm.value.courseDays
+
     this.courseService.updateCourse(id, this.signupForm.value).subscribe((msg) => {
+      this.dialogRef.close(button)
+    })
+  }
+
+  editCourses = (item: string, button: string) => {
+    delete this.signupForm.value.prio
+    delete this.signupForm.value.role
+    this.courseService.updateCourses(item, this.signupForm.value).subscribe((msg) => {
       this.dialogRef.close(button)
     })
   }

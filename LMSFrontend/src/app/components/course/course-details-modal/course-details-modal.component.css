@@ -24,6 +24,7 @@ table.course-details-table td:first-child {
 }
 table.course-details-table td {
   padding: 0px 0px 7px 0px;
+  word-break: break-all;
 }
 .course-detials button {
   background: #77A546;

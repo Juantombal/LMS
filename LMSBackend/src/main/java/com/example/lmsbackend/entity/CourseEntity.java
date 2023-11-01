@@ -14,7 +14,7 @@ public class CourseEntity {
     @Column(name = "item")
     private String item;
 
-    @Column(name = "website")
+    @Column(name = "website", columnDefinition = "TEXT")
     private String website;
 
     @Column(name = "description", columnDefinition = "TEXT")
@@ -30,7 +30,7 @@ public class CourseEntity {
     private float costAmount;
 
     @Column(name = "courseDays")
-    private int courseDays;
+    private Float courseDays;
 
     @Column(name = "role")
     private String role;
@@ -38,7 +38,7 @@ public class CourseEntity {
     public CourseEntity() {
     }
 
-    public CourseEntity(String item, String website, String description, String prio, String type, float costAmount, int courseDays, String role) {
+    public CourseEntity(String item, String website, String description, String prio, String type, float costAmount, Float courseDays, String role) {
         this.item = item;
         this.website = website;
         this.description = description;
@@ -105,11 +105,11 @@ public class CourseEntity {
         this.costAmount = costAmount;
     }
 
-    public int getCourseDays() {
+    public Float getCourseDays() {
         return courseDays;
     }
 
-    public void setCourseDays(int courseDays) {
+    public void setCourseDays(Float courseDays) {
         this.courseDays = courseDays;
     }
 

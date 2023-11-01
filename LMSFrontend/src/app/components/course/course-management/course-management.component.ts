@@ -50,6 +50,19 @@ export class CourseManagementComponent implements OnInit {
     } else if (this.selectedRole) {
       const selectedRole = this.selectedRole;
       this.courses = this.originalCourses.filter(course => course.role === selectedRole);
+      const sortOrder: { [key: string]: number } = {
+        'Prio1': 1,
+        'Prio2': 2,
+        'Prio3': 3,
+        'N/A': 4,
+      };
+
+      this.courses.sort((a, b) => {
+        const prioA = sortOrder[a.prio] || 5; // Geef een hoge waarde (5) aan null en andere onbekende waarden
+        const prioB = sortOrder[b.prio] || 5; // Geef een hoge waarde (5) aan null en andere onbekende waarden
+
+        return prioA - prioB;
+      });
     }
   }
 

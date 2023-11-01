@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-6">
-        <h1>Cursussen</h1>
+        <h1>Opleidingen</h1>
       </div>
       <div class="col-xs-12 col-sm-6">
         <div class="role-filter">
@@ -18,6 +18,7 @@
         <div class="courses">
           <table>
             <tr>
+              <th *ngIf="selectedRole === 'Alle rollen'">Role</th>
               <th>Item</th>
               <th>Website</th>
               <th>Prio</th>
@@ -25,8 +26,11 @@
               <th>Kosten</th>
             </tr>
             <tr class="tr-course-data" *ngFor="let course of courses; let i = index" (click)="courseDetails(course)">
-              <td>{{ course.item }}</td>
-              <td><a href="{{course.website}}" (click)="$event.stopPropagation()" target="_blank">{{ course.website }}</a></td>
+              <td *ngIf="selectedRole === 'Alle rollen'" >{{ course.role }}</td>
+              <td>{{ course.item ? (course.item.length <= 60 ? course.item : (course.item | slice:0:60) + '...') : '' }}</td>
+              <td><a href="{{course.website}}" (click)="$event.stopPropagation()" target="_blank">
+                {{ course.website ? (course.website.length <= 20 ? course.website : (course.website | slice:0:20) + '...') : '' }}</a>
+              </td>
               <td>{{ course.prio }}</td>
               <td>{{ course.type }}</td>
               <td>€ {{ course.costAmount }}</td>

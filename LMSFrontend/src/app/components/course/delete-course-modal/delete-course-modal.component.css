@@ -2,14 +2,16 @@
   margin-top: 0px;
   margin-bottom:20px;
 }
+.delete-buttons {
+  text-align: center;
+}
 .delete-course-modal button {
   background: red;
   color: white;
   border: none;
-  display: block;
-  margin: 0 auto;
   border-radius: 3px;
   padding: 7px 50px;
+  margin: 0px 15px;
 }
 .delete-course-modal button:hover {
   background: #c70000;

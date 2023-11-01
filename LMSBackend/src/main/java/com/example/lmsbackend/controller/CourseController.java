@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,13 +44,7 @@ public class CourseController{
         if(optionalCourse.isPresent()){
             CourseEntity course = optionalCourse.get();
 
-            course.setItem(courseDetails.getItem());
-            course.setWebsite(courseDetails.getWebsite());
-            course.setDescription(courseDetails.getDescription());
             course.setPrio(courseDetails.getPrio());
-            course.setType(courseDetails.getType());
-            course.setCostAmount(courseDetails.getCostAmount());
-            course.setCourseDays(courseDetails.getCourseDays());
             course.setRole(courseDetails.getRole());
 
             updatedCourse = courseRepository.save(course);
@@ -57,10 +52,45 @@ public class CourseController{
         return ResponseEntity.ok(updatedCourse);
     }
 
+    @PutMapping("/courses")
+    public ResponseEntity<List<CourseEntity>> updateCoursesByName(@RequestParam("item") String itemName, @RequestBody CourseEntity updatedCourse) {
+        List<CourseEntity> coursesToUpdate = courseRepository.findByItem(itemName);
+        List<CourseEntity> updatedCourses = new ArrayList<>();
+
+        for (CourseEntity course : coursesToUpdate) {
+            course.setItem(updatedCourse.getItem());
+            course.setWebsite(updatedCourse.getWebsite());
+            course.setDescription(updatedCourse.getDescription());
+            course.setType(updatedCourse.getType());
+            course.setCostAmount(updatedCourse.getCostAmount());
+            course.setCourseDays(updatedCourse.getCourseDays());
+
+            updatedCourses.add(courseRepository.save(course));
+        }
+
+        return ResponseEntity.ok(updatedCourses);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteCourse(@PathVariable("id") long id) {
         try {
             courseRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/courses")
+    public ResponseEntity<HttpStatus> deleteCoursesByName(@RequestParam("item") String courseItem) {
+        try {
+            List<CourseEntity> coursesToDelete = courseRepository.findByItem(courseItem);
+
+            if (coursesToDelete.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+
+            courseRepository.deleteAll(coursesToDelete);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -24,4 +24,11 @@ export class DeleteCourseModalComponent implements OnInit {
       this.dialogRef.close(button)
     })
   }
+
+  deleteCourses = (item: string, button: string) => {
+    this.courseService.deleteCourses(item).subscribe((msg) => {
+      this.dialogRef.close(button)
+    })
+  }
+
 }
