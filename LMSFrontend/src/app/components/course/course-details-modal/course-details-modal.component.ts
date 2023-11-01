@@ -4,6 +4,7 @@ import {Course} from "../../../model/course.model";
 import {
   CourseApplicationModalComponent
 } from "../../application/course-application-modal/course-application-modal.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-course-details-modal',
@@ -16,6 +17,7 @@ export class CourseDetailsModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public course: Course,
     private dialogRef: MatDialogRef<CourseDetailsModalComponent>,
     public dialog: MatDialog,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -27,7 +29,8 @@ export class CourseDetailsModalComponent implements OnInit {
 
     dialogRefCourseApplication.afterClosed().subscribe(result => {
       if (result === 'A') {
-
+        this.dialogRef.close()
+        this.router.navigate(['']);
       }
     });
   }

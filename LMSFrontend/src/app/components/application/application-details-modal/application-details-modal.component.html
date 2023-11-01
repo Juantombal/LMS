@@ -1,0 +1,35 @@
+<div class="application-detail-modal">
+  <h1>Aanvraag details</h1>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <table class="application-details-table">
+        <tr><td>Naam aanvrager:</td><td>{{application.user.name}}</td></tr>
+        <tr><td>Email aanvrager:</td><td>{{application.user.email}}</td></tr>
+        <tr><td>Status:</td><td>{{application.applicationLines[application.applicationLines.length - 1].status}}</td></tr>
+        <tr><td>Datum indiening:</td><td>{{application.submissionDate}}</td></tr>
+      </table>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <table class="application-course-details-table">
+        <tr><td>Cursus:</td><td>{{application.course.item}}</td></tr>
+        <tr><td>Website:</td><td>
+          <a href="{{application.course.website}}" target="_blank">
+            {{ application.course.website ? (application.course.website.length <= 40 ? application.course.website : (application.course.website | slice:0:40) + '...') : '' }}
+          </a>
+        </td></tr>
+        <tr><td>Type:</td><td>{{application.course.type}}</td></tr>
+        <tr><td>Kosten:</td><td>€ {{application.course.costAmount}}</td></tr>
+      </table>
+    </div>
+  </div>
+  <table class="application-details-table">
+    <tr><td>Motivatie:</td><td>{{application.applicationLines[0].comment}}</td></tr>
+    <tr><td>Start datum:</td><td>{{application.startDate}}</td></tr>
+    <tr><td>Geplande eind datum:</td><td>{{application.endDate}}</td></tr>
+  </table>
+
+  <button class="approve">Goedkeuren</button>
+  <button class="decline">Afwijzen</button>
+</div>
+

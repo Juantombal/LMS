@@ -1,0 +1,23 @@
+h1 {
+  margin-top:0px;
+  margin-bottom:20px;
+}
+table td {
+  word-break: break-all;
+}
+.application-detail-modal {
+  width: 800px;
+}
+.application-details-table td:first-child {
+  width: 150px;
+  font-weight: bold;
+}
+.application-course-details-table td:first-child{
+  font-weight: bold;
+  width: 70px;
+}
+table td {
+  padding: 0px 0px 7px 0px;
+  word-break: break-all;
+  vertical-align: top;
+}

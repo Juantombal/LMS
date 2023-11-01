@@ -1,9 +1,9 @@
 package com.example.lmsbackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name = "application_line")
@@ -16,6 +16,7 @@ public class ApplicationLineEntity {
 
     @ManyToOne
     @JoinColumn(name = "application_id", referencedColumnName = "id")
+    @JsonBackReference
     private ApplicationEntity application;
 
     @Column(name = "status")

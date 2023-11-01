@@ -1,0 +1,39 @@
+<div class="application-overview">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <h1>Aanvragen</h1>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="application-filter">
+          <select id="roleSelect">
+            <option> </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="line"></div>
+        <div class="applications">
+          <table>
+            <tr>
+              <th>Naam aanvrager</th>
+              <th>Email aanvrager</th>
+              <th>Cursus item</th>
+              <th>Status</th>
+              <th>Datum indiening</th>
+            </tr>
+            <tr *ngFor="let application of applications; let i = index" (click)="applicationDetails(application)" class="application-data">
+              <td>{{application.user.name}}</td>
+              <td>{{application.user.email}}</td>
+              <td>{{application.course.item}}</td>
+              <td>{{application.applicationLines[application.applicationLines.length - 1].status}}</td>
+              <td>{{application.submissionDate}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

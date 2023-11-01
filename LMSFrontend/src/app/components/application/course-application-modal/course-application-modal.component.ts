@@ -5,6 +5,7 @@ import {User} from "../../../model/user.model";
 import {UserService} from "../../../services/user.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ApplicationService} from "../../../services/application.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-course-application-modal',
@@ -50,7 +51,7 @@ export class CourseApplicationModalComponent implements OnInit {
       userId: this.loggedInUser.id,
       courseId: this.course.id,
     });
-    console.log(this.signupForm.value)
+
     this.applicationService.postApplication(this.signupForm.value).subscribe((msg) => {
       this.dialogRef.close(button)
     })

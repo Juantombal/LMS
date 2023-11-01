@@ -25,6 +25,8 @@ import {ApplicationService} from "./services/application.service";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatInputModule} from "@angular/material/input";
 import {MatNativeDateModule} from "@angular/material/core";
+import { ApplicationOverviewComponent } from './components/application/application-overview/application-overview.component';
+import { ApplicationDetailsModalComponent } from './components/application/application-details-modal/application-details-modal.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import {MatNativeDateModule} from "@angular/material/core";
     EditCourseModalComponent,
     DeleteCourseModalComponent,
     EditPdpModalComponent,
-    CourseApplicationModalComponent
+    CourseApplicationModalComponent,
+    ApplicationOverviewComponent,
+    ApplicationDetailsModalComponent
   ],
     imports: [
         BrowserModule,

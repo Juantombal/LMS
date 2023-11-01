@@ -7,6 +7,6 @@ import {User} from "../model/user.model";
 @Injectable()
 export class UserService extends ApiService {
   getUser(): Observable<User> {
-    return this.http.get<User>(this.apiAddress + 'user/' + 1, this.generateOptions());
+    return this.http.get<User>(this.apiAddress + 'user/' + 3, this.generateOptions());
   }
 }

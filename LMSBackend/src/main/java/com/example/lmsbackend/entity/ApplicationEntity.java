@@ -1,8 +1,10 @@
 package com.example.lmsbackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "application")
@@ -20,6 +22,10 @@ public class ApplicationEntity {
     @ManyToOne
     @JoinColumn(name = "course_id", referencedColumnName = "id")
     private CourseEntity course;
+
+    @OneToMany(mappedBy = "application", fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private List<ApplicationLineEntity> applicationLines;
 
     @Column(name = "start_date")
     private LocalDate startDate;
@@ -40,6 +46,14 @@ public class ApplicationEntity {
     }
 
     public ApplicationEntity() {
+    }
+
+    public List<ApplicationLineEntity> getApplicationLines() {
+        return applicationLines;
+    }
+
+    public void setApplicationLines(List<ApplicationLineEntity> applicationLines) {
+        this.applicationLines = applicationLines;
     }
 
     public Long getId() {
