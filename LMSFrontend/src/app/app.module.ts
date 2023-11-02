@@ -28,6 +28,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import { ApplicationOverviewComponent } from './components/application/application-overview/application-overview.component';
 import { ApplicationDetailsModalComponent } from './components/application/application-details-modal/application-details-modal.component';
 import { ActionListDetailsModalComponent } from './components/pdp/action-list-details-modal/action-list-details-modal.component';
+import { ApprovalDeclineModalComponent } from './components/application/approval-decline-modal/approval-decline-modal.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ActionListDetailsModalComponent } from './components/pdp/action-list-de
     CourseApplicationModalComponent,
     ApplicationOverviewComponent,
     ApplicationDetailsModalComponent,
-    ActionListDetailsModalComponent
+    ActionListDetailsModalComponent,
+    ApprovalDeclineModalComponent
   ],
     imports: [
         BrowserModule,

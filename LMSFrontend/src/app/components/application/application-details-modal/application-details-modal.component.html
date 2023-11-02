@@ -29,7 +29,7 @@
     <tr><td>Geplande eind datum:</td><td>{{application.endDate}}</td></tr>
   </table>
 
-  <button class="approve">Goedkeuren</button>
-  <button class="decline">Afwijzen</button>
+  <button (click)="approvalDeclineModal(application, 'approve')" class="approve">Goedkeuren</button>
+  <button (click)="approvalDeclineModal(application, 'decline')" class="decline">Afwijzen</button>
 </div>
 

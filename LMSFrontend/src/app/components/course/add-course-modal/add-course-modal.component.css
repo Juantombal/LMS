@@ -25,3 +25,10 @@
 .add-course-button:enabled:hover {
   background: #678d3f;
 }
+
+.switch {
+  background: grey;
+  border: none;
+  border-radius: 12px;
+  color: white;
+}

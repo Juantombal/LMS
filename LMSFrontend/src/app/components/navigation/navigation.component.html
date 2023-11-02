@@ -19,13 +19,13 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li data-active-if="application">
+              <li *ngIf="loggedInUser.role !== 'EMPLOYEE'" data-active-if="application">
                 <a routerLinkActive="is-active" routerLink="/application"><span>Aanvragen</span></a>
               </li>
               <li data-active-if="Opleidingen">
                 <a routerLinkActive="active-link" routerLink="/course">Opleidingen</a>
               </li>
-              <li data-active-if="Cursusbeheer">
+              <li *ngIf="loggedInUser.role !== 'EMPLOYEE'" data-active-if="Cursusbeheer">
                 <a routerLinkActive="active-link" routerLink="/coursemanagement">Cursusbeheer</a>
               </li>
             </ul>

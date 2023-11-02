@@ -25,7 +25,9 @@
           <option value="N/A">N/A</option>
         </select>
         <label>Role *</label>
-        <input class="form-control" placeholder="Role.." formControlName="role" required>
+        <select class="form-control" formControlName="role">
+          <option *ngFor="let role of uniqueRoles" [value]="role">{{ role }}</option>
+        </select>
       </div>
     </div>
     <button (click)="editCourses(data.item,'A')" class="edit-course-button" [disabled]="!signupForm.valid" type="submit">

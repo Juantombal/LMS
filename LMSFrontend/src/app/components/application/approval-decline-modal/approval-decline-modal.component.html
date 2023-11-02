@@ -1,0 +1,17 @@
+<div class="approve-decline-modal">
+  <form class="form-add-course" [formGroup]="signupForm" novalidate>
+    <h2 *ngIf="data.action === 'approve'">Aanvraag goedkeuren</h2>
+    <h2 *ngIf="data.action === 'decline'">Aanvraag afwijzen</h2>
+
+    <label>Opmerking</label>
+    <textarea class="form-control" rows="4" formControlName="comment"></textarea>
+
+    <button class="approve" *ngIf="data.action === 'approve'" (click)="addApplicationLine(data.application.id, 'approve')" type="submit">
+      <span>Goedkeuren</span>
+    </button>
+    <button class="decline" *ngIf="data.action === 'decline'" (click)="addApplicationLine(data.application.id, 'decline')" type="submit">
+      <span>Afwijzen</span>
+    </button>
+  </form>
+</div>
+

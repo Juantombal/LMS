@@ -16,11 +16,45 @@
         <tr>
           <th>Status</th>
           <th>Opmerking</th>
+          <th>Status2</th>
           <th>Laast aangepast</th>
         </tr>
         <tr *ngFor="let applicationline of data.applicationLines; let i = index">
-          <td>{{applicationline.status}}</td>
+          <td>
+            <ng-container *ngIf="applicationline.status === 'FIELDMANAGER'">
+            Nieuwe aanvraag
+          </ng-container>
+            <ng-container *ngIf="applicationline.status === 'DIRECTOR'">
+              Goedgekeurd door FM
+            </ng-container>
+            <ng-container *ngIf="applicationline.status === 'SECRETERIAT'">
+              Goedgekeurd door Directeur
+            </ng-container>
+            <ng-container *ngIf="applicationline.status === 'APPROVED'">
+              Goedgekeurd door Secreteriaat
+            </ng-container>
+            <ng-container *ngIf="applicationline.status === 'DECLINED'">
+              Aanvraag afgekeurd!
+            </ng-container>
+          </td>
           <td>{{applicationline.comment}}</td>
+          <td>
+            <ng-container *ngIf="applicationline.status === 'FIELDMANAGER'">
+              Ter beoordeling bij FM
+            </ng-container>
+            <ng-container *ngIf="applicationline.status === 'DIRECTOR'">
+              Ter beoordeling bij Directeur
+            </ng-container>
+            <ng-container *ngIf="applicationline.status === 'SECRETERIAT'">
+              Ter beoordeling bij Secreteriaat
+            </ng-container>
+            <ng-container *ngIf="applicationline.status === 'APPROVED'">
+              Cursus mag gevolgd worden
+            </ng-container>
+            <ng-container *ngIf="applicationline.status === 'DECLINED'">
+              Aanvraag afgekeurd!
+            </ng-container>
+          </td>
           <td>{{applicationline.lastModification}}</td>
         </tr>
       </table>

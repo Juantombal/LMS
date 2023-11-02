@@ -2,7 +2,6 @@ package com.example.lmsbackend.controller;
 
 import com.example.lmsbackend.entity.ApplicationEntity;
 import com.example.lmsbackend.entity.ApplicationLineEntity;
-import com.example.lmsbackend.entity.UserEntity;
 import com.example.lmsbackend.repository.ApplicationLineRepository;
 import com.example.lmsbackend.repository.ApplicationRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -12,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/applicationline")
@@ -24,7 +22,7 @@ public class ApplicationLineController {
     @Autowired
     ApplicationRepository applicationRepository;
 
-    @PostMapping("")
+    @PostMapping("/{id}")
     public ResponseEntity<ApplicationLineEntity> createApplicationLine(@PathVariable(value = "id") Long id, @RequestBody ApplicationLineEntity applicationLine) {
         ApplicationEntity application = applicationRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Application not found"));

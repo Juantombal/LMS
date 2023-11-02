@@ -22,29 +22,49 @@ export class ApplicationOverviewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getApplications()
     this.getUser()
   }
 
   getApplications = () => {
     this.applicationService.getApplications().subscribe((applications) => {
-      this.applications = applications
-    })
+      this.applications = applications;
+      this.filterApplicationsByRole();
+    });
+  }
+
+  filterApplicationsByRole = () => {
+    if (this.loggedInUser) {
+      if (this.loggedInUser.role === 'FIELDMANAGER') {
+        this.applications = this.applications.filter(application =>
+          application.applicationLines[application.applicationLines.length - 1].status === 'FIELDMANAGER'
+        );
+      } else if (this.loggedInUser.role === 'DIRECTOR') {
+        this.applications = this.applications.filter(application =>
+          application.applicationLines[application.applicationLines.length - 1].status === 'DIRECTOR'
+        );
+      } else if (this.loggedInUser.role === 'SECRETERIAT') {
+        this.applications = this.applications.filter(application =>
+          application.applicationLines[application.applicationLines.length - 1].status === 'SECRETERIAT'
+        );
+      }
+      else {
+        this.applications = [];
+      }
+    }
   }
 
   applicationDetails = (application: Application) => {
-    const dialogRefApplicationDetails = this.dialog.open(ApplicationDetailsModalComponent, {data: application, autoFocus: false});
+    const dialogRefApplicationDetails = this.dialog.open(ApplicationDetailsModalComponent, {data: {application: application, user:this.loggedInUser}, autoFocus: false});
 
     dialogRefApplicationDetails.afterClosed().subscribe(result => {
-      if (result === 'A') {
         this.getApplications();
-      }
     });
   }
 
   getUser = () => {
     this.userService.getUser().subscribe((user) => {
       this.loggedInUser = user;
+      this.getApplications()
     })
   }
 }

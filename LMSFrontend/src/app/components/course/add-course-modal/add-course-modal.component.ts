@@ -11,6 +11,10 @@ import {Course} from "../../../model/course.model";
 })
 export class AddCourseModalComponent implements OnInit {
   signupForm: FormGroup
+  selectedCourse: Course | null;
+  courses: Course[];
+  uniqueRoles: string[] = [];
+  inputVisible = false;
 
   constructor(
     private courseService: CourseService,
@@ -19,6 +23,18 @@ export class AddCourseModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.signupForm = this.createFormGroup()
+    this.getCourses()
+  }
+
+  getCourses(): void {
+    this.courseService.getCourses()
+      .subscribe({
+        next: courses => {
+          this.courses = this.removeDuplicates(courses)
+          this.courses.sort((a, b) => a.item.localeCompare(b.item));
+          this.getUniqueRoles()
+        },
+      });
   }
 
   createFormGroup = (): FormGroup => {
@@ -30,8 +46,42 @@ export class AddCourseModalComponent implements OnInit {
       type: new FormControl(''),
       costAmount: new FormControl(''),
       courseDays: new FormControl(''),
-      role: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      role: new FormControl('', ),
     })
+  }
+
+  selectCourse() {
+    if (this.selectedCourse) {
+      this.signupForm.patchValue({
+        item: this.selectedCourse.item,
+        website: this.selectedCourse.website,
+        description: this.selectedCourse.description,
+        costAmount: this.selectedCourse.costAmount,
+        type: this.selectedCourse.type,
+        courseDays: this.selectedCourse.courseDays
+      });
+    }
+  }
+
+  removeDuplicates(courses: Course[]): Course[] {
+    const courseMap = new Map<string, Course>();
+
+    for (const course of courses) {
+      if (!courseMap.has(course.item)) {
+        courseMap.set(course.item, course);
+      }
+    }
+
+    return Array.from(courseMap.values());
+  }
+
+  getUniqueRoles(): void {
+
+    const rolesSet = new Set<string>();
+    for (const course of this.courses) {
+      rolesSet.add(course.role);
+    }
+    this.uniqueRoles = Array.from(rolesSet);
   }
 
   addCourse = (button: string) => {
@@ -40,6 +90,10 @@ export class AddCourseModalComponent implements OnInit {
         this.dialogRef.close(button)
       }
     })
+  }
+
+  toggleRoleInput(): void {
+    this.inputVisible = !this.inputVisible;
   }
 
 }

@@ -11,6 +11,8 @@ import {Course} from "../../../model/course.model";
 })
 export class EditCourseModalComponent implements OnInit {
   signupForm: FormGroup
+  courses: Course[];
+  uniqueRoles: string[] = [];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Course,
@@ -21,6 +23,7 @@ export class EditCourseModalComponent implements OnInit {
   ngOnInit(): void {
     this.signupForm = this.createFormGroup()
     this.signupForm.patchValue(this.data)
+    this.getCourses()
   }
 
   createFormGroup = (): FormGroup => {
@@ -34,6 +37,25 @@ export class EditCourseModalComponent implements OnInit {
       courseDays: new FormControl(''),
       role: new FormControl('', [Validators.required, Validators.minLength(2)]),
     })
+  }
+
+  getCourses(): void {
+    this.courseService.getCourses()
+      .subscribe({
+        next: courses => {
+          this.courses = courses
+          this.getUniqueRoles()
+        },
+      });
+  }
+
+  getUniqueRoles(): void {
+
+    const rolesSet = new Set<string>();
+    for (const course of this.courses) {
+      rolesSet.add(course.role);
+    }
+    this.uniqueRoles = Array.from(rolesSet);
   }
 
   editCourse = (id: number, button: string) => {

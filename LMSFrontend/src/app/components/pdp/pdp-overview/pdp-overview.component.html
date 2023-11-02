@@ -39,14 +39,32 @@
             <th>Status</th>
             <th>Datum indiening</th>
           </tr>
-          <tr *ngFor="let application of applications; let i = index" (click)="applicationUserDetails(application)">
+          <tr *ngFor="let application of applications; let i = index" (click)="applicationUserDetails(application)"
+              [ngClass]="{'green-row': application.applicationLines[application.applicationLines.length - 1].status === 'APPROVED',
+                          'red-row': application.applicationLines[application.applicationLines.length - 1].status === 'DECLINED'}">
             <td>{{application.course.item}}</td>
             <td>
               <a href="{{application.course.website}}" (click)="$event.stopPropagation()" target="_blank">
               {{ application.course.website ? (application.course.website.length <= 40 ? application.course.website : (application.course.website | slice:0:40) + '...') : '' }}
               </a>
             </td>
-            <td>{{application.applicationLines[application.applicationLines.length - 1].status}}</td>
+            <td>
+              <ng-container *ngIf="application.applicationLines[application.applicationLines.length - 1].status === 'FIELDMANAGER'">
+                Ter beoordeling bij FM
+              </ng-container>
+              <ng-container *ngIf="application.applicationLines[application.applicationLines.length - 1].status === 'DIRECTOR'">
+                Ter beoordeling bij Directeur
+              </ng-container>
+              <ng-container *ngIf="application.applicationLines[application.applicationLines.length - 1].status === 'SECRETERIAT'">
+                Ter beoordeling bij Secreteriaat
+              </ng-container>
+              <ng-container *ngIf="application.applicationLines[application.applicationLines.length - 1].status === 'APPROVED'">
+                Aanvraag goedgekeurd!
+              </ng-container>
+              <ng-container *ngIf="application.applicationLines[application.applicationLines.length - 1].status === 'DECLINED'">
+                Aanvraag afgekeurd!
+              </ng-container>
+            </td>
             <td>{{application.submissionDate}}</td>
           </tr>
         </table>
