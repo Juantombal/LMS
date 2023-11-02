@@ -3,6 +3,8 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {Course} from "../model/course.model";
 import {HttpParams} from "@angular/common/http";
+import {Application} from "../model/application.model";
+import {EmployeeCourse} from "../model/employeecourse.model";
 
 @Injectable()
 export class CourseService extends ApiService {
@@ -12,6 +14,14 @@ export class CourseService extends ApiService {
 
   postCourse(course: Partial<Course>): Observable<Course> {
     return this.http.post<Course>(this.apiAddress + `course`, course , this.generateOptions());
+  }
+
+  postEmployeeCourse(employeeCourse: Partial<EmployeeCourse>): Observable<EmployeeCourse> {
+    return this.http.post<EmployeeCourse>(this.apiAddress + `employeecourse`, employeeCourse , this.generateOptions());
+  }
+
+  getEmployeeCourseByUser(userId: number): Observable<EmployeeCourse[]> {
+    return this.http.get<EmployeeCourse[]>(this.apiAddress + 'employeecourse/user/' + userId, this.generateOptions());
   }
 
   updateCourse(courseId: number, course: Partial<Course>): Observable<Course> {

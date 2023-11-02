@@ -1,0 +1,13 @@
+<h3>Cursus "{{this.data.course.item}}" voltooien</h3>
+
+<form class="form-application" [formGroup]="signupForm" (ngSubmit)="createEmployeeCourse('A')" novalidate>
+  <mat-form-field>
+    <input matInput [matDatepicker]="completiondatepicker" placeholder="Voltooing datum" formControlName="completionDate">
+    <mat-datepicker-toggle matSuffix [for]="completiondatepicker"></mat-datepicker-toggle>
+    <mat-datepicker #completiondatepicker></mat-datepicker>
+  </mat-form-field>
+
+  <button class="employee-course-button" [disabled]="!signupForm.valid" type="submit">
+    <span>Voltooien</span>
+  </button>
+</form>

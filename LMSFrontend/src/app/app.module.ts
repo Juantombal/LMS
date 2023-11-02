@@ -29,6 +29,7 @@ import { ApplicationOverviewComponent } from './components/application/applicati
 import { ApplicationDetailsModalComponent } from './components/application/application-details-modal/application-details-modal.component';
 import { ActionListDetailsModalComponent } from './components/pdp/action-list-details-modal/action-list-details-modal.component';
 import { ApprovalDeclineModalComponent } from './components/application/approval-decline-modal/approval-decline-modal.component';
+import { CompleteCourseModalComponent } from './components/course/complete-course-modal/complete-course-modal.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ApprovalDeclineModalComponent } from './components/application/approval
     ApplicationOverviewComponent,
     ApplicationDetailsModalComponent,
     ActionListDetailsModalComponent,
-    ApprovalDeclineModalComponent
+    ApprovalDeclineModalComponent,
+    CompleteCourseModalComponent
   ],
     imports: [
         BrowserModule,

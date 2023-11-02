@@ -21,15 +21,15 @@
     </div>
     <div class="col-xs-12 col-sm-4">
       <table class="course-completed-table">
-        <tr><td>Voltooid:</td><td>Nee</td></tr>
-        <tr><td>Voltooingsdatum:</td><td>N/A</td></tr>
+        <tr><td>Voltooid:</td><td>{{ isCourseMatchingEmployeeCourse(employeeCourse, course.item) ? 'Ja' : 'nee' }}</td></tr>
+        <tr><td>Voltooingsdatum:</td><td>{{ getCompletionDate(employeeCourse, course.item) || 'N/A' }}</td></tr>
       </table>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
       <button (click)="courseApplication()">Cursus aanvragen</button>
-      <button>Cursus voltooien</button>
+      <button *ngIf="!isCourseMatchingEmployeeCourse(employeeCourse, course.item)" (click)="courseCompletion()">Cursus voltooien</button>
     </div>
   </div>
 </div>

@@ -40,8 +40,7 @@
             <th>Datum indiening</th>
           </tr>
           <tr *ngFor="let application of applications; let i = index" (click)="applicationUserDetails(application)"
-              [ngClass]="{'green-row': application.applicationLines[application.applicationLines.length - 1].status === 'APPROVED',
-                          'red-row': application.applicationLines[application.applicationLines.length - 1].status === 'DECLINED'}">
+              [ngClass]="{'red-row': application.applicationLines[application.applicationLines.length - 1].status === 'DECLINED'}">
             <td>{{application.course.item}}</td>
             <td>
               <a href="{{application.course.website}}" (click)="$event.stopPropagation()" target="_blank">

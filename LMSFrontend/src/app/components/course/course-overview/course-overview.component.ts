@@ -60,7 +60,7 @@ export class CourseOverviewComponent implements OnInit {
   }
 
   courseDetails = (course: Course) => {
-    const dialogRefDatabaseDetails = this.dialog.open(CourseDetailsModalComponent, {data: course, autoFocus: false});
+    const dialogRefDatabaseDetails = this.dialog.open(CourseDetailsModalComponent, {data: {course: course, user: this.loggedInUser}, autoFocus: false});
 
     dialogRefDatabaseDetails.afterClosed().subscribe(result => {
       if (result === 'A') {
