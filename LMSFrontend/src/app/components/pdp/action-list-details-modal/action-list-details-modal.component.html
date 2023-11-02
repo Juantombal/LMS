@@ -1,0 +1,29 @@
+<div class="action-list-details-modal">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Aanvraag details</h1>
+
+      <table class="application-details-table">
+        <tr><td>Item:</td><td>{{data.course.item}}</td></tr>
+        <tr><td>Website:</td><td><a href="{{data.course.website}}" (click)="$event.stopPropagation()" target="_blank">
+          {{ data.course.website ? (data.course.website.length <= 80 ? data.course.website : (data.course.website | slice:0:80) + '...') : '' }}
+        </a></td></tr>
+        <tr><td>Start datum:</td><td>{{data.startDate}}</td></tr>
+        <tr><td>Geplande eind datum:</td><td>{{data.endDate}}</td></tr>
+      </table>
+
+      <table class="application-line-table">
+        <tr>
+          <th>Status</th>
+          <th>Opmerking</th>
+          <th>Laast aangepast</th>
+        </tr>
+        <tr *ngFor="let applicationline of data.applicationLines; let i = index">
+          <td>{{applicationline.status}}</td>
+          <td>{{applicationline.comment}}</td>
+          <td>{{applicationline.lastModification}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

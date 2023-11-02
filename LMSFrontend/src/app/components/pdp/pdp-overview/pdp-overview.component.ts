@@ -6,6 +6,9 @@ import {CourseDetailsModalComponent} from "../../course/course-details-modal/cou
 import {MatDialog} from "@angular/material/dialog";
 import {EditPdpModalComponent} from "../edit-pdp-modal/edit-pdp-modal.component";
 import {switchMap} from "rxjs";
+import {ApplicationService} from "../../../services/application.service";
+import {Application} from "../../../model/application.model";
+import {ActionListDetailsModalComponent} from "../action-list-details-modal/action-list-details-modal.component";
 
 @Component({
   selector: 'app-pdp-overview',
@@ -13,10 +16,12 @@ import {switchMap} from "rxjs";
   styleUrls: ['./pdp-overview.component.css']
 })
 export class PdpOverviewComponent implements OnInit {
+  applications: Application[] = [];
   loggedInUser: User;
 
   constructor(
     private userService: UserService,
+    private applicationService: ApplicationService,
     public dialog: MatDialog,
   ) { }
 
@@ -27,6 +32,7 @@ export class PdpOverviewComponent implements OnInit {
   getPdp = () => {
     this.userService.getUser().subscribe((user) => {
       this.loggedInUser = user;
+      this.getApplicationByUser()
     })
   }
 
@@ -38,5 +44,15 @@ export class PdpOverviewComponent implements OnInit {
         this.getPdp()
       }
     });
+  }
+
+  getApplicationByUser = () => {
+    this.applicationService.getApplicationByUser(this.loggedInUser.id).subscribe((applications) => {
+      this.applications = applications
+    })
+  }
+
+  applicationUserDetails = (application: Application) => {
+    this.dialog.open(ActionListDetailsModalComponent, {data: application, autoFocus: false});
   }
 }

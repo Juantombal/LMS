@@ -2,6 +2,8 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Course} from "../../../model/course.model";
 import {Application} from "../../../model/application.model";
+import {User} from "../../../model/user.model";
+import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: 'app-application-details-modal',
@@ -17,6 +19,5 @@ export class ApplicationDetailsModalComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 
 }

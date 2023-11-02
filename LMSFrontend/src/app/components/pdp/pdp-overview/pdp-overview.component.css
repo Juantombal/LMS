@@ -13,6 +13,14 @@ td {
   padding-bottom:30px;
 }
 
+.action-list tr{
+  cursor: pointer;
+}
+
+.action-list tr:hover {
+  background: #d9d9d9;
+}
+
 h2 {
   margin:0;
 }

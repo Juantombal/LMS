@@ -68,7 +68,7 @@ public class ApplicationController {
 
         ApplicationLineEntity applicationLine = new ApplicationLineEntity();
         applicationLine.setApplication(newApplication);
-        applicationLine.setStatus("NEW");
+        applicationLine.setStatus("FIELDMANAGER");
         applicationLine.setComment(applicationDTO.getComment());
         applicationLine.setLastModification(LocalDate.now());
 

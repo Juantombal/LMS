@@ -12,4 +12,8 @@ export class ApplicationService extends ApiService {
   getApplications(): Observable<Application[]> {
     return this.http.get<Application[]>(this.apiAddress + 'application', this.generateOptions());
   }
+
+  getApplicationByUser(userId: number): Observable<Application[]> {
+    return this.http.get<Application[]>(this.apiAddress + 'application/user/' + userId, this.generateOptions());
+  }
 }

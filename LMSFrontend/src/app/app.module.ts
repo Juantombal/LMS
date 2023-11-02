@@ -27,6 +27,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatNativeDateModule} from "@angular/material/core";
 import { ApplicationOverviewComponent } from './components/application/application-overview/application-overview.component';
 import { ApplicationDetailsModalComponent } from './components/application/application-details-modal/application-details-modal.component';
+import { ActionListDetailsModalComponent } from './components/pdp/action-list-details-modal/action-list-details-modal.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ApplicationDetailsModalComponent } from './components/application/appli
     EditPdpModalComponent,
     CourseApplicationModalComponent,
     ApplicationOverviewComponent,
-    ApplicationDetailsModalComponent
+    ApplicationDetailsModalComponent,
+    ActionListDetailsModalComponent
   ],
     imports: [
         BrowserModule,

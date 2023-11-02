@@ -36,16 +36,18 @@
           <tr>
             <th>Item</th>
             <th>Website</th>
-            <th>Prio</th>
-            <th>Type</th>
-            <th>Kosten</th>
+            <th>Status</th>
+            <th>Datum indiening</th>
           </tr>
-          <tr>
-            <td>grdg</td>
-            <td>gdr</td>
-            <td>drg</td>
-            <td>g</td>
-            <td>drg</td>
+          <tr *ngFor="let application of applications; let i = index" (click)="applicationUserDetails(application)">
+            <td>{{application.course.item}}</td>
+            <td>
+              <a href="{{application.course.website}}" (click)="$event.stopPropagation()" target="_blank">
+              {{ application.course.website ? (application.course.website.length <= 40 ? application.course.website : (application.course.website | slice:0:40) + '...') : '' }}
+              </a>
+            </td>
+            <td>{{application.applicationLines[application.applicationLines.length - 1].status}}</td>
+            <td>{{application.submissionDate}}</td>
           </tr>
         </table>
       </div>

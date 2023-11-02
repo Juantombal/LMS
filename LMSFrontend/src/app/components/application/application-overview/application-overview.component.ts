@@ -3,6 +3,8 @@ import {Application} from "../../../model/application.model";
 import {ApplicationService} from "../../../services/application.service";
 import {MatDialog} from "@angular/material/dialog";
 import {ApplicationDetailsModalComponent} from "../application-details-modal/application-details-modal.component";
+import {UserService} from "../../../services/user.service";
+import {User} from "../../../model/user.model";
 
 @Component({
   selector: 'app-application-overview',
@@ -11,14 +13,17 @@ import {ApplicationDetailsModalComponent} from "../application-details-modal/app
 })
 export class ApplicationOverviewComponent implements OnInit {
   applications: Application[] = [];
+  loggedInUser: User;
 
   constructor(
     private applicationService: ApplicationService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private userService: UserService,
   ) { }
 
   ngOnInit(): void {
     this.getApplications()
+    this.getUser()
   }
 
   getApplications = () => {
@@ -35,5 +40,11 @@ export class ApplicationOverviewComponent implements OnInit {
         this.getApplications();
       }
     });
+  }
+
+  getUser = () => {
+    this.userService.getUser().subscribe((user) => {
+      this.loggedInUser = user;
+    })
   }
 }

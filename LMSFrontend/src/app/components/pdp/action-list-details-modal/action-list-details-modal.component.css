@@ -1,0 +1,38 @@
+.action-list-details-modal h1 {
+  margin-top:0px;
+  margin-bottom:20px;
+}
+
+.action-list-details-modal{
+  width:800px;
+}
+
+.application-line-table table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.application-line-table table td {
+  word-break: break-all;
+  vertical-align: top;
+}
+
+.application-line-table td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.application-line-table tr:first-child {
+  background-color: #dddddd;
+}
+table.application-details-table td {
+  padding: 0px 7px 7px 0px;
+}
+table.application-details-table  td:first-child {
+  font-weight: bold;
+}
+.application-details-table {
+  margin-bottom:20px;
+}
