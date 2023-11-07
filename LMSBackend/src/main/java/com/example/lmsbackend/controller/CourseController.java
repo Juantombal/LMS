@@ -30,27 +30,11 @@ public class CourseController{
 
     @PostMapping("")
     public ResponseEntity<CourseEntity> createCourse(@RequestBody CourseEntity course) {
-        CourseEntity _course = courseRepository.save(new CourseEntity(course.getItem(), course.getWebsite(), course.getDescription(), course.getPrio(),
-                course.getType(), course.getCostAmount(), course.getCourseDays(), course.getRole()));
+        CourseEntity _course = courseRepository.save(new CourseEntity(course.getItem(), course.getWebsite(), course.getDescription(),
+                course.getType(), course.getCostAmount(), course.getCourseDays()));
         return new ResponseEntity<>(_course, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<CourseEntity> updateCourse(@PathVariable(value = "id") Long id, @RequestBody CourseEntity courseDetails){
-
-        Optional<CourseEntity> optionalCourse = courseRepository.findById(id);
-        CourseEntity updatedCourse = null;
-
-        if(optionalCourse.isPresent()){
-            CourseEntity course = optionalCourse.get();
-
-            course.setPrio(courseDetails.getPrio());
-            course.setRole(courseDetails.getRole());
-
-            updatedCourse = courseRepository.save(course);
-        }
-        return ResponseEntity.ok(updatedCourse);
-    }
 
     @PutMapping("/courses")
     public ResponseEntity<List<CourseEntity>> updateCoursesByName(@RequestParam("item") String itemName, @RequestBody CourseEntity updatedCourse) {
@@ -75,22 +59,6 @@ public class CourseController{
     public ResponseEntity<HttpStatus> deleteCourse(@PathVariable("id") long id) {
         try {
             courseRepository.deleteById(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    @DeleteMapping("/courses")
-    public ResponseEntity<HttpStatus> deleteCoursesByName(@RequestParam("item") String courseItem) {
-        try {
-            List<CourseEntity> coursesToDelete = courseRepository.findByItem(courseItem);
-
-            if (coursesToDelete.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
-
-            courseRepository.deleteAll(coursesToDelete);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

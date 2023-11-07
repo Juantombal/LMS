@@ -20,9 +20,6 @@ public class CourseEntity {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "prio")
-    private String prio;
-
     @Column(name = "type")
     private String type;
 
@@ -32,21 +29,18 @@ public class CourseEntity {
     @Column(name = "courseDays")
     private Float courseDays;
 
-    @Column(name = "role")
-    private String role;
+
 
     public CourseEntity() {
     }
 
-    public CourseEntity(String item, String website, String description, String prio, String type, float costAmount, Float courseDays, String role) {
+    public CourseEntity(String item, String website, String description, String type, float costAmount, Float courseDays) {
         this.item = item;
         this.website = website;
         this.description = description;
-        this.prio = prio;
         this.type = type;
         this.costAmount = costAmount;
         this.courseDays = courseDays;
-        this.role = role;
     }
 
     public String getDescription() {
@@ -81,14 +75,6 @@ public class CourseEntity {
         this.website = website;
     }
 
-    public String getPrio() {
-        return prio;
-    }
-
-    public void setPrio(String prio) {
-        this.prio = prio;
-    }
-
     public String getType() {
         return type;
     }
@@ -111,13 +97,5 @@ public class CourseEntity {
 
     public void setCourseDays(Float courseDays) {
         this.courseDays = courseDays;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 }
