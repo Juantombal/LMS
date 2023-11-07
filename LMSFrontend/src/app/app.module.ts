@@ -30,6 +30,11 @@ import { ApplicationDetailsModalComponent } from './components/application/appli
 import { ActionListDetailsModalComponent } from './components/pdp/action-list-details-modal/action-list-details-modal.component';
 import { ApprovalDeclineModalComponent } from './components/application/approval-decline-modal/approval-decline-modal.component';
 import { CompleteCourseModalComponent } from './components/course/complete-course-modal/complete-course-modal.component';
+import { RolesOverviewComponent } from './components/role/roles-overview/roles-overview.component';
+import { AddRoleModalComponent } from './components/role/add-role-modal/add-role-modal.component';
+import {RoleService} from "./services/role.service";
+import { DeleteRoleModalComponent } from './components/role/delete-role-modal/delete-role-modal.component';
+import { CourseRoleLinkComponent } from './components/course/course-role-link/course-role-link.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +54,11 @@ import { CompleteCourseModalComponent } from './components/course/complete-cours
     ApplicationDetailsModalComponent,
     ActionListDetailsModalComponent,
     ApprovalDeclineModalComponent,
-    CompleteCourseModalComponent
+    CompleteCourseModalComponent,
+    RolesOverviewComponent,
+    AddRoleModalComponent,
+    DeleteRoleModalComponent,
+    CourseRoleLinkComponent
   ],
     imports: [
         BrowserModule,
@@ -68,7 +77,8 @@ import { CompleteCourseModalComponent } from './components/course/complete-cours
     ApiService,
     UserService,
     PdpService,
-    ApplicationService
+    ApplicationService,
+    RoleService
   ],
   bootstrap: [AppComponent]
 })

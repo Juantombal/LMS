@@ -35,13 +35,13 @@ public class CourseController{
         return new ResponseEntity<>(_course, HttpStatus.CREATED);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<CourseEntity> updateCoursesByName(@PathVariable("id") long id, @RequestBody CourseEntity updatedCourse) {
+        Optional<CourseEntity> optionalCourse = courseRepository.findById(id);
 
-    @PutMapping("/courses")
-    public ResponseEntity<List<CourseEntity>> updateCoursesByName(@RequestParam("item") String itemName, @RequestBody CourseEntity updatedCourse) {
-        List<CourseEntity> coursesToUpdate = courseRepository.findByItem(itemName);
-        List<CourseEntity> updatedCourses = new ArrayList<>();
+        if (optionalCourse.isPresent()) {
+            CourseEntity course = optionalCourse.get();
 
-        for (CourseEntity course : coursesToUpdate) {
             course.setItem(updatedCourse.getItem());
             course.setWebsite(updatedCourse.getWebsite());
             course.setDescription(updatedCourse.getDescription());
@@ -49,10 +49,12 @@ public class CourseController{
             course.setCostAmount(updatedCourse.getCostAmount());
             course.setCourseDays(updatedCourse.getCourseDays());
 
-            updatedCourses.add(courseRepository.save(course));
+            CourseEntity _course = courseRepository.save(course);
+            return ResponseEntity.ok(_course);
+        } else {
+            // Handle the case where the course with the specified ID is not found.
+            return ResponseEntity.notFound().build();
         }
-
-        return ResponseEntity.ok(updatedCourses);
     }
 
     @DeleteMapping("/{id}")

@@ -1,0 +1,15 @@
+<div class="add-role-modal">
+  <h1 class="add-role-header-text">Rol toevoegen</h1>
+  <form class="form-add-role" [formGroup]="signupForm" novalidate>
+    <div class="row">
+      <div class="col-xs-12">
+        <label>Naam *</label>
+        <input class="form-control" placeholder="name.." formControlName="name"  required/>
+      </div>
+    </div>
+    <button (click)="addRole('A')" class="add-role-button" [disabled]="!signupForm.valid" type="submit">
+      <span>Toevoegen</span>
+    </button>
+  </form>
+</div>
+

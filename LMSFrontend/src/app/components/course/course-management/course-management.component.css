@@ -70,7 +70,7 @@ i.fa.fa-trash-o{
   margin-top:3px;
 }
 
-button.add-course {
+button.add-course, .roles-management-button {
   background: #77A546;
   color: white;
   border: none;
@@ -81,7 +81,7 @@ button.add-course {
   border: 1px solid #000;
 }
 
-button.add-course:hover {
+button.add-course:hover, .roles-management-button:hover {
   background: #678d3f;
 }
 

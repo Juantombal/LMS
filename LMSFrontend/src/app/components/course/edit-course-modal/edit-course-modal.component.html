@@ -9,32 +9,18 @@
         <input class="form-control" placeholder="Website URL.." formControlName="website" required/>
         <label>Omschrijving</label>
         <textarea class="form-control" rows="4" placeholder="Omschrijving.." formControlName="description"></textarea>
-        <label>Type</label>
-        <input class="form-control" placeholder="Type.." formControlName="type">
       </div>
       <div class="col-xs-12 col-sm-6">
+        <label>Type</label>
+        <input class="form-control" placeholder="Type.." formControlName="type">
         <label>Kosten</label>
         <input class="form-control" placeholder="Kosten.." formControlName="costAmount">
         <label>Cursus dagen</label>
         <input class="form-control" placeholder="Cursus dagen.." formControlName="courseDays">
-        <label>Prio</label>
-        <select class="form-control" formControlName="prio">
-          <option value="Prio1">Prio 1</option>
-          <option value="Prio2">Prio 2</option>
-          <option value="Prio3">Prio 3</option>
-          <option value="N/A">N/A</option>
-        </select>
-        <label>Role *</label>
-        <select class="form-control" formControlName="role">
-          <option *ngFor="let role of uniqueRoles" [value]="role">{{ role }}</option>
-        </select>
       </div>
     </div>
-    <button (click)="editCourses(data.item,'A')" class="edit-course-button" [disabled]="!signupForm.valid" type="submit">
-      <span>Update cursus</span>
-    </button>
     <button (click)="editCourse(data.id,'A')" class="edit-course-button" [disabled]="!signupForm.valid" type="submit">
-      <span>Update role/prio</span>
+      <span>Update cursus</span>
     </button>
   </form>
 </div>

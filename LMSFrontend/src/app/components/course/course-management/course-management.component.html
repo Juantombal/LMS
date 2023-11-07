@@ -6,12 +6,13 @@
       </div>
       <div class="col-xs-12 col-sm-3 col-md-4 col-lg-4">
         <button (click)="addCourse()" class="add-course">Cursus toevoegen</button>
+        <button routerLink="/roles" class="roles-management-button">Rol beheer</button>
       </div>
       <div class="col-xs-12 col-sm-4 col-md-4 col-lg-5">
         <div class="role-filter">
-          <select [(ngModel)]="selectedRole" (change)="filterCoursesByRole()" id="roleSelect">
-            <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
-          </select>
+<!--          <select [(ngModel)]="selectedRole" (change)="filterCoursesByRole()" id="roleSelect">-->
+<!--            <option *ngFor="let role of roles" [value]="role">{{ role }}</option>-->
+<!--          </select>-->
         </div>
       </div>
     </div>
@@ -21,21 +22,17 @@
         <div class="courses">
           <table>
             <tr>
-              <th *ngIf="selectedRole === 'Alle rollen'">Role</th>
               <th>Item</th>
               <th>Website</th>
-              <th>Prio</th>
               <th>Type</th>
               <th>Kosten</th>
               <th>Acties</th>
             </tr>
             <tr class="tr-course-data" *ngFor="let course of courses; let i = index">
-              <td *ngIf="selectedRole === 'Alle rollen'" >{{ course.role }}</td>
               <td>{{ course.item ? (course.item.length <= 60 ? course.item : (course.item | slice:0:60) + '...') : '' }}</td>
               <td><a href="{{course.website}}" (click)="$event.stopPropagation()" target="_blank">
                 {{ course.website ? (course.website.length <= 20 ? course.website : (course.website | slice:0:20) + '...') : '' }}</a>
               </td>
-              <td>{{ course.prio }}</td>
               <td>{{ course.type }}</td>
               <td>€ {{ course.costAmount }}</td>
               <td>

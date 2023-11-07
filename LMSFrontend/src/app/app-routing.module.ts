@@ -6,12 +6,16 @@ import {PdpOverviewComponent} from "./components/pdp/pdp-overview/pdp-overview.c
 import {
   ApplicationOverviewComponent
 } from "./components/application/application-overview/application-overview.component";
+import {RolesOverviewComponent} from "./components/role/roles-overview/roles-overview.component";
+import {CourseRoleLinkComponent} from "./components/course/course-role-link/course-role-link.component";
 
 const routes: Routes = [
   { path: 'course', component: CourseOverviewComponent },
   { path: 'coursemanagement', component: CourseManagementComponent },
   { path: '', component: PdpOverviewComponent },
-  { path: 'application', component: ApplicationOverviewComponent }
+  { path: 'application', component: ApplicationOverviewComponent },
+  { path: 'roles', component: RolesOverviewComponent },
+  { path: 'courselink', component: CourseRoleLinkComponent }
 ];
 
 @NgModule({

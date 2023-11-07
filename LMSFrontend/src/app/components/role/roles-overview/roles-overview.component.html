@@ -1,0 +1,31 @@
+<div class="role-overview">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
+        <h1>Rol beheer</h1>
+      </div>
+      <div class="col-xs-12 col-sm-3 col-md-4 col-lg-4">
+        <button (click)="addRole()" class="add-role-button">Rol toevoegen</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="line"></div>
+        <div class="roles">
+          <table>
+            <tr>
+              <th>Rollen</th>
+              <th>Acties</th>
+            </tr>
+            <tr class="tr-course-data" *ngFor="let role of roles; let i = index">
+              <td>{{role.name}}</td>
+              <td>
+                <i (click)="deleteRoleModal(role)" class="fa fa-trash-o" aria-hidden="true"></i>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

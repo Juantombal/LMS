@@ -12,11 +12,9 @@
             <tr><td>Website:</td><td><a href="{{course.website}}" target="_blank">
               {{ course.website ? (course.website.length <= 100 ? course.website : (course.website | slice:0:100) + '...') : '' }}</a>
             </td></tr>
-            <tr><td>Prio:</td><td>{{course.prio}}</td></tr>
             <tr><td>Type:</td><td>{{course.type}}</td></tr>
             <tr><td>Cost amount:</td><td>{{course.costAmount}}</td></tr>
             <tr><td>Course days:</td><td>{{course.courseDays}}</td></tr>
-            <tr><td>Role:</td><td>{{course.role}}</td></tr>
           </table>
     </div>
     <div class="col-xs-12 col-sm-4">
