@@ -55,10 +55,21 @@ i.fa.fa-pencil-square-o,i.fa.fa-trash-o {
   cursor: pointer;
   transition: 0.1s;
 }
-i.fa.fa-pencil-square-o:hover ,i.fa.fa-trash-o:hover{
+i.fa.fa-link {
+  font-size: 26px;
+  cursor: pointer;
+  transition: 0.1s;
+  color: #6d9bc3;
+}
+i.fa.fa-pencil-square-o:hover ,i.fa.fa-trash-o:hover ,i.fa.fa-link:hover{
   transform: scale(1.3);
   transition: 0.1s;
 }
+
+i.fa.fa-link {
+  padding-right: 8px;
+}
+
 i.fa.fa-pencil-square-o {
   color: #ffc30f;
   padding-right: 4px;
@@ -70,7 +81,7 @@ i.fa.fa-trash-o{
   margin-top:3px;
 }
 
-button.add-course {
+button.add-course, .roles-management-button {
   background: #77A546;
   color: white;
   border: none;
@@ -81,7 +92,7 @@ button.add-course {
   border: 1px solid #000;
 }
 
-button.add-course:hover {
+button.add-course:hover, .roles-management-button:hover {
   background: #678d3f;
 }
 

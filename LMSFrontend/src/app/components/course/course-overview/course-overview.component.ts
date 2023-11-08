@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Course} from "../../../model/course.model";
-import {CourseService} from "../../../services/course.service";
 import {MatDialog} from "@angular/material/dialog";
 import {CourseDetailsModalComponent} from "../course-details-modal/course-details-modal.component";
 import {User} from "../../../model/user.model";
 import {UserService} from "../../../services/user.service";
 import {Observable, switchMap} from "rxjs";
+import {CourseroleService} from "../../../services/courserole.service";
+import {Courserole} from "../../../model/courserole.model";
 
 @Component({
   selector: 'app-course-overview',
@@ -14,53 +14,50 @@ import {Observable, switchMap} from "rxjs";
 })
 export class CourseOverviewComponent implements OnInit {
   loggedInUser: User;
-  originalCourses: Course[] = [];
-  courses: Course[] = [];
-  selectedRole: string = '';
-  roles: string[] = [];
+  courseRoles: Courserole[] = [];
+  filteredRoles: string[] = [];
+  selectedRole: string;
+  filteredCourses: Courserole[] = [];
 
   constructor(
-    private courseService: CourseService,
+    private courseRoleService: CourseroleService,
     public dialog: MatDialog,
     private userService: UserService,
   ) {  }
 
   ngOnInit(): void {
-    this.getCourses()
-    this.roles = this.getUniqueRoles();
     this.userService.getUser()
       .pipe(
         switchMap((user) => {
           this.loggedInUser = user;
-          this.selectedRole = this.loggedInUser.jobRole;
-          return this.courseService.getCourses(); // Wacht op gebruikersgegevens en haal dan cursussen op
+          return this.courseRoleService.getCourseRoles();
         })
       )
-      .subscribe((courses) => {
-        this.originalCourses = courses;
-        this.courses = courses;
-        this.filterCoursesByRole();
+      .subscribe((courseRoles) => {
+        this.courseRoles = courseRoles;
+        this.filterRoles();
+
+        // Initialisatie van geselecteerde rol met gebruikers jobRole
+        this.selectedRole = this.loggedInUser.jobRole;
+
+        // Filter de cursussen op basis van de geselecteerde rol
+        this.filterCourses();
       });
   }
 
-  getUniqueRoles(): string[] {
-    const uniqueRoles = Array.from(new Set(this.courses.map(course => course.role)));
-    return ['Alle rollen', ...uniqueRoles];
-  }
-
   getCourses(): void {
-    this.courseService.getCourses()
+    this.courseRoleService.getCourseRoles()
       .subscribe({
-        next: courses => {
-          this.originalCourses = courses;
-          this.courses = courses;
-          this.roles = this.getUniqueRoles();
+        next: courseRoles => {
+          this.courseRoles = courseRoles;
+          this.filterCourses()
+          this.filterRoles();
         },
       });
   }
 
-  courseDetails = (course: Course) => {
-    const dialogRefDatabaseDetails = this.dialog.open(CourseDetailsModalComponent, {data: {course: course, user: this.loggedInUser}, autoFocus: false});
+  courseDetails = (courseRoles: Courserole) => {
+    const dialogRefDatabaseDetails = this.dialog.open(CourseDetailsModalComponent, {data: {courseRoles: courseRoles, user: this.loggedInUser}, autoFocus: false});
 
     dialogRefDatabaseDetails.afterClosed().subscribe(result => {
       if (result === 'A') {
@@ -69,12 +66,22 @@ export class CourseOverviewComponent implements OnInit {
     });
   }
 
-  filterCoursesByRole(): void {
+  filterRoles(): void {
+    if (this.courseRoles) {
+      const uniqueRoles = Array.from(new Set(this.courseRoles.map(courseRole => courseRole.role.name)));
+      this.filteredRoles = ['Alle rollen', ...uniqueRoles];
+    }
+  }
+
+  filterCourses(): void {
     if (this.selectedRole === 'Alle rollen') {
-      this.courses = this.originalCourses
-    } else if (this.selectedRole) {
-      const selectedRole = this.selectedRole;
-      this.courses = this.originalCourses.filter(course => course.role === selectedRole)
+      this.filteredCourses = this.courseRoles;
+    } else if (this.selectedRole && this.courseRoles) {
+      this.filteredCourses = this.courseRoles.filter(courseRole => courseRole.role.name === this.selectedRole);
+    }
+
+
+    if (this.selectedRole !== 'Alle rollen') {
       const sortOrder: { [key: string]: number } = {
         'Prio1': 1,
         'Prio2': 2,
@@ -82,11 +89,18 @@ export class CourseOverviewComponent implements OnInit {
         'N/A': 4,
       };
 
-      this.courses.sort((a, b) => {
+      this.filteredCourses.sort((a, b) => {
         const prioA = sortOrder[a.prio] || 5; // Geef een hoge waarde (5) aan null en andere onbekende waarden
         const prioB = sortOrder[b.prio] || 5; // Geef een hoge waarde (5) aan null en andere onbekende waarden
 
         return prioA - prioB;
+      });
+    }
+
+    if (this.selectedRole === 'Alle rollen') {
+      this.filteredCourses = this.filteredCourses.sort((a, b) => {
+        // Vergelijk de role.name van cursus a met cursus b
+        return a.role.name.localeCompare(b.role.name);
       });
     }
   }

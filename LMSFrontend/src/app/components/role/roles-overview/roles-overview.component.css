@@ -1,0 +1,67 @@
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td {
+  word-break: break-all;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:first-child {
+  background-color: #dddddd;
+}
+
+td:last-child{
+  padding:0px;
+  text-align: center;
+}
+
+.line {
+  border-top: 1px solid;
+  margin-bottom: 30px;
+  margin-top:10px;
+}
+
+.roles {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.add-role-button {
+  background: #77A546;
+  color: white;
+  border: none;
+  margin-right: 10px;
+  border-radius: 3px;
+  padding: 5px 18px;
+  margin-top: 25px;
+  border: 1px solid #000;
+}
+
+.add-role-button:hover {
+  background: #678d3f;
+}
+
+i.fa.fa-trash-o{
+  color:red;
+  vertical-align: top;
+  margin-top:3px;
+}
+i.fa.fa-trash-o {
+  font-size: 30px;
+  cursor: pointer;
+  transition: 0.1s;
+}
+i.fa.fa-trash-o:hover{
+  transform: scale(1.3);
+  transition: 0.1s;
+}

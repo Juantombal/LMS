@@ -7,29 +7,29 @@
   <div class="row">
     <div class="col-xs-12 col-sm-8">
           <table class="course-details-table">
-            <tr><td>Item:</td><td>{{course.item}}</td></tr>
-            <tr><td>Description:</td><td>{{course.description}}</td></tr>
-            <tr><td>Website:</td><td><a href="{{course.website}}" target="_blank">
-              {{ course.website ? (course.website.length <= 100 ? course.website : (course.website | slice:0:100) + '...') : '' }}</a>
+            <tr><td>Item:</td><td>{{courseRole.course.item}}</td></tr>
+            <tr><td>Description:</td><td>{{courseRole.course.description}}</td></tr>
+            <tr><td>Website:</td><td><a href="{{courseRole.course.website}}" target="_blank">
+              {{ courseRole.course.website ? (courseRole.course.website.length <= 100 ? courseRole.course.website : (courseRole.course.website | slice:0:100) + '...') : '' }}</a>
             </td></tr>
-            <tr><td>Prio:</td><td>{{course.prio}}</td></tr>
-            <tr><td>Type:</td><td>{{course.type}}</td></tr>
-            <tr><td>Cost amount:</td><td>{{course.costAmount}}</td></tr>
-            <tr><td>Course days:</td><td>{{course.courseDays}}</td></tr>
-            <tr><td>Role:</td><td>{{course.role}}</td></tr>
+            <tr><td>Type:</td><td>{{courseRole.course.type}}</td></tr>
+            <tr><td>Cost amount:</td><td>{{courseRole.course.costAmount}}</td></tr>
+            <tr><td>Course days:</td><td>{{courseRole.course.courseDays}}</td></tr>
+            <tr><td>Rol:</td><td>{{courseRole.role.name}}</td></tr>
+            <tr><td>Prio:</td><td>{{courseRole.prio}}</td></tr>
           </table>
     </div>
     <div class="col-xs-12 col-sm-4">
       <table class="course-completed-table">
-        <tr><td>Voltooid:</td><td>{{ isCourseMatchingEmployeeCourse(employeeCourse, course.item) ? 'Ja' : 'nee' }}</td></tr>
-        <tr><td>Voltooingsdatum:</td><td>{{ getCompletionDate(employeeCourse, course.item) || 'N/A' }}</td></tr>
+        <tr><td>Voltooid:</td><td>{{ isCourseMatchingEmployeeCourse(employeeCourse, courseRole.course.item) ? 'Ja' : 'nee' }}</td></tr>
+        <tr><td>Voltooingsdatum:</td><td>{{ getCompletionDate(employeeCourse, courseRole.course.item) || 'N/A' }}</td></tr>
       </table>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <button (click)="courseApplication()">Cursus aanvragen</button>
-      <button *ngIf="!isCourseMatchingEmployeeCourse(employeeCourse, course.item)" (click)="courseCompletion()">Cursus voltooien</button>
+      <button class="course-completion-button" [disabled]="isCourseMatchingEmployeeCourse(employeeCourse, courseRole.course.item)" (click)="courseApplication()">Cursus aanvragen</button>
+      <button class="course-completion-button" [disabled]="isCourseMatchingEmployeeCourse(employeeCourse, courseRole.course.item)" (click)="courseCompletion()">Cursus voltooien</button>
     </div>
   </div>
 </div>

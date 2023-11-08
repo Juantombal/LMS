@@ -1,0 +1,25 @@
+.add-role-button {
+  background: #77A546;
+  color: white;
+  border: none;
+  margin-right: 10px;
+  border-radius: 3px;
+  padding: 5px 18px;
+  border: 1px solid #000;
+}
+.add-role-button:disabled {
+  cursor: not-allowed;
+  background: grey;
+}
+
+.add-role-button:enabled:hover {
+  background: #678d3f;
+}
+h1.add-role-header-text {
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+.add-role-modal input {
+  margin-bottom: 20px;
+  width:300px;
+}

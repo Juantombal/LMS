@@ -2,7 +2,7 @@
   <div class="row" xmlns="http://www.w3.org/1999/html">
     <div class="col-xs-12">
       <h1>Cursus aanvraag</h1>
-      <h3>Cursus: {{course.item}}</h3>
+      <h3>Cursus: {{courseRole.course.item}}</h3>
       <form class="form-application" [formGroup]="signupForm" (ngSubmit)="createApplication('A')" novalidate>
         <label>Motivatie *</label>
         <textarea class="form-control" rows="5" placeholder="Motivatie.." formControlName="comment" required></textarea>

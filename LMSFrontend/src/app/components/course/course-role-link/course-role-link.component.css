@@ -1,0 +1,63 @@
+.course-role-modal {
+  width: 800px;
+}
+.course-role-modal h1{
+  margin-top:0px;
+  margin-bottom:20px;
+}
+.course-role-modal h4 {
+  margin-top:0px;
+  margin-bottom:20px;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td {
+  word-break: break-all;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:first-child {
+  background-color: #dddddd;
+}
+
+i.fa.fa-trash-o {
+  font-size: 30px;
+  cursor: pointer;
+  transition: 0.1s;
+  color: red;
+  vertical-align: top;
+  text-align: center;
+  display: block;
+}
+
+i.fa.fa-trash-o:hover{
+  transform: scale(1.3);
+  transition: 0.1s;
+}
+button.add-role-button {
+  background: #77A546;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 18px;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+button.add-role-button:hover {
+  background: #678d3f;
+}
+button.add-role-button:disabled {
+  cursor: not-allowed;
+  background: grey;
+}

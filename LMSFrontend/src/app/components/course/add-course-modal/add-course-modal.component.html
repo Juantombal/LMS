@@ -1,9 +1,5 @@
 <div class="edit-course-modal">
   <h1 class="add-course-header-text">Cursus toevoegen</h1>
-  <label>Kies bestaande cursus:</label>
-  <select class="form-control" [(ngModel)]="selectedCourse" (change)="selectCourse()">
-    <option *ngFor="let course of courses" [ngValue]="course">{{ course.item }}</option>
-  </select>
   <form class="form-add-course" [formGroup]="signupForm" novalidate>
     <div class="row">
       <div class="col-xs-12 col-sm-6">
@@ -13,34 +9,18 @@
         <input class="form-control" placeholder="Website URL.." formControlName="website" required/>
         <label>Omschrijving</label>
         <textarea class="form-control" rows="4" placeholder="Omschrijving.." formControlName="description"></textarea>
-        <label>Type</label>
-        <input class="form-control" placeholder="Type.." formControlName="type">
       </div>
       <div class="col-xs-12 col-sm-6">
+        <label>Type</label>
+        <input class="form-control" placeholder="Type.." formControlName="type">
         <label>Kosten</label>
         <input class="form-control" placeholder="Kosten.." formControlName="costAmount">
         <label>Cursus dagen</label>
         <input class="form-control" placeholder="Cursus dagen.." formControlName="courseDays">
-        <label>Prio</label>
-        <select class="form-control" formControlName="prio">
-          <option value="Prio1">Prio 1</option>
-          <option value="Prio2">Prio 2</option>
-          <option value="Prio3">Prio 3</option>
-          <option value="N/A">N/A</option>
-        </select>
-        <label>Role</label>
-        <select class="form-control" formControlName="role" *ngIf="!inputVisible">
-          <option *ngFor="let role of uniqueRoles" [value]="role">{{ role }}</option>
-        </select>
-        <input class="form-control" placeholder="Role.." formControlName="role" *ngIf="inputVisible" required>
-        <button class="switch" (click)="toggleRoleInput()"><></button>
       </div>
     </div>
     <button (click)="addCourse('A')" class="add-course-button" [disabled]="!signupForm.valid" type="submit">
-      <span>Toevoegen en sluiten</span>
-    </button>
-    <button (click)="addCourse('B')" class="add-course-button" [disabled]="!signupForm.valid" type="submit">
-      <span>Toevoegen en open laten</span>
+      <span>Toevoegen</span>
     </button>
   </form>
 </div>

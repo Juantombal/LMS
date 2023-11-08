@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
 import {CompleteCourseModalComponent} from "../complete-course-modal/complete-course-modal.component";
 import {EmployeeCourse} from "../../../model/employeecourse.model";
 import {CourseService} from "../../../services/course.service";
+import {Courserole} from "../../../model/courserole.model";
 
 @Component({
   selector: 'app-course-details-modal',
@@ -15,7 +16,7 @@ import {CourseService} from "../../../services/course.service";
   styleUrls: ['./course-details-modal.component.css']
 })
 export class CourseDetailsModalComponent implements OnInit {
-  course: Course;
+  courseRole: Courserole;
   employeeCourse: EmployeeCourse[] = [];
 
   constructor(
@@ -27,12 +28,12 @@ export class CourseDetailsModalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.course = this.data.course
+    this.courseRole = this.data.courseRoles
     this.getEmployeeCourses()
   }
 
   courseApplication = () => {
-    const dialogRefCourseApplication = this.dialog.open(CourseApplicationModalComponent, {data: this.course, autoFocus: false});
+    const dialogRefCourseApplication = this.dialog.open(CourseApplicationModalComponent, {data: this.courseRole, autoFocus: false});
 
     dialogRefCourseApplication.afterClosed().subscribe(result => {
       if (result === 'A') {
@@ -58,6 +59,6 @@ export class CourseDetailsModalComponent implements OnInit {
   }
 
   courseCompletion = () => {
-    const dialogRefCourseCompletion = this.dialog.open(CompleteCourseModalComponent, {data: {course:this.course, user: this.data.user}, autoFocus: false});
+    const dialogRefCourseCompletion = this.dialog.open(CompleteCourseModalComponent, {data: {courseRole: this.data.courseRoles, user: this.data.user}, autoFocus: false});
   }
 }

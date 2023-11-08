@@ -12,7 +12,6 @@ import {Course} from "../../../model/course.model";
 export class EditCourseModalComponent implements OnInit {
   signupForm: FormGroup
   courses: Course[];
-  uniqueRoles: string[] = [];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Course,
@@ -31,11 +30,9 @@ export class EditCourseModalComponent implements OnInit {
       item: new FormControl('', [Validators.required, Validators.minLength(2)]),
       website: new FormControl('', [Validators.required, Validators.minLength(2)]),
       description: new FormControl(''),
-      prio: new FormControl(''),
       type: new FormControl(''),
       costAmount: new FormControl(''),
       courseDays: new FormControl(''),
-      role: new FormControl('', [Validators.required, Validators.minLength(2)]),
     })
   }
 
@@ -44,37 +41,12 @@ export class EditCourseModalComponent implements OnInit {
       .subscribe({
         next: courses => {
           this.courses = courses
-          this.getUniqueRoles()
         },
       });
   }
 
-  getUniqueRoles(): void {
-
-    const rolesSet = new Set<string>();
-    for (const course of this.courses) {
-      rolesSet.add(course.role);
-    }
-    this.uniqueRoles = Array.from(rolesSet);
-  }
-
   editCourse = (id: number, button: string) => {
-    delete this.signupForm.value.item
-    delete this.signupForm.value.website
-    delete this.signupForm.value.description
-    delete this.signupForm.value.type
-    delete this.signupForm.value.costAmount
-    delete this.signupForm.value.courseDays
-
     this.courseService.updateCourse(id, this.signupForm.value).subscribe((msg) => {
-      this.dialogRef.close(button)
-    })
-  }
-
-  editCourses = (item: string, button: string) => {
-    delete this.signupForm.value.prio
-    delete this.signupForm.value.role
-    this.courseService.updateCourses(item, this.signupForm.value).subscribe((msg) => {
       this.dialogRef.close(button)
     })
   }

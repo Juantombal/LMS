@@ -6,6 +6,7 @@ import {UserService} from "../../../services/user.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ApplicationService} from "../../../services/application.service";
 import {Router} from "@angular/router";
+import {Courserole} from "../../../model/courserole.model";
 
 @Component({
   selector: 'app-course-application-modal',
@@ -17,7 +18,7 @@ export class CourseApplicationModalComponent implements OnInit {
   signupForm: FormGroup
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public course: Course,
+    @Inject(MAT_DIALOG_DATA) public courseRole: Courserole,
     private dialogRef: MatDialogRef<CourseApplicationModalComponent>,
     private userService: UserService,
     private applicationService: ApplicationService,
@@ -49,7 +50,7 @@ export class CourseApplicationModalComponent implements OnInit {
   createApplication = (button: string) => {
     this.signupForm.patchValue({
       userId: this.loggedInUser.id,
-      courseId: this.course.id,
+      courseId: this.courseRole.course.id,
     });
 
     this.applicationService.postApplication(this.signupForm.value).subscribe((msg) => {

@@ -1,0 +1,37 @@
+<div class="course-role-modal">
+  <h1>Linken</h1>
+  <h4>{{data.item}}</h4>
+  <table>
+    <tr>
+      <th>Role</th>
+      <th>Prio</th>
+      <th>Acties</th>
+    </tr>
+    <tr *ngFor="let courseRole of courseRoles">
+      <td>{{courseRole.role.name}}</td>
+      <td>{{courseRole.prio}}</td>
+      <td><i (click)="deleteCourseRole(courseRole.id)" class="fa fa-trash-o" aria-hidden="true"></i></td>
+    </tr>
+    <tr class="form-link-role" [formGroup]="signupForm" novalidate>
+      <td>
+        <select class="form-control" formControlName="roleId" (change)="checkRoleExistence()">
+          <option *ngFor="let role of roles" [value]="role.id">{{ role.name }}</option>
+        </select>
+      </td>
+      <td>
+        <select class="form-control" formControlName="prio">
+          <option value="Prio1">Prio 1</option>
+          <option value="Prio2">Prio 2</option>
+          <option value="Prio3">Prio 3</option>
+          <option value="N/A">N/A</option>
+        </select>
+      </td>
+      <td>
+        <button (click)="linkRole()" class="add-role-button" [disabled]="!signupForm.valid || checkRoleExistence()" type="submit">
+          <span>Linken</span>
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
+
