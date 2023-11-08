@@ -20,7 +20,7 @@ export class DeleteRoleModalComponent implements OnInit {
   }
 
   deleteRole = (id: number, button: string) => {
-    this.roleService.deleteCourse(id).subscribe((msg) => {
+    this.roleService.deleteRole(id).subscribe((msg) => {
       this.dialogRef.close(button)
     })
   }

@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../../../model/user.model";
 import {UserService} from "../../../services/user.service";
-import {Course} from "../../../model/course.model";
-import {CourseDetailsModalComponent} from "../../course/course-details-modal/course-details-modal.component";
 import {MatDialog} from "@angular/material/dialog";
 import {EditPdpModalComponent} from "../edit-pdp-modal/edit-pdp-modal.component";
-import {switchMap} from "rxjs";
 import {ApplicationService} from "../../../services/application.service";
 import {Application} from "../../../model/application.model";
 import {ActionListDetailsModalComponent} from "../action-list-details-modal/action-list-details-modal.component";

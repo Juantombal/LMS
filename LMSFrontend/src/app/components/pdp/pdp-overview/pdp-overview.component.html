@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h1>Pdp</h1>
+      <h1>Pdp - <span>{{loggedInUser.name}}</span></h1>
     </div>
   </div>
   <div class="row">
@@ -23,6 +23,17 @@
         <tr>
           <td>Toekomst:</td>
           <td>{{loggedInUser.pdp.future}}</td>
+        </tr>
+        <tr>
+          <td>Toekomstige rollen:</td>
+          <td>
+            <table class="future-roles-table">
+              <tr *ngFor="let futureRole of loggedInUser.pdp.futureRole">
+                <td>{{futureRole.name}}</td>
+                <td>{{futureRole.achievementDate}}</td>
+              </tr>
+            </table>
+          </td>
         </tr>
       </table>
       <div class="line2"></div>

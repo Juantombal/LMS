@@ -2,6 +2,9 @@ package com.example.lmsbackend.entity;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "role")
 public class RoleEntity {
@@ -13,6 +16,8 @@ public class RoleEntity {
     @Column(name = "name")
     private String name;
 
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<CourseRoleEntity> courseRoles = new HashSet<>();
 
     public RoleEntity() {
     }

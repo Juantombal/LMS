@@ -1,6 +1,10 @@
 package com.example.lmsbackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+
+import java.util.List;
+
 
 @Entity
 @Table(name = "pdp")
@@ -20,13 +24,26 @@ public class PdpEntity {
     @Column(name = "future", columnDefinition = "TEXT")
     private String future;
 
+    @OneToMany(mappedBy = "pdp", fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private List<FutureRoleEntity> futureRole;
+
     public PdpEntity() {
     }
 
-    public PdpEntity(String background, String present, String future) {
+    public PdpEntity(String background, String present, String future, List<FutureRoleEntity> futureRole) {
         this.background = background;
         this.present = present;
         this.future = future;
+        this.futureRole = futureRole;
+    }
+
+    public List<FutureRoleEntity> getFutureRole() {
+        return futureRole;
+    }
+
+    public void setFutureRole(List<FutureRoleEntity> futureRoles) {
+        this.futureRole = futureRoles;
     }
 
     public Long getId() {

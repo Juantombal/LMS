@@ -16,6 +16,7 @@ button.edit-pdp-button {
   border-radius: 3px;
   padding: 5px 18px;
   border: 1px solid #000;
+  margin-top: 20px;
 }
 button.edit-pdp-button:disabled {
   cursor: not-allowed;
@@ -23,5 +24,61 @@ button.edit-pdp-button:disabled {
 }
 
 button.edit-pdp-button:enabled:hover {
+  background: #678d3f;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td {
+  word-break: break-all;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:first-child {
+  background-color: #dddddd;
+}
+
+i.fa.fa-trash-o {
+  font-size: 30px;
+  cursor: pointer;
+  transition: 0.1s;
+  color: red;
+  vertical-align: top;
+  text-align: center;
+  display: block;
+}
+
+i.fa.fa-trash-o:hover{
+  transform: scale(1.3);
+  transition: 0.1s;
+}
+mat-form-field {
+  width: 100%;
+}
+button.add-role-button {
+  background: #77A546;
+  color: white;
+  border-radius: 3px;
+  border:none;
+  padding: 5px 18px;
+  display: block;
+  margin: 0 auto;
+}
+button.add-role-button:hover {
+  background: #678d3f;
+}
+button.add-role-button:disabled {
+  cursor: not-allowed;
+  background: grey;
+}
+button.add-role-button:enabled:hover {
   background: #678d3f;
 }

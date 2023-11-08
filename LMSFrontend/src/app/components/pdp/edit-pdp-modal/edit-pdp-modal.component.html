@@ -1,6 +1,7 @@
+<mat-dialog-content>
 <div class="edit-pdp-modal">
   <h1 class="edit-pdp-header-text">Pdp aanpassen</h1>
-  <form class="form-edit-course" [formGroup]="signupForm" (ngSubmit)="editPdp(data.pdp.id,'A')" novalidate>
+  <form class="form-edit-course" [formGroup]="signupForm" novalidate>
         <label>Achtergrond *</label>
         <textarea class="form-control" rows="5" placeholder="Achtergrond.." formControlName="background"></textarea>
         <label>Heden *</label>
@@ -8,9 +9,41 @@
         <label>Toekomst *</label>
         <textarea class="form-control" rows="5" placeholder="Toekomst.." formControlName="future"></textarea>
 
-    <button class="edit-pdp-button" [disabled]="!signupForm.valid" type="submit">
+    <table>
+      <tr>
+        <th>Toekomstige Rol</th>
+        <th>Bereikings datum</th>
+        <th>Acties</th>
+      </tr>
+      <tr *ngFor="let futureRole of data.pdp.futureRole">
+        <td>{{futureRole.name}}</td>
+        <td>{{futureRole.achievementDate}}</td>
+        <td><i (click)="DeleteFutureRole(futureRole.id)" class="fa fa-trash-o" aria-hidden="true"></i></td>
+      </tr>
+      <tr class="form-link-role" [formGroup]="signupFormFutureroles" novalidate>
+        <td>
+          <select class="form-control" formControlName="name">
+            <option *ngFor="let role of roles" [value]="role.name">{{ role.name }}</option>
+          </select>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput [matDatepicker]="startdatepicker" placeholder="Datum" formControlName="achievementDate">
+            <mat-datepicker-toggle matSuffix [for]="startdatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #startdatepicker></mat-datepicker>
+          </mat-form-field>
+        </td>
+        <td>
+          <button (click)="createFutureRoles(data.pdp.id)" class="add-role-button" [disabled]="!signupFormFutureroles.valid" type="submit">
+            <span>Toevoegen</span>
+          </button>
+        </td>
+      </tr>
+    </table>
+
+    <button (click)="editPdp(data.pdp.id,'A')" class="edit-pdp-button" [disabled]="!signupForm.valid" type="submit">
       <span>Updaten</span>
     </button>
   </form>
 </div>
-
+</mat-dialog-content>

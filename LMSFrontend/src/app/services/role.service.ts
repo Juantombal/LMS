@@ -2,7 +2,6 @@ import {Injectable} from "@angular/core";
 import {ApiService} from "./api.service";
 import {Observable} from "rxjs";
 import {Role} from "../model/role.model";
-import {Course} from "../model/course.model";
 
 @Injectable()
 export class RoleService extends ApiService {
@@ -14,7 +13,7 @@ export class RoleService extends ApiService {
     return this.http.post<Role>(this.apiAddress + `role`, role , this.generateOptions());
   }
 
-  deleteCourse(roleId: number): Observable<Role> {
+  deleteRole(roleId: number): Observable<Role> {
     return this.http.delete<Role>(this.apiAddress + `role/` + roleId , this.generateOptions());
   }
 }

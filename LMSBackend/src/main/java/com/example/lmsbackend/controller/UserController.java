@@ -1,5 +1,4 @@
 package com.example.lmsbackend.controller;
-import com.example.lmsbackend.entity.CourseEntity;
 import com.example.lmsbackend.entity.PdpEntity;
 import com.example.lmsbackend.entity.UserEntity;
 import com.example.lmsbackend.repository.UserRepository;

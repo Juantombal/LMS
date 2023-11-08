@@ -3,6 +3,7 @@
   margin-bottom: 30px;
   margin-top:10px;
 }
+
 .line2 {
   border-top: 1px solid;
   margin-bottom:30px;
@@ -60,4 +61,7 @@ i.fa.fa-pencil-square-o:hover {
 }
 .red-row {
   background-color: #ffc1c1;
+}
+table.future-roles-table td {
+  padding-bottom: 5px;
 }

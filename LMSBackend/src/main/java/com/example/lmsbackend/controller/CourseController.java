@@ -2,6 +2,7 @@ package com.example.lmsbackend.controller;
 
 import com.example.lmsbackend.entity.CourseEntity;
 import com.example.lmsbackend.repository.CourseRepository;
+import com.example.lmsbackend.repository.EmployeeCourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,9 @@ import java.util.Optional;
 public class CourseController{
     @Autowired
     CourseRepository courseRepository;
+
+    @Autowired
+    EmployeeCourseRepository employeeCourseRepository;
 
     @GetMapping("")
     public List<CourseEntity> getAllCourses() {
@@ -58,6 +62,8 @@ public class CourseController{
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteCourse(@PathVariable("id") long id) {
         try {
+            employeeCourseRepository.deleteByCourseId(id);
+
             courseRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
