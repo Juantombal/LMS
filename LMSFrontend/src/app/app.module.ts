@@ -35,6 +35,7 @@ import { AddRoleModalComponent } from './components/role/add-role-modal/add-role
 import {RoleService} from "./services/role.service";
 import { DeleteRoleModalComponent } from './components/role/delete-role-modal/delete-role-modal.component';
 import { CourseRoleLinkComponent } from './components/course/course-role-link/course-role-link.component';
+import {CourseroleService} from "./services/courserole.service";
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { CourseRoleLinkComponent } from './components/course/course-role-link/co
     UserService,
     PdpService,
     ApplicationService,
-    RoleService
+    RoleService,
+    CourseroleService
   ],
   bootstrap: [AppComponent]
 })

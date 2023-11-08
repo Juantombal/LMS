@@ -6,9 +6,9 @@
       </div>
       <div class="col-xs-12 col-sm-6">
         <div class="role-filter">
-<!--          <select [(ngModel)]="selectedRole" (change)="filterCoursesByRole()" id="roleSelect">-->
-<!--            <option *ngFor="let role of roles" [value]="role">{{ role }}</option>-->
-<!--          </select>-->
+          <select id="roleSelect" [(ngModel)]="selectedRole" (change)="filterCourses()">
+            <option *ngFor="let role of filteredRoles" [value]="role">{{ role }}</option>
+          </select>
         </div>
       </div>
     </div>
@@ -18,18 +18,22 @@
         <div class="courses">
           <table>
             <tr>
+              <th *ngIf="selectedRole === 'Alle rollen'">Rol</th>
               <th>Item</th>
               <th>Website</th>
               <th>Type</th>
+              <th>Prio</th>
               <th>Kosten</th>
             </tr>
-            <tr class="tr-course-data" *ngFor="let course of courses; let i = index" (click)="courseDetails(course)">
-              <td>{{ course.item ? (course.item.length <= 60 ? course.item : (course.item | slice:0:60) + '...') : '' }}</td>
-              <td><a href="{{course.website}}" (click)="$event.stopPropagation()" target="_blank">
-                {{ course.website ? (course.website.length <= 20 ? course.website : (course.website | slice:0:20) + '...') : '' }}</a>
+            <tr class="tr-course-data" *ngFor="let filteredCourse of filteredCourses; let i = index" (click)="courseDetails(filteredCourse)">
+              <td *ngIf="selectedRole === 'Alle rollen'">{{ filteredCourse.role.name }}</td>
+              <td>{{ filteredCourse.course.item ? (filteredCourse.course.item.length <= 60 ? filteredCourse.course.item : (filteredCourse.course.item | slice:0:60) + '...') : '' }}</td>
+              <td><a href="{{filteredCourse.course.website}}" (click)="$event.stopPropagation()" target="_blank">
+                {{ filteredCourse.course.website ? (filteredCourse.course.website.length <= 20 ? filteredCourse.course.website : (filteredCourse.course.website | slice:0:20) + '...') : '' }}</a>
               </td>
-              <td>{{ course.type }}</td>
-              <td>€ {{ course.costAmount }}</td>
+              <td>{{ filteredCourse.course.type }}</td>
+              <td>{{filteredCourse.prio}}</td>
+              <td>€ {{ filteredCourse.course.costAmount }}</td>
             </tr>
           </table>
         </div>

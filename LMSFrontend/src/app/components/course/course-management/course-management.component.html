@@ -36,6 +36,7 @@
               <td>{{ course.type }}</td>
               <td>€ {{ course.costAmount }}</td>
               <td>
+                <i (click)="courseLink(course)" class="fa fa-link" aria-hidden="true"></i>
                 <i (click)="editCourse(course)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
                 <i (click)="DeleteCourse(course)" class="fa fa-trash-o" aria-hidden="true"></i>
               </td>

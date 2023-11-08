@@ -38,3 +38,7 @@ table.course-details-table td {
 .course-detials button:hover {
   background: #678d3f;
 }
+.course-completion-button:disabled {
+  cursor: not-allowed;
+  background: grey !important;
+}

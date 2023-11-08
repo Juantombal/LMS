@@ -10,6 +10,7 @@ import {MatDialogRef} from "@angular/material/dialog";
 })
 export class AddRoleModalComponent implements OnInit {
   signupForm: FormGroup
+
   constructor(
     private rolService: RoleService,
     private dialogRef: MatDialogRef<AddRoleModalComponent>,

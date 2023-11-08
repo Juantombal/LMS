@@ -34,7 +34,7 @@ export class CompleteCourseModalComponent implements OnInit {
   createEmployeeCourse = (button: string) => {
     this.signupForm.patchValue({
       userId: this.data.user.id,
-      courseId: this.data.course.id,
+      courseId: this.data.courseRole.course.id,
     });
 
     this.courseService.postEmployeeCourse(this.signupForm.value).subscribe((msg) => {

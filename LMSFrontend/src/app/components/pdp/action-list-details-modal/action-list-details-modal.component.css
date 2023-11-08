@@ -23,7 +23,9 @@
   text-align: left;
   padding: 8px;
 }
-
+table.application-line-table {
+  width: 100%;
+}
 .application-line-table tr:first-child {
   background-color: #dddddd;
 }

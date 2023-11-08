@@ -5,6 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {AddCourseModalComponent} from "../add-course-modal/add-course-modal.component";
 import {EditCourseModalComponent} from "../edit-course-modal/edit-course-modal.component";
 import {DeleteCourseModalComponent} from "../delete-course-modal/delete-course-modal.component";
+import {CourseRoleLinkComponent} from "../course-role-link/course-role-link.component";
 
 @Component({
   selector: 'app-course-management',
@@ -56,6 +57,16 @@ export class CourseManagementComponent implements OnInit {
     const dialogRefDeleteCourse = this.dialog.open(DeleteCourseModalComponent, {data: course, autoFocus: false});
 
     dialogRefDeleteCourse.afterClosed().subscribe(result => {
+      if (result === 'A') {
+        this.getCourses();
+      }
+    });
+  }
+
+  courseLink = (course: Course) => {
+    const dialogRefCourseRoleLink = this.dialog.open(CourseRoleLinkComponent, {data: course, autoFocus: false});
+
+    dialogRefCourseRoleLink.afterClosed().subscribe(result => {
       if (result === 'A') {
         this.getCourses();
       }

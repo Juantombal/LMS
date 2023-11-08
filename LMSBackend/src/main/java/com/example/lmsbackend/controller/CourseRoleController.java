@@ -31,6 +31,11 @@ public class CourseRoleController {
         return courseRoleRepository.findAll();
     }
 
+    @GetMapping("/course/{id}")
+    public List<CourseRoleEntity> getApplicationsByUserId(@PathVariable(value = "id") Long id) {
+        return courseRoleRepository.findByCourse_Id(id);
+    }
+
     @PostMapping("")
     public ResponseEntity<CourseRoleEntity> createCourseRole(@RequestBody CourseRoleDTO courseRole) {
 
@@ -48,5 +53,15 @@ public class CourseRoleController {
         newCourseRole = courseRoleRepository.save(newCourseRole);
 
         return new ResponseEntity<>(newCourseRole , HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<HttpStatus> deleteCourseRole(@PathVariable("id") long id) {
+        try {
+            courseRoleRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

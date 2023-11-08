@@ -2,8 +2,6 @@ import {ApiService} from "./api.service";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {Course} from "../model/course.model";
-import {HttpParams} from "@angular/common/http";
-import {Application} from "../model/application.model";
 import {EmployeeCourse} from "../model/employeecourse.model";
 
 @Injectable()
