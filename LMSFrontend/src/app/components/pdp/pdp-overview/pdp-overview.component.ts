@@ -6,6 +6,8 @@ import {EditPdpModalComponent} from "../edit-pdp-modal/edit-pdp-modal.component"
 import {ApplicationService} from "../../../services/application.service";
 import {Application} from "../../../model/application.model";
 import {ActionListDetailsModalComponent} from "../action-list-details-modal/action-list-details-modal.component";
+import {Courserole} from "../../../model/courserole.model";
+import {CourseService} from "../../../services/course.service";
 
 @Component({
   selector: 'app-pdp-overview',
@@ -15,7 +17,11 @@ import {ActionListDetailsModalComponent} from "../action-list-details-modal/acti
 export class PdpOverviewComponent implements OnInit {
   applications: Application[] = [];
   loggedInUser: User;
-
+  selectedOption: string = 'all';
+  showBackground: boolean = false;
+  showPresent: boolean = false;
+  showFuture: boolean = false;
+  showFutureRoles: boolean = false;
   constructor(
     private userService: UserService,
     private applicationService: ApplicationService,
@@ -50,6 +56,40 @@ export class PdpOverviewComponent implements OnInit {
   }
 
   applicationUserDetails = (application: Application) => {
-    this.dialog.open(ActionListDetailsModalComponent, {data: application, autoFocus: false});
+    const dialogPdpOverview = this.dialog.open(ActionListDetailsModalComponent, {data: application, autoFocus: false});
+
+    dialogPdpOverview.afterClosed().subscribe(result => {
+      this.getPdp()
+    });
+  }
+
+  filterApplications(): Application[] {
+    switch (this.selectedOption) {
+      case 'actual':
+        return this.applications.filter(application => application.applicationLines[application.applicationLines.length - 1].status !== 'COMPLETED'
+          && application.applicationLines[application.applicationLines.length - 1].status != 'DECLINED');
+      case 'finished':
+        return this.applications.filter(application => application.applicationLines[application.applicationLines.length - 1].status === 'COMPLETED');
+      case 'declined':
+        return this.applications.filter(application => application.applicationLines[application.applicationLines.length - 1].status === 'DECLINED');
+      default:
+        return this.applications;
+    }
+  }
+  toggleVisibility(section: string): void {
+    switch (section) {
+      case 'background':
+        this.showBackground = !this.showBackground;
+        break;
+      case 'present':
+        this.showPresent = !this.showPresent;
+        break;
+      case 'future':
+        this.showFuture = !this.showFuture;
+        break;
+      case 'futureRoles':
+        this.showFutureRoles = !this.showFutureRoles;
+        break;
+    }
   }
 }

@@ -57,8 +57,4 @@ export class CourseDetailsModalComponent implements OnInit {
     const matchingEmployeeCourse = employeeCourses.find(employeeCourse => employeeCourse.course.item === courseItem);
     return matchingEmployeeCourse ? matchingEmployeeCourse.completionDate : null;
   }
-
-  courseCompletion = () => {
-    const dialogRefCourseCompletion = this.dialog.open(CompleteCourseModalComponent, {data: {courseRole: this.data.courseRoles, user: this.data.user}, autoFocus: false});
-  }
 }

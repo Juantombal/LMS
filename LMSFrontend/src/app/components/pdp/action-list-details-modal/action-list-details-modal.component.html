@@ -1,6 +1,6 @@
 <div class="action-list-details-modal">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-sm-8">
       <h1>Aanvraag details</h1>
 
       <table class="application-details-table">
@@ -11,6 +11,13 @@
         <tr><td>Start datum:</td><td>{{data.startDate}}</td></tr>
         <tr><td>Geplande eind datum:</td><td>{{data.endDate}}</td></tr>
       </table>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <button class="course-completion-button" [disabled]="isCourseApproved(employeeCourse, data.course.item)" (click)="courseCompletion()">Cursus voltooien</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
 
       <table class="application-line-table">
         <tr>
@@ -36,6 +43,9 @@
             <ng-container *ngIf="applicationline.status === 'DECLINED'">
               Aanvraag afgekeurd!
             </ng-container>
+            <ng-container *ngIf="applicationline.status === 'COMPLETED'">
+              Cursus voltooid
+            </ng-container>
           </td>
           <td>{{applicationline.comment}}</td>
           <td>
@@ -46,13 +56,16 @@
               Ter beoordeling bij Directeur
             </ng-container>
             <ng-container *ngIf="applicationline.status === 'SECRETERIAT'">
-              Ter beoordeling bij Secreteriaat
+              In afwachting van Secreteriaat
             </ng-container>
             <ng-container *ngIf="applicationline.status === 'APPROVED'">
               Cursus mag gevolgd worden
             </ng-container>
             <ng-container *ngIf="applicationline.status === 'DECLINED'">
               Aanvraag afgekeurd!
+            </ng-container>
+            <ng-container *ngIf="applicationline.status === 'COMPLETED'">
+              Cursus voltooid
             </ng-container>
           </td>
           <td>{{applicationline.lastModification}}</td>

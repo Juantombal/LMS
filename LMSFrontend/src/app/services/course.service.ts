@@ -26,7 +26,11 @@ export class CourseService extends ApiService {
     return this.http.put<Course>(this.apiAddress + `course/` + courseId, course , this.generateOptions());
   }
 
-  deleteCourse(courseId: number): Observable<Course> {
-    return this.http.delete<Course>(this.apiAddress + `course/` + courseId , this.generateOptions());
+  setCourseInactive(courseId: number): Observable<Course> {
+    return this.http.put<Course>(this.apiAddress + `course/inactive/` + courseId, false , this.generateOptions());
   }
+
+  // deleteCourse(courseId: number): Observable<Course> {
+  //   return this.http.delete<Course>(this.apiAddress + `course/` + courseId , this.generateOptions());
+  // }
 }

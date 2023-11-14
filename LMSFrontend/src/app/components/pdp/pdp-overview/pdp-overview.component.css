@@ -13,6 +13,10 @@ td {
   padding-right:30px;
   padding-bottom:30px;
 }
+.pdp-table td:first-child{
+  width:150px;
+  cursor: pointer;
+}
 
 .action-list tr{
   cursor: pointer;

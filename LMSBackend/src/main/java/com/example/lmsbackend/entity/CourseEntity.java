@@ -32,19 +32,30 @@ public class CourseEntity {
     @Column(name = "courseDays")
     private Float courseDays;
 
+    @Column(name = "isActive")
+    private boolean isActive;
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<CourseRoleEntity> courseRoles = new HashSet<>();
 
     public CourseEntity() {
     }
 
-    public CourseEntity(String item, String website, String description, String type, float costAmount, Float courseDays) {
+    public CourseEntity(String item, String website, String description, String type, float costAmount, Float courseDays, boolean isActive) {
         this.item = item;
         this.website = website;
         this.description = description;
         this.type = type;
         this.costAmount = costAmount;
         this.courseDays = courseDays;
+        this.isActive = isActive;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     public String getDescription() {

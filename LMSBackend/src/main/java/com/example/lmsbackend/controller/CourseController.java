@@ -21,8 +21,8 @@ public class CourseController{
     EmployeeCourseRepository employeeCourseRepository;
 
     @GetMapping("")
-    public List<CourseEntity> getAllCourses() {
-        return courseRepository.findAll();
+    public List<CourseEntity> getAllActiveCourses() {
+        return courseRepository.findByIsActive(true);
     }
 
     @GetMapping("/{id}")
@@ -33,7 +33,7 @@ public class CourseController{
     @PostMapping("")
     public ResponseEntity<CourseEntity> createCourse(@RequestBody CourseEntity course) {
         CourseEntity _course = courseRepository.save(new CourseEntity(course.getItem(), course.getWebsite(), course.getDescription(),
-                course.getType(), course.getCostAmount(), course.getCourseDays()));
+                course.getType(), course.getCostAmount(), course.getCourseDays(), true));
         return new ResponseEntity<>(_course, HttpStatus.CREATED);
     }
 
@@ -59,15 +59,31 @@ public class CourseController{
         }
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteCourse(@PathVariable("id") long id) {
-        try {
-            employeeCourseRepository.deleteByCourseId(id);
 
-            courseRepository.deleteById(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    @PutMapping("inactive/{id}")
+    public ResponseEntity<CourseEntity> setCourseInactive(@PathVariable("id") long id, @RequestBody boolean inactive) {
+        Optional<CourseEntity> optionalCourse = courseRepository.findById(id);
+
+        if (optionalCourse.isPresent()) {
+            CourseEntity course = optionalCourse.get();
+
+            course.setActive(inactive);
+
+            CourseEntity updatedCourse = courseRepository.save(course);
+            return ResponseEntity.ok(updatedCourse);
+        } else {
+            return ResponseEntity.notFound().build();
         }
     }
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<HttpStatus> deleteCourse(@PathVariable("id") long id) {
+//        try {
+//            employeeCourseRepository.deleteByCourseId(id);
+//
+//            courseRepository.deleteById(id);
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        } catch (Exception e) {
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 }

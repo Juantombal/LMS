@@ -6,4 +6,5 @@ export class Course {
   type: string
   costAmount: number;
   courseDays: number;
+  isActive: boolean;
 }

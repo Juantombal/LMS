@@ -1,9 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {Course} from "../../../model/course.model";
 import {Application} from "../../../model/application.model";
-import {User} from "../../../model/user.model";
-import {UserService} from "../../../services/user.service";
 import {ApprovalDeclineModalComponent} from "../approval-decline-modal/approval-decline-modal.component";
 
 @Component({

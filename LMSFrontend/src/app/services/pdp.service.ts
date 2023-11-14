@@ -4,7 +4,6 @@ import {Observable} from "rxjs";
 import {Course} from "../model/course.model";
 import {Pdp} from "../model/pdp.model";
 import {FutureRole} from "../model/futurerole.model";
-import {EmployeeCourse} from "../model/employeecourse.model";
 
 @Injectable()
 export class PdpService extends ApiService {

@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface CourseRepository extends JpaRepository<CourseEntity, Long> {
     List<CourseEntity> findByItem(String Item);
+    List<CourseEntity> findByIsActive(boolean isActive);
 }

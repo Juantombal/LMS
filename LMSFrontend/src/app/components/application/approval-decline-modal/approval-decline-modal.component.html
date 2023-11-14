@@ -12,6 +12,9 @@
     <button class="decline" *ngIf="data.action === 'decline'" (click)="addApplicationLine(data.application.id, 'decline')" type="submit">
       <span>Afwijzen</span>
     </button>
+    <button class="approve" *ngIf="data.action === 'delivered'" (click)="addApplicationLine(data.application.id, 'approve')" type="submit">
+      <span>Geleverd</span>
+    </button>
   </form>
 </div>
 

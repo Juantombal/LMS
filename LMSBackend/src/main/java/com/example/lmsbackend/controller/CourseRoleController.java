@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/courserole")
@@ -27,12 +28,16 @@ public class CourseRoleController {
     RoleRepository roleRepository;
 
     @GetMapping("")
-    public List<CourseRoleEntity> getAllCourseRole() {
-        return courseRoleRepository.findAll();
+    public List<CourseRoleEntity> getAllActiveCourseRoles() {
+        List<CourseRoleEntity> allCourseRoles = courseRoleRepository.findAll();
+
+        return allCourseRoles.stream()
+                .filter(courseRole -> courseRole.getCourse().isActive())
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/course/{id}")
-    public List<CourseRoleEntity> getApplicationsByUserId(@PathVariable(value = "id") Long id) {
+    public List<CourseRoleEntity> getCourseById(@PathVariable(value = "id") Long id) {
         return courseRoleRepository.findByCourse_Id(id);
     }
 

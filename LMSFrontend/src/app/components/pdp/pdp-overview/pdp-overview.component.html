@@ -7,26 +7,26 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="line"></div>
-      <table>
+      <table class="pdp-table">
         <tr>
           <td><h2>Mijn pdp</h2></td>
           <td><i (click)="editPdp(loggedInUser)" class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
         </tr>
         <tr>
-          <td>Achtergrond:</td>
-          <td>{{loggedInUser.pdp.background}}</td>
+          <td (click)="toggleVisibility('background')">Achtergrond:</td>
+          <td *ngIf="showBackground">{{ loggedInUser.pdp.background }}</td>
         </tr>
         <tr>
-          <td>Heden:</td>
-          <td>{{loggedInUser.pdp.present}}</td>
+          <td (click)="toggleVisibility('present')">Heden:</td>
+          <td *ngIf="showPresent">{{ loggedInUser.pdp.present }}</td>
         </tr>
         <tr>
-          <td>Toekomst:</td>
-          <td>{{loggedInUser.pdp.future}}</td>
+          <td (click)="toggleVisibility('future')">Toekomst:</td>
+          <td *ngIf="showFuture">{{ loggedInUser.pdp.future }}</td>
         </tr>
         <tr>
-          <td>Toekomstige rollen:</td>
-          <td>
+          <td (click)="toggleVisibility('futureRoles')">Toekomstige rollen:</td>
+          <td *ngIf="showFutureRoles">
             <table class="future-roles-table">
               <tr *ngFor="let futureRole of loggedInUser.pdp.futureRole">
                 <td>{{futureRole.name}}</td>
@@ -40,8 +40,20 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-sm-9">
       <h2 class="action-list-header-text">Actie lijst:</h2>
+    </div>
+    <div class="col-xs-12 col-sm-3">
+      <select class="form-control" [(ngModel)]="selectedOption">
+        <option value="all">Toon alles</option>
+        <option value="actual">Actuele acties</option>
+        <option value="finished">afgeronde acties</option>
+        <option value="declined">afgekeurde acties</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
       <div class="action-list">
         <table>
           <tr>
@@ -50,7 +62,7 @@
             <th>Status</th>
             <th>Datum indiening</th>
           </tr>
-          <tr *ngFor="let application of applications; let i = index" (click)="applicationUserDetails(application)"
+          <tr *ngFor="let application of filterApplications(); let i = index" (click)="applicationUserDetails(application)"
               [ngClass]="{'red-row': application.applicationLines[application.applicationLines.length - 1].status === 'DECLINED'}">
             <td>{{application.course.item}}</td>
             <td>
@@ -66,13 +78,16 @@
                 Ter beoordeling bij Directeur
               </ng-container>
               <ng-container *ngIf="application.applicationLines[application.applicationLines.length - 1].status === 'SECRETERIAT'">
-                Ter beoordeling bij Secreteriaat
+                In afwachting van Secreteriaat
               </ng-container>
               <ng-container *ngIf="application.applicationLines[application.applicationLines.length - 1].status === 'APPROVED'">
                 Aanvraag goedgekeurd!
               </ng-container>
               <ng-container *ngIf="application.applicationLines[application.applicationLines.length - 1].status === 'DECLINED'">
                 Aanvraag afgekeurd!
+              </ng-container>
+              <ng-container *ngIf="application.applicationLines[application.applicationLines.length - 1].status === 'COMPLETED'">
+                Cursus voltooid
               </ng-container>
             </td>
             <td>{{application.submissionDate}}</td>

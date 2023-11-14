@@ -19,8 +19,8 @@ export class DeleteCourseModalComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  deleteCourse = (id: number, button: string) => {
-    this.courseService.deleteCourse(id).subscribe((msg) => {
+  setCourseInactive = (id: number, button: string) => {
+    this.courseService.setCourseInactive(id).subscribe((msg) => {
       this.dialogRef.close(button)
     })
   }
