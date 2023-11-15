@@ -1,0 +1,49 @@
+.line {
+  border-top: 1px solid;
+  margin-bottom: 30px;
+  margin-top:10px;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td {
+  word-break: break-all;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #dddddd;
+}
+.report-table {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+button#checkboxDropdown {
+  margin-top: 23px;
+  border: 1px solid #000;
+}
+.dropdown.open, .dropdown  {
+  float: right;
+}
+.dropdown-menu label {
+  display: block;
+  cursor: pointer;
+}
+.dropdown-menu {
+  text-align: center;
+}
+select {
+  margin-top: 22px;
+  width: 225px;
+  float: right;
+}

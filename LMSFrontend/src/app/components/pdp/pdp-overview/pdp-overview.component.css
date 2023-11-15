@@ -72,11 +72,10 @@ table.future-roles-table td {
 button.generate-pdf-button {
   margin-top: 25px;
   float: right;
-  background: grey;
+  background: #e7e7e7;
   padding: 2px 20px;
-  color: white;
 }
 
 button.generate-pdf-button:hover{
-  background: #757272;
+  background: #cfcece;
 }

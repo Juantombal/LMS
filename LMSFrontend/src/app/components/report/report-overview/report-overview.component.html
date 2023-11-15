@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <h1>Rapportage</h1>
+    </div>
+    <div class="col-xs-12 col-sm-8">
+<!--      <div class="dropdown">-->
+<!--        <button class="btn btn-secondary dropdown-toggle" type="button" id="checkboxDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--          Selecteer weergave-->
+<!--        </button>-->
+<!--        <div class="dropdown-menu" aria-labelledby="checkboxDropdown">-->
+<!--          <label class="dropdown-item">-->
+<!--            <input type="checkbox" (change)="checkIndividual()" [(ngModel)]="showApplications"> Aanvragen-->
+<!--          </label>-->
+<!--          <label class="dropdown-item">-->
+<!--            <input type="checkbox" (change)="checkIndividual()" [(ngModel)]="showCurrentApplications"> Lopende aanvragen-->
+<!--          </label>-->
+<!--          <label class="dropdown-item">-->
+<!--            <input type="checkbox" (change)="checkIndividual()" [(ngModel)]="showInProgress"> Nu bezig-->
+<!--          </label>-->
+<!--          <label class="dropdown-item">-->
+<!--            <input type="checkbox" (change)="checkIndividual()" [(ngModel)]="showCompleted"> Afgerond-->
+<!--          </label>-->
+<!--          <div role="separator" class="dropdown-divider"></div>-->
+<!--          <label class="dropdown-item">-->
+<!--            <input type="checkbox" (change)="checkAll()" [(ngModel)]="showAll"> Selecteer alles-->
+<!--          </label>-->
+<!--        </div>-->
+<!--      </div>-->
+      <select class="form-control" [(ngModel)]="selectedSortOption" (change)="sortApplications()">
+        <option value="applications">Aantal aanvragen</option>
+        <option value="currentApplications">Aantal lopende aanvragen</option>
+        <option value="inProgress">Aantal bezig met cursus</option>
+        <option value="completed">Aantal afgerond</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="line"></div>
+      <div class="report-table">
+        <table *ngIf="showApplications || showInProgress || showCompleted || showCurrentApplications">
+          <thead>
+          <tr>
+            <th>Cursus</th>
+            <th *ngIf="showApplications">Aantal aanvragen</th>
+            <th *ngIf="showCurrentApplications">Aantal lopende aanvragen</th>
+            <th *ngIf="showInProgress">Aantal bezig met cursus</th>
+            <th *ngIf="showCompleted">Aantal afgerond</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let course of courses">
+            <td>{{ course.item }}</td>
+            <td *ngIf="showApplications">{{ getApplicationCount(course.id) }}</td>
+            <td *ngIf="showCurrentApplications">{{ getCurrentApplicationCount(course.id) }}</td>
+            <td *ngIf="showInProgress">{{ getInProgressCount(course.id) }}</td>
+            <td *ngIf="showCompleted">{{ getCompletedCount(course.id) }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

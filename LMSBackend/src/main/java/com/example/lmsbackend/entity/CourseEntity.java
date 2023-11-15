@@ -34,6 +34,7 @@ public class CourseEntity {
 
     @Column(name = "isActive")
     private boolean isActive;
+
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<CourseRoleEntity> courseRoles = new HashSet<>();
 
