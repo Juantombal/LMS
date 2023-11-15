@@ -42,3 +42,15 @@ table.course-details-table td {
   cursor: not-allowed;
   background: grey !important;
 }
+
+@media (max-width: 767px) {
+  .course-detials {
+    width: 100%;
+  }
+  table.course-completed-table {
+    float: none;
+  }
+  table.course-completed-table td {
+    padding: 0px 0px 7px 0px;
+  }
+}

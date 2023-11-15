@@ -60,4 +60,25 @@ select {
     text-align: center;
     display: block;
   }
+
+  th {
+    display: none;
+  }
+
+  tr {
+    display: block;
+    margin-bottom: 30px;
+    border:1px solid #000;
+    border-radius: 10px;
+  }
+
+  td {
+    display: block;
+    text-align: center;
+    border-radius: 10px;
+  }
+
+  .role-filter {
+    text-align: center;
+  }
 }

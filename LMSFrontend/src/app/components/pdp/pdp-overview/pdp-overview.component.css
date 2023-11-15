@@ -69,3 +69,14 @@ i.fa.fa-pencil-square-o:hover {
 table.future-roles-table td {
   padding-bottom: 5px;
 }
+button.generate-pdf-button {
+  margin-top: 25px;
+  float: right;
+  background: grey;
+  padding: 2px 20px;
+  color: white;
+}
+
+button.generate-pdf-button:hover{
+  background: #757272;
+}

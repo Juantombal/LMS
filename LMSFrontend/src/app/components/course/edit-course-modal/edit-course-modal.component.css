@@ -25,3 +25,14 @@
 .edit-course-button:enabled:hover {
   background: #678d3f;
 }
+@media (max-width: 1070px) {
+  .edit-course-modal {
+    width: 550px;
+  }
+}
+
+@media (max-width: 767px) {
+  .edit-course-modal {
+    width: 100%;
+  }
+}

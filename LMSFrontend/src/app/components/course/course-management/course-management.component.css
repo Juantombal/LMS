@@ -84,7 +84,6 @@ i.fa.fa-trash-o{
 button.add-course, .roles-management-button {
   background: #77A546;
   color: white;
-  border: none;
   margin-right: 10px;
   border-radius: 3px;
   padding: 5px 18px;
@@ -105,4 +104,27 @@ button.add-course:hover, .roles-management-button:hover {
     text-align: center;
     display: block;
   }
+
+  th {
+    display: none;
+  }
+
+  tr {
+    display: block;
+    margin-bottom: 30px;
+    border:1px solid #000;
+    border-radius: 10px;
+  }
+
+  td {
+    display: block;
+    text-align: center;
+    border-radius: 10px;
+  }
+
+  button.add-course, .roles-management-button {
+    display: block;
+    margin: 10px auto 0;
+  }
 }
+

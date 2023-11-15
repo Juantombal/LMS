@@ -28,3 +28,8 @@ mat-form-field {
 .application-button:enabled:hover {
   background: #678d3f;
 }
+@media (max-width: 767px) {
+  .course-application-modal {
+    width: 100%;
+  }
+}

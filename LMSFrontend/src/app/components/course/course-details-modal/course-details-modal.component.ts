@@ -1,11 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {Course} from "../../../model/course.model";
 import {
   CourseApplicationModalComponent
 } from "../../application/course-application-modal/course-application-modal.component";
 import {Router} from "@angular/router";
-import {CompleteCourseModalComponent} from "../complete-course-modal/complete-course-modal.component";
 import {EmployeeCourse} from "../../../model/employeecourse.model";
 import {CourseService} from "../../../services/course.service";
 import {Courserole} from "../../../model/courserole.model";

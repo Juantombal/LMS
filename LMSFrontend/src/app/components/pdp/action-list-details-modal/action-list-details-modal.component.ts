@@ -45,12 +45,6 @@ export class ActionListDetailsModalComponent implements OnInit {
     const isCourseMatchingEmployeeCourse = employeeCourses.some(employeeCourse => employeeCourse.course.item === courseItem);
     const checkIfLastApplicationLineIsApproved = this.data.applicationLines[this.data.applicationLines.length - 1].status === 'APPROVED'
 
-    console.log(isCourseMatchingEmployeeCourse, checkIfLastApplicationLineIsApproved)
-
-    const both = true;
-
-
-
-    return both
+    return !(!isCourseMatchingEmployeeCourse && checkIfLastApplicationLineIsApproved);
   }
 }

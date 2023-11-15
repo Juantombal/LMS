@@ -1,5 +1,5 @@
 <div class="course-role-modal">
-  <h1>Linken</h1>
+  <h1>Koppelen</h1>
   <h4>{{data.item}}</h4>
   <table>
     <tr>
@@ -10,7 +10,7 @@
     <tr *ngFor="let courseRole of courseRoles">
       <td>{{courseRole.role.name}}</td>
       <td>{{courseRole.prio}}</td>
-      <td><i (click)="deleteCourseRole(courseRole.id)" class="fa fa-trash-o" aria-hidden="true"></i></td>
+      <td><div class="div-trash-icon"><i (click)="deleteCourseRole(courseRole.id)" class="fa fa-trash-o" aria-hidden="true"></i></div></td>
     </tr>
     <tr class="form-link-role" [formGroup]="signupForm" novalidate>
       <td>
@@ -28,7 +28,7 @@
       </td>
       <td>
         <button (click)="linkRole()" class="add-role-button" [disabled]="!signupForm.valid || checkRoleExistence()" type="submit">
-          <span>Linken</span>
+          <span>Koppelen</span>
         </button>
       </td>
     </tr>

@@ -23,3 +23,8 @@ h1.add-role-header-text {
   margin-bottom: 20px;
   width:300px;
 }
+@media (max-width: 767px) {
+  .add-role-modal input {
+    width:100%;
+  }
+}

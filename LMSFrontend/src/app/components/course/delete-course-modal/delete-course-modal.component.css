@@ -16,3 +16,9 @@
 .delete-course-modal button:hover {
   background: #c70000;
 }
+
+@media (max-width: 767px) {
+  .delete-course-modal h4 {
+    text-align: center;
+  }
+}

@@ -34,9 +34,10 @@ i.fa.fa-trash-o {
   cursor: pointer;
   transition: 0.1s;
   color: red;
-  vertical-align: top;
+}
+
+.div-trash-icon {
   text-align: center;
-  display: block;
 }
 
 i.fa.fa-trash-o:hover{
@@ -60,4 +61,34 @@ button.add-role-button:hover {
 button.add-role-button:disabled {
   cursor: not-allowed;
   background: grey;
+}
+
+@media (max-width: 1070px) {
+  .course-role-modal {
+    width: 550px;
+  }
+}
+
+@media (max-width: 767px) {
+  .course-role-modal {
+    width: 60vw;
+  }
+
+  th {
+    display: none;
+  }
+
+  tr {
+    display: block;
+    margin-bottom: 30px;
+    border:1px solid #000;
+    border-radius: 10px;
+  }
+
+  td {
+    display: block;
+    text-align: center;
+    border-radius: 10px;
+  }
+
 }

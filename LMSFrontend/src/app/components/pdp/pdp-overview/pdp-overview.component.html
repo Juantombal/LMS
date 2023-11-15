@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-sm-9">
       <h1>Pdp - <span>{{loggedInUser.name}}</span></h1>
+    </div>
+
+    <div class="col-xs-12 col-sm-3">
+      <button class="generate-pdf-button" (click)="constructPDF()">Genereer PDF</button>
     </div>
   </div>
   <div class="row">
