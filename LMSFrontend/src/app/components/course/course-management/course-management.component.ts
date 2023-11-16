@@ -34,7 +34,7 @@ export class CourseManagementComponent implements OnInit {
   }
 
   addCourse = () => {
-    const dialogRefAddCourse = this.dialog.open(AddCourseModalComponent, {autoFocus: false});
+    const dialogRefAddCourse = this.dialog.open(AddCourseModalComponent, {autoFocus: false, maxHeight: '90vh'});
 
     dialogRefAddCourse.afterClosed().subscribe(result => {
       if (result === 'A') {
@@ -44,7 +44,7 @@ export class CourseManagementComponent implements OnInit {
   }
 
   editCourse = (course: Course) => {
-    const dialogRefEditCourse = this.dialog.open(EditCourseModalComponent, {data: course, autoFocus: false});
+    const dialogRefEditCourse = this.dialog.open(EditCourseModalComponent, {data: course, autoFocus: false,  maxHeight: '90vh'});
 
     dialogRefEditCourse.afterClosed().subscribe(result => {
       if (result === 'A') {
@@ -54,7 +54,7 @@ export class CourseManagementComponent implements OnInit {
   }
 
   DeleteCourse = (course: Course) => {
-    const dialogRefDeleteCourse = this.dialog.open(DeleteCourseModalComponent, {data: course, autoFocus: false});
+    const dialogRefDeleteCourse = this.dialog.open(DeleteCourseModalComponent, {data: course, autoFocus: false,  maxHeight: '90vh'});
 
     dialogRefDeleteCourse.afterClosed().subscribe(result => {
       if (result === 'A') {
@@ -64,7 +64,7 @@ export class CourseManagementComponent implements OnInit {
   }
 
   courseLink = (course: Course) => {
-    const dialogRefCourseRoleLink = this.dialog.open(CourseRoleLinkComponent, {data: course, autoFocus: false});
+    const dialogRefCourseRoleLink = this.dialog.open(CourseRoleLinkComponent, {data: course, autoFocus: false, maxHeight: '90vh'});
 
     dialogRefCourseRoleLink.afterClosed().subscribe(result => {
       if (result === 'A') {

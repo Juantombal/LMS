@@ -57,7 +57,7 @@ export class CourseOverviewComponent implements OnInit {
   }
 
   courseDetails = (courseRoles: Courserole) => {
-    const dialogRefDatabaseDetails = this.dialog.open(CourseDetailsModalComponent, {data: {courseRoles: courseRoles, user: this.loggedInUser}, autoFocus: false});
+    const dialogRefDatabaseDetails = this.dialog.open(CourseDetailsModalComponent, {data: {courseRoles: courseRoles, user: this.loggedInUser}, autoFocus: false, maxHeight: '90vh'});
 
     dialogRefDatabaseDetails.afterClosed().subscribe(result => {
       if (result === 'A') {

@@ -46,7 +46,7 @@ export class PdpOverviewComponent implements OnInit {
   }
 
   editPdp = (loggedInUser: User) => {
-    const dialogRefPdp = this.dialog.open(EditPdpModalComponent, {data: loggedInUser, autoFocus: false});
+    const dialogRefPdp = this.dialog.open(EditPdpModalComponent, {data: loggedInUser, autoFocus: false, maxHeight: '90vh'});
 
     dialogRefPdp.afterClosed().subscribe(result => {
       if (result === 'A') {
@@ -62,7 +62,7 @@ export class PdpOverviewComponent implements OnInit {
   }
 
   applicationUserDetails = (application: Application) => {
-    const dialogPdpOverview = this.dialog.open(ActionListDetailsModalComponent, {data: application, autoFocus: false});
+    const dialogPdpOverview = this.dialog.open(ActionListDetailsModalComponent, {data: application, autoFocus: false, maxHeight: '90vh'});
 
     dialogPdpOverview.afterClosed().subscribe(result => {
       this.getPdp()

@@ -54,7 +54,7 @@ export class ApplicationOverviewComponent implements OnInit {
   }
 
   applicationDetails = (application: Application) => {
-    const dialogRefApplicationDetails = this.dialog.open(ApplicationDetailsModalComponent, {data: {application: application, user:this.loggedInUser}, autoFocus: false});
+    const dialogRefApplicationDetails = this.dialog.open(ApplicationDetailsModalComponent, {data: {application: application, user:this.loggedInUser}, autoFocus: false, maxHeight: '90vh'});
 
     dialogRefApplicationDetails.afterClosed().subscribe(result => {
         this.getApplications();
