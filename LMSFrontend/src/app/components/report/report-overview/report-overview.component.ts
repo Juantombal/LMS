@@ -16,7 +16,7 @@ export class ReportOverviewComponent implements OnInit {
   showAll: boolean = false;
   applications: any[] = [];
   courses: Course[] = [];
-  selectedSortOption: string = 'applications';
+  selectedSortOption: string = '';
 
   constructor(
     private applicationService: ApplicationService,

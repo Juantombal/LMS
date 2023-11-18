@@ -51,7 +51,9 @@
           </thead>
           <tbody>
           <tr *ngFor="let course of courses">
-            <td>{{ course.item }}</td>
+            <td *ngIf="course.item && course.item.length > 55"[title]="course.item">{{ course.item ? (course.item.length <= 55 ? course.item : (course.item | slice:0:55) + '...') : '' }}</td>
+            <td *ngIf="course.item && course.item.length <= 55">{{ course.item }}</td>
+
             <td *ngIf="showApplications">{{ getApplicationCount(course.id) }}</td>
             <td *ngIf="showCurrentApplications">{{ getCurrentApplicationCount(course.id) }}</td>
             <td *ngIf="showInProgress">{{ getInProgressCount(course.id) }}</td>

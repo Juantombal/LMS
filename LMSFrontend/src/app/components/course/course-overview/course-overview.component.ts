@@ -37,10 +37,8 @@ export class CourseOverviewComponent implements OnInit {
         this.courseRoles = courseRoles;
         this.filterRoles();
 
-        // Initialisatie van geselecteerde rol met gebruikers jobRole
         this.selectedRole = this.loggedInUser.jobRole;
 
-        // Filter de cursussen op basis van de geselecteerde rol
         this.filterCourses();
       });
   }
@@ -99,7 +97,6 @@ export class CourseOverviewComponent implements OnInit {
 
     if (this.selectedRole === 'Alle rollen') {
       this.filteredCourses = this.filteredCourses.sort((a, b) => {
-        // Vergelijk de role.name van cursus a met cursus b
         return a.role.name.localeCompare(b.role.name);
       });
     }
