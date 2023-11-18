@@ -52,9 +52,9 @@ export class CourseApplicationModalComponent implements OnInit {
       userId: this.loggedInUser.id,
       courseId: this.courseRole.course.id,
     });
-    this.userService.sendEmail("FIELDMANAGER")
-    // this.applicationService.postApplication(this.signupForm.value).subscribe((msg) => {
-    //   this.dialogRef.close(button)
-    // })
+    this.applicationService.postApplication(this.signupForm.value).subscribe((msg) => {
+      this.userService.sendEmail("FIELDMANAGER", this.loggedInUser).subscribe((msg) => {})
+      this.dialogRef.close(button)
+    })
   }
 }

@@ -22,7 +22,7 @@ public class EmailService {
     @Autowired
     private UserRepository userRepository;
 
-    public void sendEmailToUsers(String userRole) {
+    public void sendEmailToUsers(String userRole, UserEntity user) {
         Role role = Role.valueOf(userRole);
 
         List<UserEntity> usersToSendEmail = userRepository.findByRole(role);
@@ -34,7 +34,7 @@ public class EmailService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(emailAddresses.toArray(new String[0]));
         message.setSubject("LMS - Nieuwe aanvraag");
-        message.setText("Er staat een nieuwe aanvraag klaar ter beoordeling");
+        message.setText("Er staat een nieuwe aanvraag klaar ter beoordeling van medewerker: " + user.getName());
 
         emailSender.send(message);
     }

@@ -25,3 +25,7 @@
 .approve:hover {
   background: #678d3f;
 }
+.decline:disabled, .approve:disabled {
+  cursor: not-allowed;
+  background: grey;
+}

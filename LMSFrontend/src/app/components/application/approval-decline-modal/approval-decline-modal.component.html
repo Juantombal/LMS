@@ -6,10 +6,10 @@
     <label>Opmerking</label>
     <textarea class="form-control" rows="4" formControlName="comment"></textarea>
 
-    <button class="approve" *ngIf="data.action === 'approve'" (click)="addApplicationLine(data.application.id, 'approve')" type="submit">
+    <button class="approve" [disabled]="!signupForm.valid" *ngIf="data.action === 'approve'" (click)="addApplicationLine(data.application.id, 'approve')" type="submit">
       <span>Goedkeuren</span>
     </button>
-    <button class="decline" *ngIf="data.action === 'decline'" (click)="addApplicationLine(data.application.id, 'decline')" type="submit">
+    <button class="decline" [disabled]="!signupForm.valid" *ngIf="data.action === 'decline'" (click)="addApplicationLine(data.application.id, 'decline')" type="submit">
       <span>Afwijzen</span>
     </button>
     <button class="approve" *ngIf="data.action === 'delivered'" (click)="addApplicationLine(data.application.id, 'approve')" type="submit">

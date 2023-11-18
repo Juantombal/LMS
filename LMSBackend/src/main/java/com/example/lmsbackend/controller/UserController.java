@@ -36,10 +36,8 @@ public class UserController {
     }
 
     @PostMapping("/email")
-    public ResponseEntity<String> sendEmailsByRole(@RequestParam("role") String role) {
-        System.out.println("fesfe");
-
-//        emailService.sendEmailToUsers(role);
+    public ResponseEntity<String> sendEmailsByRole(@RequestParam("role") String role, @RequestBody UserEntity user) {
+//        emailService.sendEmailToUsers(role, user);
         return ResponseEntity.ok("E-mails send to users with role: " + role);
     }
 }

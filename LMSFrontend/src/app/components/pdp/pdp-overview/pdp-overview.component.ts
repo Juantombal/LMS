@@ -102,12 +102,12 @@ export class PdpOverviewComponent implements OnInit {
 
   public constructPDF() {
     const tableBody = [
-      [{ text: 'Item', style: 'headerH4' }, { text: 'Website', style: 'headerH4' }, { text: 'Status', style: 'headerH4' }, { text: 'Datum text', style: 'headerH4' }],
+      [{ text: 'Item', style: 'headerH4' }, { text: 'Website', style: 'headerH4' }, { text: 'Status', style: 'headerH4' }, { text: 'Datum indiening', style: 'headerH4' }],
       ...this.filterApplications().map(application => [
-        { text: application.course.item, fontSize: 11 }, // Pas de tekstgrootte aan
-        { text: application.course.website, link: application.course.website, alignment: 'left', fontSize: 11 }, // Pas de tekstgrootte aan
-        { text: this.getStatusText(application.applicationLines[application.applicationLines.length - 1].status), fontSize: 11 }, // Pas de tekstgrootte aan
-        { text: application.submissionDate, fontSize: 11 } // Pas de tekstgrootte aan
+        { text: application.course.item, fontSize: 11 },
+        { text: application.course.website, link: application.course.website, alignment: 'left', fontSize: 11 },
+        { text: this.getStatusText(application.applicationLines[application.applicationLines.length - 1].status), fontSize: 11 },
+        { text: application.submissionDate, fontSize: 11 }
       ])
     ];
 
