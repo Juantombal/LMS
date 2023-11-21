@@ -50,7 +50,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let course of courses">
+          <tr class="tr-report" *ngFor="let course of courses" (click)="ReportCourseDetails(course)">
             <td *ngIf="course.item && course.item.length > 55"[title]="course.item">{{ course.item ? (course.item.length <= 55 ? course.item : (course.item | slice:0:55) + '...') : '' }}</td>
             <td *ngIf="course.item && course.item.length <= 55">{{ course.item }}</td>
 

@@ -1,0 +1,18 @@
+<div class="course-completion-details">
+  <h1>Cursus voltooid door medewerkers</h1>
+  <h4>{{data.item}}</h4>
+  <table>
+    <thead>
+    <tr>
+      <th>Naam medewerker</th>
+      <th>Voltooing datum</th>
+    </tr>
+    </thead>
+    <tr *ngFor="let employeeCourse of employeeCourses">
+      <td>{{employeeCourse.user.name}}</td>
+      <td>{{employeeCourse.completionDate}}</td>
+    </tr>
+  </table>
+</div>
+
+

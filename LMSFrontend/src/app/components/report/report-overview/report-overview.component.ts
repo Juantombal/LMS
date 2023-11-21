@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {ApplicationService} from "../../../services/application.service";
 import {Course} from "../../../model/course.model";
 import {CourseService} from "../../../services/course.service";
+import {DeleteCourseModalComponent} from "../../course/delete-course-modal/delete-course-modal.component";
+import {MatDialog} from "@angular/material/dialog";
+import {ReportCourseDetailComponent} from "../report-course-detail/report-course-detail.component";
 
 @Component({
   selector: 'app-report-overview',
@@ -21,6 +24,7 @@ export class ReportOverviewComponent implements OnInit {
   constructor(
     private applicationService: ApplicationService,
     private courseService: CourseService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -100,5 +104,9 @@ export class ReportOverviewComponent implements OnInit {
       default:
         break;
     }
+  }
+
+  ReportCourseDetails = (course: Course) => {
+    this.dialog.open(ReportCourseDetailComponent, {data: course, autoFocus: false,  maxHeight: '90vh'});
   }
 }

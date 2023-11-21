@@ -22,6 +22,10 @@ export class CourseService extends ApiService {
     return this.http.get<EmployeeCourse[]>(this.apiAddress + 'employeecourse/user/' + userId, this.generateOptions());
   }
 
+  getEmployeeCourseByCourse(courseId: number): Observable<EmployeeCourse[]> {
+    return this.http.get<EmployeeCourse[]>(this.apiAddress + 'employeecourse/course/' + courseId, this.generateOptions());
+  }
+
   updateCourse(courseId: number, course: Partial<Course>): Observable<Course> {
     return this.http.put<Course>(this.apiAddress + `course/` + courseId, course , this.generateOptions());
   }

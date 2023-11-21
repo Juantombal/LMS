@@ -11,6 +11,7 @@ import java.util.List;
 public interface EmployeeCourseRepository extends JpaRepository<EmployeeCourseEntity, Long> {
     List<EmployeeCourseEntity> findByUser_Id(Long userId);
 
+    List<EmployeeCourseEntity> findByCourseId(Long courseId);
     @Transactional
     void deleteByCourseId(Long courseId);
 }

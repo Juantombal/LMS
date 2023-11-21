@@ -33,6 +33,11 @@ public class EmployeeCourseController {
         return employeeCourseRepository.findByUser_Id(id);
     }
 
+    @GetMapping("/course/{id}")
+    public List<EmployeeCourseEntity> getEmployeeCoursesByCourseId(@PathVariable(value = "id") Long id) {
+        return employeeCourseRepository.findByCourseId(id);
+    }
+
     @PostMapping("")
     public ResponseEntity<EmployeeCourseEntity> createEmployeeCourse(@RequestBody EmployeeCourseDTO employeeCourse) {
 
