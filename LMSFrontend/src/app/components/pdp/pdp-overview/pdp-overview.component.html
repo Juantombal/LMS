@@ -14,23 +14,29 @@
       <table class="pdp-table">
         <tr>
           <td><h2>Mijn pdp</h2></td>
-          <td><i (click)="editPdp(loggedInUser)" class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
+          <td>
+            <button [class.active]="showBackground" (click)="toggleVisibility('background')">Achtergrond</button>
+            <button [class.active]="showPresent" (click)="toggleVisibility('present')">Heden</button>
+            <button [class.active]="showFuture" (click)="toggleVisibility('future')">Toekomst</button>
+            <button [class.active]="showFutureRoles" (click)="toggleVisibility('futureRoles')">Toekomstige rollen</button>
+            <i (click)="editPdp(loggedInUser)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          </td>
         </tr>
-        <tr>
-          <td (click)="toggleVisibility('background')">Achtergrond:</td>
-          <td *ngIf="showBackground">{{ loggedInUser.pdp.background }}</td>
+        <tr *ngIf="showBackground">
+          <td>Achtergrond:</td>
+          <td>{{ loggedInUser.pdp.background }}</td>
         </tr>
-        <tr>
-          <td (click)="toggleVisibility('present')">Heden:</td>
-          <td *ngIf="showPresent">{{ loggedInUser.pdp.present }}</td>
+        <tr *ngIf="showPresent">
+          <td>Heden:</td>
+          <td>{{ loggedInUser.pdp.present }}</td>
         </tr>
-        <tr>
-          <td (click)="toggleVisibility('future')">Toekomst:</td>
-          <td *ngIf="showFuture">{{ loggedInUser.pdp.future }}</td>
+        <tr *ngIf="showFuture">
+          <td>Toekomst:</td>
+          <td>{{ loggedInUser.pdp.future }}</td>
         </tr>
-        <tr>
-          <td (click)="toggleVisibility('futureRoles')">Toekomstige rollen:</td>
-          <td *ngIf="showFutureRoles">
+        <tr *ngIf="showFutureRoles">
+          <td>Toekomstige rollen:</td>
+          <td>
             <table class="future-roles-table">
               <tr *ngFor="let futureRole of loggedInUser.pdp.futureRole">
                 <td>{{futureRole.name}}</td>

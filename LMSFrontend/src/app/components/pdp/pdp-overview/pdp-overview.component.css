@@ -15,7 +15,6 @@ td {
 }
 .pdp-table td:first-child{
   width:150px;
-  cursor: pointer;
 }
 
 .action-list tr{
@@ -78,4 +77,19 @@ button.generate-pdf-button {
 
 button.generate-pdf-button:hover{
   background: #cfcece;
+}
+table.pdp-table button {
+  margin: 3px 10px 0px 0px;
+  vertical-align: top;
+  background: #6fa23a;
+  color: white;
+  padding: 4px 15px;
+  border-radius: 10px;
+  border: none;
+}
+table.pdp-table button:hover {
+  background: #30510e;
+}
+table.pdp-table button.active {
+  background-color: #30510e;
 }

@@ -34,7 +34,8 @@ public class EmailService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(emailAddresses.toArray(new String[0]));
         message.setSubject("LMS - Nieuwe aanvraag");
-        message.setText("Er staat een nieuwe aanvraag klaar ter beoordeling van medewerker: " + user.getName());
+        message.setText("Beste " + userRole.toLowerCase() + ", er staat een nieuwe aanvraag klaar ter beoordeling van medewerker: "
+                + user.getName() + ".\nKlik op de volgende link om de aanvraag te bekijken: http://localhost:4200/application");
 
         emailSender.send(message);
     }
