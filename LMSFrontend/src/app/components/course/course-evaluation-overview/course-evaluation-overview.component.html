@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Evaluaties</h1>
+      <h4>
+        {{employeeCourses.length}}
+        <span *ngIf="employeeCourses.length == 1">evaluatie</span>
+        <span *ngIf="employeeCourses.length > 1 || employeeCourses.length < 1">evaluaties</span>
+        voor cursus "{{course.item}}"
+      </h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="line"></div>
+      <div class="evaluations-overview">
+        <table>
+          <tr>
+            <th>Naam medewerker</th>
+            <th>Functie medewerker</th>
+            <th>Voltooing datum</th>
+          </tr>
+          <tr class="tr-course-data" *ngFor="let employeeCourse of employeeCourses; let i = index" (click)="courseEvaluationDetails(employeeCourse)">
+            <td>{{employeeCourse.user.name}}</td>
+            <td>{{employeeCourse.user.jobRole}}</td>
+            <td>{{employeeCourse.completionDate}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

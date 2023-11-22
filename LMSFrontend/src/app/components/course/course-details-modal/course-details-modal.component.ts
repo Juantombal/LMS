@@ -41,6 +41,11 @@ export class CourseDetailsModalComponent implements OnInit {
     });
   }
 
+  evaluationOverview = () => {
+    this.router.navigate(['/evaluation'], { state: this.courseRole.course });
+    this.dialogRef.close()
+  }
+
   getEmployeeCourses = () => {
     this.courseService.getEmployeeCourseByUser(this.data.user.id).subscribe((employeeCourse) => {
       this.employeeCourse = employeeCourse

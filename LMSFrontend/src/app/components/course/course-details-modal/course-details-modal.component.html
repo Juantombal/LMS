@@ -29,6 +29,7 @@
   <div class="row">
     <div class="col-xs-12">
       <button class="course-completion-button" [disabled]="isCourseMatchingEmployeeCourse(employeeCourse, courseRole.course.item)" (click)="courseApplication()">Cursus aanvragen</button>
+      <button *ngIf="courseRole.course.type.includes('cursus') || courseRole.course.type.includes('training')" class="course-completion-button" (click)="evaluationOverview()">Evaluaties</button>
     </div>
   </div>
 </div>

@@ -1,0 +1,48 @@
+.evaluation-modal {
+  width:800px;
+}
+h1 {
+  margin-top:0px;
+  margin-bottom: 20px;
+}
+.mat-form-field {
+  width: 100%;
+  margin-top:20px;
+}
+.evaluation-modal label {
+  margin-bottom: 2px;
+  margin-top: 15px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top:20px;
+  text-align: center;
+}
+
+table td {
+  word-break: break-all;
+}
+
+table td:first-child {
+  text-align: left;
+}
+
+.employee-course-button {
+  background: #77A546;
+  color: white;
+  border: none;
+  margin-right: 10px;
+  border-radius: 3px;
+  padding: 5px 18px;
+}
+.employee-course-button:disabled {
+  cursor: not-allowed;
+  background: grey;
+}
+
+.employee-course-button:enabled:hover {
+  background: #678d3f;
+}

@@ -1,0 +1,108 @@
+<div class="evaluation-modal">
+  <h1>Evaluatie</h1>
+  <h4>Cursus/training: "{{this.data.course.item}}"</h4>
+
+  <form class="form-application" [formGroup]="signupForm" (ngSubmit)="createEmployeeCourseAndEvaluation('A')" novalidate>
+    <div formGroupName="evaluation">
+      <label>Instantie</label>
+      <input class="form-control" placeholder="Instantie" formControlName="instance"  required/>
+
+      <label>Docent</label>
+      <input class="form-control" placeholder="Docent" formControlName="teacher"  required/>
+
+      <table>
+        <tr>
+          <td></td>
+          <td>--</td>
+          <td>-</td>
+          <td>-/+</td>
+          <td>+</td>
+          <td>++</td>
+        </tr>
+        <tr>
+          <td>Kwaliteit van training / cursusmateriaal</td>
+          <td><input type="radio" formControlName="qualityCourse" value="1" (change)="updateRating(1, 'qualityCourse')"></td>
+          <td><input type="radio" formControlName="qualityCourse" value="2" (change)="updateRating(2, 'qualityCourse')"></td>
+          <td><input type="radio" formControlName="qualityCourse" value="3" (change)="updateRating(3, 'qualityCourse')"></td>
+          <td><input type="radio" formControlName="qualityCourse" value="4" (change)="updateRating(4, 'qualityCourse')"></td>
+          <td><input type="radio" formControlName="qualityCourse" value="5" (change)="updateRating(5, 'qualityCourse')"></td>
+        </tr>
+        <tr>
+          <td>Snelheid van training/cursus</td>
+          <td><input type="radio" formControlName="speed" value="1" (change)="updateRating(1, 'speed')"></td>
+          <td><input type="radio" formControlName="speed" value="2" (change)="updateRating(2, 'speed')"></td>
+          <td><input type="radio" formControlName="speed" value="3" (change)="updateRating(3, 'speed')"></td>
+          <td><input type="radio" formControlName="speed" value="4" (change)="updateRating(4, 'speed')"></td>
+          <td><input type="radio" formControlName="speed" value="5" (change)="updateRating(5, 'speed')"></td>
+        </tr>
+        <tr>
+          <td>Functioneren van docent</td>
+          <td><input type="radio" formControlName="functioningTeacher" value="1" (change)="updateRating(1, 'functioningTeacher')"></td>
+          <td><input type="radio" formControlName="functioningTeacher" value="2" (change)="updateRating(2,'functioningTeacher')"></td>
+          <td><input type="radio" formControlName="functioningTeacher" value="3" (change)="updateRating(3,'functioningTeacher')"></td>
+          <td><input type="radio" formControlName="functioningTeacher" value="4" (change)="updateRating(4,'functioningTeacher')"></td>
+          <td><input type="radio" formControlName="functioningTeacher" value="5" (change)="updateRating(5, 'functioningTeacher')"></td>
+        </tr>
+        <tr>
+          <td>Kwaliteit van uitvoering</td>
+          <td><input type="radio" formControlName="qualityExecution" value="1" (change)="updateRating(1, 'qualityExecution')"></td>
+          <td><input type="radio" formControlName="qualityExecution" value="2" (change)="updateRating(2, 'qualityExecution')"></td>
+          <td><input type="radio" formControlName="qualityExecution" value="3" (change)="updateRating(3, 'qualityExecution')"></td>
+          <td><input type="radio" formControlName="qualityExecution" value="4" (change)="updateRating(4, 'qualityExecution')"></td>
+          <td><input type="radio" formControlName="qualityExecution" value="5" (change)="updateRating(5, 'qualityExecution')"></td>
+        </tr>
+        <tr>
+          <td>Tijd om te oefenen</td>
+          <td><input type="radio" formControlName="time" value="1" (change)="updateRating(1, 'time')"></td>
+          <td><input type="radio" formControlName="time" value="2" (change)="updateRating(2, 'time')"></td>
+          <td><input type="radio" formControlName="time" value="3" (change)="updateRating(3, 'time')"></td>
+          <td><input type="radio" formControlName="time" value="4" (change)="updateRating(4, 'time')"></td>
+          <td><input type="radio" formControlName="time" value="5" (change)="updateRating(5, 'time')"></td>
+        </tr>
+        <tr>
+          <td>Heb je voldoende geleerd</td>
+          <td><input type="radio" formControlName="enoughLearned" value="1" (change)="updateRating(1, 'enoughLearned')"></td>
+          <td><input type="radio" formControlName="enoughLearned" value="2" (change)="updateRating(2, 'enoughLearned')"></td>
+          <td><input type="radio" formControlName="enoughLearned" value="3" (change)="updateRating(3, 'enoughLearned')"></td>
+          <td><input type="radio" formControlName="enoughLearned" value="4" (change)="updateRating(4, 'enoughLearned')"></td>
+          <td><input type="radio" formControlName="enoughLearned" value="5" (change)="updateRating(5, 'enoughLearned')"></td>
+        </tr>
+        <tr>
+          <td>Kennis van docent over onderwerp</td>
+          <td><input type="radio" formControlName="knowledgeTeacher" value="1" (change)="updateRating(1, 'knowledgeTeacher')"></td>
+          <td><input type="radio" formControlName="knowledgeTeacher" value="2" (change)="updateRating(2, 'knowledgeTeacher')"></td>
+          <td><input type="radio" formControlName="knowledgeTeacher" value="3" (change)="updateRating(3, 'knowledgeTeacher')"></td>
+          <td><input type="radio" formControlName="knowledgeTeacher" value="4" (change)="updateRating(4, 'knowledgeTeacher')"></td>
+          <td><input type="radio" formControlName="knowledgeTeacher" value="5" (change)="updateRating(5, 'knowledgeTeacher')"></td>
+        </tr>
+      </table>
+
+      <label>Opmerkingen n.a.v. bovenstaande vragen:</label>
+      <textarea class="form-control" rows="4" formControlName="comments"></textarea>
+
+      <label>Wat heb je geleerd?</label>
+      <textarea class="form-control" rows="4" formControlName="learnings"></textarea>
+
+      <label>Wat heb je gemist?</label>
+      <textarea class="form-control" rows="4" formControlName="missedAreas"></textarea>
+
+      <label>Wat zijn de sterke punten van de training?</label>
+      <textarea class="form-control" rows="4" formControlName="strengthsTraining"></textarea>
+
+      <label>Wat zijn de zwakke punten van de training?</label>
+      <textarea class="form-control" rows="4" formControlName="weaknessesTraining"></textarea>
+    </div>
+
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="completiondatepicker" placeholder="Voltooing datum" formControlName="completionDate">
+      <mat-datepicker-toggle matSuffix [for]="completiondatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #completiondatepicker></mat-datepicker>
+    </mat-form-field>
+
+    <button class="employee-course-button" [disabled]="!signupForm.valid" type="submit">
+      <span>Voltooien</span>
+    </button>
+  </form>
+</div>
+

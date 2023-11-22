@@ -1,0 +1,42 @@
+h1 {
+  margin-top:0px;
+  margin-bottom:20px;
+}
+p {
+  margin: 0 0 5px;
+}
+
+checkboxes-table. input:disabled {
+  cursor: default;
+}
+.checkboxes-table input:checked::before {
+  background-color: #2196F3;
+}
+
+.checkboxes-table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top:10px;
+  text-align: center;
+}
+
+table td {
+  word-break: break-all;
+}
+
+tr {
+  line-height: 27px;
+}
+
+table td:first-child {
+  text-align: left;
+  padding-right: 10px;
+}
+
+.course-evaluation-details {
+  width:800px;
+}
+label {
+  margin-top: 20px;
+}

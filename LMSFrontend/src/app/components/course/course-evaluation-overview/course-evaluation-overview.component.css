@@ -1,0 +1,43 @@
+.line {
+  border-top: 1px solid;
+  margin-bottom: 30px;
+  margin-top:10px;
+}
+h1 span {
+  font-size: 20px;
+  color:#000;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td {
+  word-break: break-all;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:first-child {
+  background-color: #dddddd;
+}
+
+tr.tr-course-data {
+  cursor: pointer;
+}
+
+tr.tr-course-data:hover {
+  background: #d9d9d9;
+}
+
+.evaluations-overview {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}

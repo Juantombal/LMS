@@ -5,6 +5,7 @@ import {Application} from "../../../model/application.model";
 import {CompleteCourseModalComponent} from "../../course/complete-course-modal/complete-course-modal.component";
 import {EmployeeCourse} from "../../../model/employeecourse.model";
 import {CourseService} from "../../../services/course.service";
+import {EvaluationModalComponent} from "../../course/evaluation-modal/evaluation-modal.component";
 
 @Component({
   selector: 'app-action-list-details-modal',
@@ -13,6 +14,7 @@ import {CourseService} from "../../../services/course.service";
 })
 export class ActionListDetailsModalComponent implements OnInit {
   employeeCourse: EmployeeCourse[] = [];
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Application,
     private dialogRef: MatDialogRef<ActionListDetailsModalComponent>,
@@ -25,14 +27,24 @@ export class ActionListDetailsModalComponent implements OnInit {
   }
 
   courseCompletion = () => {
-    const dialogRefActionListDetails = this.dialog.open(CompleteCourseModalComponent, {data: {
-      course: this.data.course, user: this.data.user, applicationId: this.data.id}, autoFocus: false});
+    if (this.data.course.type.includes('cursus') || this.data.course.type.includes('training')) {
+      const dialogRefActionListDetails = this.dialog.open(EvaluationModalComponent, {data: this.data, autoFocus: false, maxHeight: '90vh'});
 
-    dialogRefActionListDetails.afterClosed().subscribe(result => {
-      if (result === 'A') {
-        this.dialogRef.close()
-      }
-    });
+      dialogRefActionListDetails.afterClosed().subscribe(result => {
+        if (result === 'A') {
+          this.dialogRef.close()
+        }
+      });
+    } else {
+      const dialogRefActionListDetails = this.dialog.open(CompleteCourseModalComponent, {data: {
+          course: this.data.course, user: this.data.user, applicationId: this.data.id}, autoFocus: false, maxHeight: '90vh'});
+
+      dialogRefActionListDetails.afterClosed().subscribe(result => {
+        if (result === 'A') {
+          this.dialogRef.close()
+        }
+      });
+    }
   }
 
   getEmployeeCourses = () => {

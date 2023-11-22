@@ -20,6 +20,10 @@ public class EmployeeCourseEntity {
     @JoinColumn(name = "course_id", referencedColumnName = "id")
     private CourseEntity course;
 
+    @OneToOne
+    @JoinColumn(name = "evaluation_id", referencedColumnName = "id")
+    private EvaluationEntity evaluation;
+
     @Column(name = "completion_date")
     private LocalDate completionDate;
 
@@ -30,6 +34,14 @@ public class EmployeeCourseEntity {
     }
 
     public EmployeeCourseEntity() {
+    }
+
+    public EvaluationEntity getEvaluation() {
+        return evaluation;
+    }
+
+    public void setEvaluation(EvaluationEntity evaluation) {
+        this.evaluation = evaluation;
     }
 
     public Long getId() {

@@ -1,11 +1,22 @@
 package com.example.lmsbackend.dto;
 
+import com.example.lmsbackend.entity.EvaluationEntity;
+
 import java.time.LocalDate;
 
 public class EmployeeCourseDTO {
     private long userId;
     private long courseId;
     private LocalDate completionDate;
+    private EvaluationEntity evaluation;
+
+    public EvaluationEntity getEvaluation() {
+        return evaluation;
+    }
+
+    public void setEvaluation(EvaluationEntity evaluation) {
+        this.evaluation = evaluation;
+    }
 
     public long getUserId() {
         return userId;

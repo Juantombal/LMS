@@ -1,0 +1,107 @@
+<div class="course-evaluation-details">
+  <h1>Evaluatie</h1>
+  <table>
+    <tr>
+      <td><strong>Naam medewerker:</strong></td>
+      <td>{{this.data.user.name}}</td>
+    </tr>
+    <tr>
+      <td><strong>Instantie:</strong></td>
+      <td>{{this.data.evaluation.instance}}</td>
+    </tr>
+    <tr>
+      <td><strong>Docent:</strong></td>
+      <td>{{this.data.evaluation.teacher}}</td>
+    </tr>
+    <tr>
+      <td><strong>Datum:</strong></td>
+      <td>{{this.data.completionDate}}</td>
+    </tr>
+    <tr>
+      <td><strong>Training / cursus:</strong></td>
+      <td>{{this.data.course.item}}</td>
+    </tr>
+  </table>
+
+  <table class="checkboxes-table">
+    <tr>
+      <td></td>
+      <td>--</td>
+      <td>-</td>
+      <td>-/+</td>
+      <td>+</td>
+      <td>++</td>
+    </tr>
+    <tr>
+      <td>Kwaliteit van training / cursusmateriaal</td>
+      <td><input type="radio" [checked]="this.data.evaluation.qualityCourse === 1" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.qualityCourse === 2" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.qualityCourse === 3" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.qualityCourse === 4" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.qualityCourse === 5" (click)="$event.preventDefault()"></td>
+    </tr>
+    <tr>
+      <td>Snelheid van training/cursus</td>
+      <td><input type="radio" [checked]="this.data.evaluation.speed === 1" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.speed === 2" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.speed === 3" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.speed === 4" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.speed === 5" (click)="$event.preventDefault()"></td>
+    </tr>
+    <tr>
+      <td>Functioneren van docent</td>
+      <td><input type="radio" [checked]="this.data.evaluation.functioningTeacher === 1" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.functioningTeacher === 2" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.functioningTeacher === 3" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.functioningTeacher === 4" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.functioningTeacher === 5" (click)="$event.preventDefault()"></td>
+    </tr>
+    <tr>
+      <td>Kwaliteit van uitvoering</td>
+      <td><input type="radio" [checked]="this.data.evaluation.qualityExecution === 1" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.qualityExecution === 2" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.qualityExecution === 3" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.qualityExecution === 4" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.qualityExecution === 5" (click)="$event.preventDefault()"></td>
+    </tr>
+    <tr>
+      <td>Tijd om te oefenen</td>
+      <td><input type="radio" [checked]="this.data.evaluation.time === 1" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.time === 2" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.time === 3" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.time === 4" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.time === 5" (click)="$event.preventDefault()"></td>
+    </tr>
+    <tr>
+      <td>Heb je voldoende geleerd</td>
+      <td><input type="radio" [checked]="this.data.evaluation.enoughLearned === 1" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.enoughLearned === 2" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.enoughLearned === 3" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.enoughLearned === 4" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.enoughLearned === 5" (click)="$event.preventDefault()"></td>
+    </tr>
+    <tr>
+      <td>Kennis van docent over onderwerp</td>
+      <td><input type="radio" [checked]="this.data.evaluation.knowledgeTeacher === 1" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.knowledgeTeacher === 2" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.knowledgeTeacher === 3" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.knowledgeTeacher === 4" (click)="$event.preventDefault()"></td>
+      <td><input type="radio" [checked]="this.data.evaluation.knowledgeTeacher === 5" (click)="$event.preventDefault()"></td>
+    </tr>
+  </table>
+
+  <label>Opmerkingen n.a.v. bovenstaande vragen:</label>
+  <p>{{this.data.evaluation.comments}}</p>
+
+  <label>Wat heb je geleerd?</label>
+  <p>{{this.data.evaluation.learnings}}</p>
+
+  <label>Wat heb je gemist?</label>
+  <p>{{this.data.evaluation.missedAreas}}</p>
+
+  <label>Wat zijn de sterke punten van de training?</label>
+  <p>{{this.data.evaluation.strengthsTraining}}</p>
+
+  <label>Wat zijn de zwakke punten van de training?</label>
+  <p>{{this.data.evaluation.weaknessesTraining}}</p>
+</div>

@@ -38,6 +38,9 @@ import { CourseRoleLinkComponent } from './components/course/course-role-link/co
 import {CourseroleService} from "./services/courserole.service";
 import { ReportOverviewComponent } from './components/report/report-overview/report-overview.component';
 import { ReportCourseDetailComponent } from './components/report/report-course-detail/report-course-detail.component';
+import { EvaluationModalComponent } from './components/course/evaluation-modal/evaluation-modal.component';
+import { CourseEvaluationOverviewComponent } from './components/course/course-evaluation-overview/course-evaluation-overview.component';
+import { CourseEvaluationDetailsComponent } from './components/course/course-evaluation-details/course-evaluation-details.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +66,10 @@ import { ReportCourseDetailComponent } from './components/report/report-course-d
     DeleteRoleModalComponent,
     CourseRoleLinkComponent,
     ReportOverviewComponent,
-    ReportCourseDetailComponent
+    ReportCourseDetailComponent,
+    EvaluationModalComponent,
+    CourseEvaluationOverviewComponent,
+    CourseEvaluationDetailsComponent
   ],
     imports: [
         BrowserModule,

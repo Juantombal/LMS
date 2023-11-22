@@ -9,6 +9,9 @@ import {
 import {RolesOverviewComponent} from "./components/role/roles-overview/roles-overview.component";
 import {CourseRoleLinkComponent} from "./components/course/course-role-link/course-role-link.component";
 import {ReportOverviewComponent} from "./components/report/report-overview/report-overview.component";
+import {
+  CourseEvaluationOverviewComponent
+} from "./components/course/course-evaluation-overview/course-evaluation-overview.component";
 
 const routes: Routes = [
   { path: 'course', component: CourseOverviewComponent },
@@ -17,7 +20,8 @@ const routes: Routes = [
   { path: 'application', component: ApplicationOverviewComponent },
   { path: 'roles', component: RolesOverviewComponent },
   { path: 'courselink', component: CourseRoleLinkComponent },
-  { path: 'report', component: ReportOverviewComponent }
+  { path: 'report', component: ReportOverviewComponent },
+  { path: 'evaluation', component: CourseEvaluationOverviewComponent }
 ];
 
 @NgModule({
