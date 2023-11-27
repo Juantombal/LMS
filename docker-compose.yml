@@ -1,0 +1,31 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: ./LMSFrontend
+      dockerfile: Dockerfile
+    ports:
+      - "8081:80"
+
+  backend:
+    build:
+      context: ./LMSBackend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/lms
+      SPRING_DATASOURCE_USERNAME: lms_user
+      SPRING_DATASOURCE_PASSWORD: lms_pass
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: lms
+      POSTGRES_USER: lms_user
+      POSTGRES_PASSWORD: lms_pass

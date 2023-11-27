@@ -6,7 +6,7 @@ p {
   margin: 0 0 5px;
 }
 
-checkboxes-table. input:disabled {
+checkboxes-table input:disabled {
   cursor: default;
 }
 .checkboxes-table input:checked::before {
