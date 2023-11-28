@@ -72,7 +72,7 @@
             <th>Status</th>
             <th>Datum indiening</th>
           </tr>
-          <tr *ngFor="let application of filterApplications(); let i = index" (click)="applicationUserDetails(application)"
+          <tr class="action-list-tr" *ngFor="let application of filterApplications(); let i = index" (click)="applicationUserDetails(application)"
               [ngClass]="{'red-row': application.applicationLines[application.applicationLines.length - 1].status === 'DECLINED'}">
             <td>{{application.course.item}}</td>
             <td>

@@ -3,7 +3,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {CourseDetailsModalComponent} from "../course-details-modal/course-details-modal.component";
 import {User} from "../../../model/user.model";
 import {UserService} from "../../../services/user.service";
-import {Observable, switchMap} from "rxjs";
+import {switchMap} from "rxjs";
 import {CourseroleService} from "../../../services/courserole.service";
 import {Courserole} from "../../../model/courserole.model";
 
@@ -20,10 +20,11 @@ export class CourseOverviewComponent implements OnInit {
   filteredCourses: Courserole[] = [];
   sortColumn: string = '';
   isReverseSort: boolean = false;
+
   constructor(
     private courseRoleService: CourseroleService,
     public dialog: MatDialog,
-    private userService: UserService,
+    private userService: UserService
   ) {  }
 
   ngOnInit(): void {
@@ -37,9 +38,7 @@ export class CourseOverviewComponent implements OnInit {
       .subscribe((courseRoles) => {
         this.courseRoles = courseRoles;
         this.filterRoles();
-
         this.selectedRole = this.loggedInUser.jobRole;
-
         this.filterCourses();
       });
   }

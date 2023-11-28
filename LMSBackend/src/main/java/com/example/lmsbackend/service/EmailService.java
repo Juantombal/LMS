@@ -34,9 +34,23 @@ public class EmailService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(emailAddresses.toArray(new String[0]));
         message.setSubject("LMS - Nieuwe aanvraag");
-        message.setText("Beste " + userRole.toLowerCase() + ", er staat een nieuwe aanvraag klaar ter beoordeling van medewerker: "
-                + user.getName() + ".\nKlik op de volgende link om de aanvraag te bekijken: http://localhost:4200/application");
+
+        String emailText = generateEmailText(userRole, user);
+        message.setText(emailText);
 
         emailSender.send(message);
+    }
+
+    private String generateEmailText(String userRole, UserEntity user) {
+        return switch (userRole) {
+            case "FIELDMANAGER" -> "Beste fieldmanager, er staat een nieuwe aanvraag klaar ter beoordeling van medewerker: "
+                    + user.getName() + ".\nKlik op de volgende link om de aanvraag te bekijken: http://localhost:4200/application";
+            case "DIRECTOR" -> "Beste directeur, er staat een nieuwe aanvraag klaar ter beoordeling van medewerker: "
+                    + user.getName() + ".\nKlik op de volgende link om de aanvraag te bekijken: http://localhost:4200/application";
+            case "SECRETERIAT" -> "Beste secreteriaat, er staat een nieuwe aanvraag klaar. Zorg dat alle materialen worden geleverd\nKlik op de volgende link om de aanvraag te bekijken: http://localhost:4200/application";
+            // Voeg andere rollen toe indien nodig
+            case "EMPLOYEE" -> "Beste " + user.getName() + ", je aanvraag is goedgekeurd en je kan aan de slag met de cursus. Klik op de volgende link om de aanvraag te bekijken: http://localhost:4200/application";
+            default -> "e";
+        };
     }
 }

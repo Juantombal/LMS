@@ -17,25 +17,25 @@ public class EvaluationEntity {
     private String teacher;
 
     @Column(name = "qualityCourse")
-    private int qualityCourse;
+    private Integer qualityCourse;
 
     @Column(name = "speed")
-    private int speed;
+    private Integer speed;
 
     @Column(name = "functioningTeacher")
-    private int functioningTeacher;
+    private Integer functioningTeacher;
 
     @Column(name = "qualityExecution")
-    private int qualityExecution;
+    private Integer qualityExecution;
 
     @Column(name = "time")
-    private int time;
+    private Integer time;
 
     @Column(name = "enoughLearned")
-    private int enoughLearned;
+    private Integer enoughLearned;
 
     @Column(name = "knowledgeTeacher")
-    private int knowledgeTeacher;
+    private Integer knowledgeTeacher;
 
     @Column(name = "comments", columnDefinition = "TEXT")
     private String comments;
@@ -53,12 +53,12 @@ public class EvaluationEntity {
     private String weaknessesTraining;
 
     @Column(name = "overallRating")
-    private int overallRating;
+    private Integer overallRating;
 
     public EvaluationEntity() {
     }
 
-    public EvaluationEntity(String instance, String teacher, int qualityCourse, int speed, int functioningTeacher, int qualityExecution, int time, int enoughLearned, int knowledgeTeacher, String comments, String learnings, String missedAreas, String strengthsTraining, String weaknessesTraining, int overallRating) {
+    public EvaluationEntity(String instance, String teacher, Integer qualityCourse, Integer speed, Integer functioningTeacher, Integer qualityExecution, Integer time, Integer enoughLearned, Integer knowledgeTeacher, String comments, String learnings, String missedAreas, String strengthsTraining, String weaknessesTraining, Integer overallRating) {
         this.instance = instance;
         this.teacher = teacher;
         this.qualityCourse = qualityCourse;
@@ -76,11 +76,11 @@ public class EvaluationEntity {
         this.overallRating = overallRating;
     }
 
-    public int getOverallRating() {
+    public Integer getOverallRating() {
         return overallRating;
     }
 
-    public void setOverallRating(int overallRating) {
+    public void setOverallRating(Integer overallRating) {
         this.overallRating = overallRating;
     }
 
@@ -108,59 +108,59 @@ public class EvaluationEntity {
         this.teacher = teacher;
     }
 
-    public int getQualityCourse() {
+    public Integer getQualityCourse() {
         return qualityCourse;
     }
 
-    public void setQualityCourse(int qualityCourse) {
+    public void setQualityCourse(Integer qualityCourse) {
         this.qualityCourse = qualityCourse;
     }
 
-    public int getSpeed() {
+    public Integer getSpeed() {
         return speed;
     }
 
-    public void setSpeed(int speed) {
+    public void setSpeed(Integer speed) {
         this.speed = speed;
     }
 
-    public int getFunctioningTeacher() {
+    public Integer getFunctioningTeacher() {
         return functioningTeacher;
     }
 
-    public void setFunctioningTeacher(int functioningTeacher) {
+    public void setFunctioningTeacher(Integer functioningTeacher) {
         this.functioningTeacher = functioningTeacher;
     }
 
-    public int getQualityExecution() {
+    public Integer getQualityExecution() {
         return qualityExecution;
     }
 
-    public void setQualityExecution(int qualityExecution) {
+    public void setQualityExecution(Integer qualityExecution) {
         this.qualityExecution = qualityExecution;
     }
 
-    public int getTime() {
+    public Integer getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(Integer time) {
         this.time = time;
     }
 
-    public int getEnoughLearned() {
+    public Integer getEnoughLearned() {
         return enoughLearned;
     }
 
-    public void setEnoughLearned(int enoughLearned) {
+    public void setEnoughLearned(Integer enoughLearned) {
         this.enoughLearned = enoughLearned;
     }
 
-    public int getKnowledgeTeacher() {
+    public Integer getKnowledgeTeacher() {
         return knowledgeTeacher;
     }
 
-    public void setKnowledgeTeacher(int knowledgeTeacher) {
+    public void setKnowledgeTeacher(Integer knowledgeTeacher) {
         this.knowledgeTeacher = knowledgeTeacher;
     }
 

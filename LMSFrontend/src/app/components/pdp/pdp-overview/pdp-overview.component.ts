@@ -84,19 +84,22 @@ export class PdpOverviewComponent implements OnInit {
   }
 
   toggleVisibility(section: string): void {
-    switch (section) {
-      case 'background':
-        this.showBackground = !this.showBackground;
-        break;
-      case 'present':
-        this.showPresent = !this.showPresent;
-        break;
-      case 'future':
-        this.showFuture = !this.showFuture;
-        break;
-      case 'futureRoles':
-        this.showFutureRoles = !this.showFutureRoles;
-        break;
+    this.showBackground = section === 'background' && !this.showBackground;
+    this.showPresent = section === 'present' && !this.showPresent;
+    this.showFuture = section === 'future' && !this.showFuture;
+    this.showFutureRoles = section === 'futureRoles' && !this.showFutureRoles;
+
+    if (section !== 'background') {
+      this.showBackground = false;
+    }
+    if (section !== 'present') {
+      this.showPresent = false;
+    }
+    if (section !== 'future') {
+      this.showFuture = false;
+    }
+    if (section !== 'futureRoles') {
+      this.showFutureRoles = false;
     }
   }
 
