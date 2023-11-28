@@ -18,7 +18,8 @@ export class CourseOverviewComponent implements OnInit {
   filteredRoles: string[] = [];
   selectedRole: string;
   filteredCourses: Courserole[] = [];
-
+  sortColumn: string = '';
+  isReverseSort: boolean = false;
   constructor(
     private courseRoleService: CourseroleService,
     public dialog: MatDialog,
@@ -100,5 +101,36 @@ export class CourseOverviewComponent implements OnInit {
         return a.role.name.localeCompare(b.role.name);
       });
     }
+  }
+
+  sortByColumn(columnName: string) {
+    if (this.sortColumn === columnName) {
+      this.isReverseSort = !this.isReverseSort;
+    } else {
+      this.sortColumn = columnName;
+      this.isReverseSort = false;
+    }
+
+    this.filteredCourses.sort((a, b) => {
+      const aValue = this.getPropertyValue(a, columnName);
+      const bValue = this.getPropertyValue(b, columnName);
+
+      if (aValue < bValue) {
+        return this.isReverseSort ? 1 : -1;
+      }
+      if (aValue > bValue) {
+        return this.isReverseSort ? -1 : 1;
+      }
+      return 0;
+    });
+  }
+
+  getPropertyValue(obj: any, propName: string): any {
+    const props = propName.split('.');
+    let value = obj;
+    for (const prop of props) {
+      value = value[prop];
+    }
+    return value;
   }
 }

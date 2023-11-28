@@ -104,4 +104,38 @@
 
   <label>Wat zijn de zwakke punten van de training?</label>
   <p>{{this.data.evaluation.weaknessesTraining}}</p>
+
+  <label>Algemene beoordeling van de cursus:</label>
+  <div class="rating">
+    <label>
+      <input type="radio" [checked]="this.data.evaluation.overallRating === 1" (click)="handleStarClick($event)"/>
+      <span class="icon">★</span>
+    </label>
+    <label>
+      <input type="radio" [checked]="this.data.evaluation.overallRating === 2" (click)="handleStarClick($event)"/>
+      <span class="icon">★</span>
+      <span class="icon">★</span>
+    </label>
+    <label>
+      <input type="radio" [checked]="this.data.evaluation.overallRating === 3" (click)="handleStarClick($event)"/>
+      <span class="icon">★</span>
+      <span class="icon">★</span>
+      <span class="icon">★</span>
+    </label>
+    <label>
+      <input type="radio" [checked]="this.data.evaluation.overallRating === 4" (click)="handleStarClick($event)"/>
+      <span class="icon">★</span>
+      <span class="icon">★</span>
+      <span class="icon">★</span>
+      <span class="icon">★</span>
+    </label>
+    <label>
+      <input type="radio" [checked]="this.data.evaluation.overallRating === 5" (click)="handleStarClick($event)"/>
+      <span class="icon">★</span>
+      <span class="icon">★</span>
+      <span class="icon">★</span>
+      <span class="icon">★</span>
+      <span class="icon">★</span>
+    </label>
+  </div>
 </div>

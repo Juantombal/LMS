@@ -19,11 +19,11 @@
           <table>
             <tr>
               <th *ngIf="selectedRole === 'Alle rollen'">Rol</th>
-              <th>Item</th>
+              <th class="clickableTH" (click)="sortByColumn('course.item')">Item</th>
               <th>Website</th>
-              <th>Type</th>
-              <th>Prio</th>
-              <th>Kosten</th>
+              <th class="clickableTH" (click)="sortByColumn('course.type')">Type</th>
+              <th class="clickableTH" (click)="filterCourses()">Prio</th>
+              <th class="clickableTH" (click)="sortByColumn('course.costAmount')">Kosten</th>
             </tr>
             <tr class="tr-course-data" *ngFor="let filteredCourse of filteredCourses; let i = index" (click)="courseDetails(filteredCourse)">
               <td *ngIf="selectedRole === 'Alle rollen'">{{ filteredCourse.role.name }}</td>

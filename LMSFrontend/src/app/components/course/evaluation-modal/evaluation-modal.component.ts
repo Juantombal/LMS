@@ -11,6 +11,8 @@ import {ApplicationService} from "../../../services/application.service";
 })
 export class EvaluationModalComponent implements OnInit {
   signupForm: FormGroup
+  stars: string[] = ['☆', '☆', '☆', '☆', '☆'];
+  selectedStars = 0;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -43,7 +45,8 @@ export class EvaluationModalComponent implements OnInit {
         learnings: new FormControl(''),
         missedAreas: new FormControl(''),
         strengthsTraining: new FormControl(''),
-        weaknessesTraining: new FormControl('')
+        weaknessesTraining: new FormControl(''),
+        overallRating: new FormControl('')
       })
     });
 
@@ -59,7 +62,6 @@ export class EvaluationModalComponent implements OnInit {
       userId: this.data.user.id,
       courseId: this.data.course.id,
     });
-    console.log(this.signupForm.value)
 
     this.courseService.postEmployeeCourse(this.signupForm.value).subscribe((msg) => {})
 

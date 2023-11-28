@@ -14,4 +14,5 @@ export class Evaluation {
   missedAreas: string;
   strengthsTraining: string;
   weaknessesTraining: string;
+  overallRating: number;
 }

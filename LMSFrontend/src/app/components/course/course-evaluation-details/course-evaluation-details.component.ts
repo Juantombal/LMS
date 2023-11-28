@@ -16,4 +16,8 @@ export class CourseEvaluationDetailsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  handleStarClick(event: Event) {
+    event.stopPropagation();
+    event.preventDefault();
+  }
 }

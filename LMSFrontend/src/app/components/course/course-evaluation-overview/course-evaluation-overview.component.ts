@@ -16,6 +16,8 @@ import {CourseEvaluationDetailsComponent} from "../course-evaluation-details/cou
 export class CourseEvaluationOverviewComponent implements OnInit {
   course: Course;
   employeeCourses: EmployeeCourse[] = [];
+  sortColumn: string = '';
+  isReverseSort: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,5 +38,49 @@ export class CourseEvaluationOverviewComponent implements OnInit {
 
   courseEvaluationDetails = (employeeCourse: EmployeeCourse) => {
     this.dialog.open(CourseEvaluationDetailsComponent, {data: employeeCourse, autoFocus: false, maxHeight: '90vh'});
+  }
+
+  handleStarClick(event: Event) {
+    event.stopPropagation();
+    event.preventDefault();
+  }
+
+  getAverageOverallRating(): number {
+    if (this.employeeCourses.length === 0) {
+      return 0;
+    }
+    const sum = this.employeeCourses.reduce((total, course) => total + course.evaluation.overallRating, 0);
+    return sum / this.employeeCourses.length;
+  }
+
+  sortByColumn(columnName: string) {
+    if (this.sortColumn === columnName) {
+      this.isReverseSort = !this.isReverseSort;
+    } else {
+      this.sortColumn = columnName;
+      this.isReverseSort = false;
+    }
+
+    this.employeeCourses.sort((a, b) => {
+      const aValue = this.getPropertyValue(a, columnName);
+      const bValue = this.getPropertyValue(b, columnName);
+
+      if (aValue < bValue) {
+        return this.isReverseSort ? 1 : -1;
+      }
+      if (aValue > bValue) {
+        return this.isReverseSort ? -1 : 1;
+      }
+      return 0;
+    });
+  }
+
+  getPropertyValue(obj: any, propName: string): any {
+    const props = propName.split('.');
+    let value = obj;
+    for (const prop of props) {
+      value = value[prop];
+    }
+    return value;
   }
 }

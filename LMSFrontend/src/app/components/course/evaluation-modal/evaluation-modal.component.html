@@ -91,8 +91,41 @@
 
       <label>Wat zijn de zwakke punten van de training?</label>
       <textarea class="form-control" rows="4" formControlName="weaknessesTraining"></textarea>
-    </div>
 
+      <label>Geef een algemene beoordeling voor deze cursus:</label>
+      <div class="rating">
+        <label>
+          <input type="radio" formControlName="overallRating" value="1" (change)="updateRating(1, 'overallRating')"/>
+          <span class="icon">★</span>
+        </label>
+        <label>
+          <input type="radio" formControlName="overallRating" value="2" (change)="updateRating(2, 'overallRating')"/>
+          <span class="icon">★</span>
+          <span class="icon">★</span>
+        </label>
+        <label>
+          <input type="radio" formControlName="overallRating" value="3" (change)="updateRating(3, 'overallRating')"/>
+          <span class="icon">★</span>
+          <span class="icon">★</span>
+          <span class="icon">★</span>
+        </label>
+        <label>
+          <input type="radio" formControlName="overallRating" value="4" (change)="updateRating(4, 'overallRating')"/>
+          <span class="icon">★</span>
+          <span class="icon">★</span>
+          <span class="icon">★</span>
+          <span class="icon">★</span>
+        </label>
+        <label>
+          <input type="radio" formControlName="overallRating" value="5" (change)="updateRating(5, 'overallRating')"/>
+          <span class="icon">★</span>
+          <span class="icon">★</span>
+          <span class="icon">★</span>
+          <span class="icon">★</span>
+          <span class="icon">★</span>
+        </label>
+      </div>
+    </div>
 
     <mat-form-field>
       <input matInput [matDatepicker]="completiondatepicker" placeholder="Voltooing datum" formControlName="completionDate">

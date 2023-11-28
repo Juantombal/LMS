@@ -14,7 +14,8 @@ import {CourseRoleLinkComponent} from "../course-role-link/course-role-link.comp
 })
 export class CourseManagementComponent implements OnInit {
   courses: Course[] = [];
-
+  sortColumn: string = '';
+  isReverseSort: boolean = false;
   constructor(
     private courseService: CourseService,
     public dialog: MatDialog,
@@ -71,5 +72,36 @@ export class CourseManagementComponent implements OnInit {
         this.getCourses();
       }
     });
+  }
+
+  sortByColumn(columnName: string) {
+    if (this.sortColumn === columnName) {
+      this.isReverseSort = !this.isReverseSort;
+    } else {
+      this.sortColumn = columnName;
+      this.isReverseSort = false;
+    }
+
+    this.courses.sort((a, b) => {
+      const aValue = this.getPropertyValue(a, columnName);
+      const bValue = this.getPropertyValue(b, columnName);
+
+      if (aValue < bValue) {
+        return this.isReverseSort ? 1 : -1;
+      }
+      if (aValue > bValue) {
+        return this.isReverseSort ? -1 : 1;
+      }
+      return 0;
+    });
+  }
+
+  getPropertyValue(obj: any, propName: string): any {
+    const props = propName.split('.');
+    let value = obj;
+    for (const prop of props) {
+      value = value[prop];
+    }
+    return value;
   }
 }

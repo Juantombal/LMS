@@ -52,10 +52,13 @@ public class EvaluationEntity {
     @Column(name = "weaknessesTraining", columnDefinition = "TEXT")
     private String weaknessesTraining;
 
+    @Column(name = "overallRating")
+    private int overallRating;
+
     public EvaluationEntity() {
     }
 
-    public EvaluationEntity(String instance, String teacher, int qualityCourse, int speed, int functioningTeacher, int qualityExecution, int time, int enoughLearned, int knowledgeTeacher, String comments, String learnings, String missedAreas, String strengthsTraining, String weaknessesTraining) {
+    public EvaluationEntity(String instance, String teacher, int qualityCourse, int speed, int functioningTeacher, int qualityExecution, int time, int enoughLearned, int knowledgeTeacher, String comments, String learnings, String missedAreas, String strengthsTraining, String weaknessesTraining, int overallRating) {
         this.instance = instance;
         this.teacher = teacher;
         this.qualityCourse = qualityCourse;
@@ -70,6 +73,15 @@ public class EvaluationEntity {
         this.missedAreas = missedAreas;
         this.strengthsTraining = strengthsTraining;
         this.weaknessesTraining = weaknessesTraining;
+        this.overallRating = overallRating;
+    }
+
+    public int getOverallRating() {
+        return overallRating;
+    }
+
+    public void setOverallRating(int overallRating) {
+        this.overallRating = overallRating;
     }
 
     public Long getId() {

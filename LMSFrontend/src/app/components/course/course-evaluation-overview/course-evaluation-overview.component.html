@@ -6,7 +6,7 @@
         {{employeeCourses.length}}
         <span *ngIf="employeeCourses.length == 1">evaluatie</span>
         <span *ngIf="employeeCourses.length > 1 || employeeCourses.length < 1">evaluaties</span>
-        voor cursus "{{course.item}}"
+        voor cursus "{{course.item}}" - Gemiddelde beoordeling: {{ getAverageOverallRating() | number: '1.1-1'}}
       </h4>
     </div>
   </div>
@@ -16,13 +16,48 @@
       <div class="evaluations-overview">
         <table>
           <tr>
-            <th>Naam medewerker</th>
-            <th>Functie medewerker</th>
-            <th>Voltooing datum</th>
+            <th (click)="sortByColumn('user.name')">Naam medewerker</th>
+            <th (click)="sortByColumn('user.jobRole')">Functie medewerker</th>
+            <th (click)="sortByColumn('evaluation.overallRating')">Beoordeling</th>
+            <th (click)="sortByColumn('completionDate')">Voltooing datum</th>
           </tr>
           <tr class="tr-course-data" *ngFor="let employeeCourse of employeeCourses; let i = index" (click)="courseEvaluationDetails(employeeCourse)">
             <td>{{employeeCourse.user.name}}</td>
             <td>{{employeeCourse.user.jobRole}}</td>
+            <td>
+              <div class="rating">
+                <label>
+                  <input type="radio" [checked]="this.employeeCourse.evaluation.overallRating === 1" (click)="handleStarClick($event)"/>
+                  <span class="icon">★</span>
+                </label>
+                <label>
+                  <input type="radio" [checked]="this.employeeCourse.evaluation.overallRating === 2" (click)="handleStarClick($event)"/>
+                  <span class="icon">★</span>
+                  <span class="icon">★</span>
+                </label>
+                <label>
+                  <input type="radio" [checked]="this.employeeCourse.evaluation.overallRating === 3" (click)="handleStarClick($event)"/>
+                  <span class="icon">★</span>
+                  <span class="icon">★</span>
+                  <span class="icon">★</span>
+                </label>
+                <label>
+                  <input type="radio" [checked]="this.employeeCourse.evaluation.overallRating === 4" (click)="handleStarClick($event)"/>
+                  <span class="icon">★</span>
+                  <span class="icon">★</span>
+                  <span class="icon">★</span>
+                  <span class="icon">★</span>
+                </label>
+                <label>
+                  <input type="radio" [checked]="this.employeeCourse.evaluation.overallRating === 5" (click)="handleStarClick($event)"/>
+                  <span class="icon">★</span>
+                  <span class="icon">★</span>
+                  <span class="icon">★</span>
+                  <span class="icon">★</span>
+                  <span class="icon">★</span>
+                </label>
+              </div>
+            </td>
             <td>{{employeeCourse.completionDate}}</td>
           </tr>
         </table>

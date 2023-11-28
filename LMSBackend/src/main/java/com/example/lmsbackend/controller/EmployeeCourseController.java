@@ -59,7 +59,8 @@ public class EmployeeCourseController {
                     employeeCourse.getEvaluation().getQualityCourse(), employeeCourse.getEvaluation().getSpeed(), employeeCourse.getEvaluation().getFunctioningTeacher(),
                     employeeCourse.getEvaluation().getQualityExecution(),employeeCourse.getEvaluation().getTime(), employeeCourse.getEvaluation().getEnoughLearned(),
                     employeeCourse.getEvaluation().getKnowledgeTeacher(), employeeCourse.getEvaluation().getComments(), employeeCourse.getEvaluation().getLearnings(),
-                    employeeCourse.getEvaluation().getMissedAreas(), employeeCourse.getEvaluation().getStrengthsTraining(), employeeCourse.getEvaluation().getWeaknessesTraining());
+                    employeeCourse.getEvaluation().getMissedAreas(), employeeCourse.getEvaluation().getStrengthsTraining(), employeeCourse.getEvaluation().getWeaknessesTraining(),
+                    employeeCourse.getEvaluation().getOverallRating());
 
             evaluation = evaluationRepository.save(evaluation);
 

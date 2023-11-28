@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Role} from "../../../model/role.model";
 import {RoleService} from "../../../services/role.service";
-import {Course} from "../../../model/course.model";
-import {CourseDetailsModalComponent} from "../../course/course-details-modal/course-details-modal.component";
 import {MatDialog} from "@angular/material/dialog";
 import {AddRoleModalComponent} from "../add-role-modal/add-role-modal.component";
 import {DeleteRoleModalComponent} from "../delete-role-modal/delete-role-modal.component";
@@ -29,6 +27,7 @@ export class RolesOverviewComponent implements OnInit {
       .subscribe({
         next: roles => {
           this.roles = roles;
+          this.sortRolesByName();
         },
       });
   }
@@ -50,6 +49,18 @@ export class RolesOverviewComponent implements OnInit {
       if (result === 'A') {
         this.getRoles();
       }
+    });
+  }
+
+  sortRolesByName(): void {
+    this.roles.sort((a, b) => {
+      if (a.name < b.name) {
+        return -1;
+      }
+      if (a.name > b.name) {
+        return 1;
+      }
+      return 0;
     });
   }
 }
