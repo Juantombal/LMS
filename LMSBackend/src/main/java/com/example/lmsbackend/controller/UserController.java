@@ -1,8 +1,10 @@
 package com.example.lmsbackend.controller;
 import com.example.lmsbackend.entity.PdpEntity;
 import com.example.lmsbackend.entity.UserEntity;
+import com.example.lmsbackend.exception.ReadTemplateException;
 import com.example.lmsbackend.repository.UserRepository;
 import com.example.lmsbackend.service.EmailService;
+import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,8 +38,8 @@ public class UserController {
     }
 
     @PostMapping("/email")
-    public ResponseEntity<String> sendEmailsByRole(@RequestParam("role") String role, @RequestBody UserEntity user) {
-//        emailService.sendEmailToUsers(role, user);
+    public ResponseEntity<String> sendEmailsByRole(@RequestParam("role") String role, @RequestBody UserEntity user) throws MessagingException, ReadTemplateException {
+        emailService.sendEmailToUsers(role, user);
         return ResponseEntity.ok("E-mails send to users with role: " + role);
     }
 }
