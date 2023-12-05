@@ -27,6 +27,7 @@ export class PdpOverviewComponent implements OnInit {
   showPresent: boolean = false;
   showFuture: boolean = false;
   showFutureRoles: boolean = false;
+  showActionList: boolean = false;
 
   constructor(
     private userService: UserService,
@@ -88,6 +89,7 @@ export class PdpOverviewComponent implements OnInit {
     this.showPresent = section === 'present' && !this.showPresent;
     this.showFuture = section === 'future' && !this.showFuture;
     this.showFutureRoles = section === 'futureRoles' && !this.showFutureRoles;
+    this.showActionList = section === 'actionList' && !this.showActionList;
 
     if (section !== 'background') {
       this.showBackground = false;
@@ -100,6 +102,9 @@ export class PdpOverviewComponent implements OnInit {
     }
     if (section !== 'futureRoles') {
       this.showFutureRoles = false;
+    }
+    if (section !== 'actionList') {
+      this.showActionList = false;
     }
   }
 

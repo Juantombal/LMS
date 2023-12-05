@@ -38,7 +38,7 @@ public class UserController {
     }
 
     @PostMapping("/email")
-    public ResponseEntity<String> sendEmailsByRole(@RequestParam("role") String role, @RequestBody UserEntity user) throws MessagingException, ReadTemplateException {
+    public ResponseEntity<String> sendEmailsByRole(@RequestParam("role") String role, @RequestBody UserEntity user) throws ReadTemplateException, MessagingException {
         emailService.sendEmailToUsers(role, user);
         return ResponseEntity.ok("E-mails send to users with role: " + role);
     }

@@ -19,6 +19,7 @@
             <button [class.active]="showPresent" (click)="toggleVisibility('present')">Heden</button>
             <button [class.active]="showFuture" (click)="toggleVisibility('future')">Toekomst</button>
             <button [class.active]="showFutureRoles" (click)="toggleVisibility('futureRoles')">Toekomstige rollen</button>
+            <button [class.active]="showActionList" (click)="toggleVisibility('actionList')">Actie lijst</button>
             <i (click)="editPdp(loggedInUser)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
           </td>
         </tr>
@@ -64,7 +65,7 @@
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <div class="action-list">
+      <div class="action-list" *ngIf="showActionList">
         <table>
           <tr>
             <th>Item</th>

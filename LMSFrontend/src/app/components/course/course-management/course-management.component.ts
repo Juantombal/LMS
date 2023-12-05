@@ -29,11 +29,21 @@ export class CourseManagementComponent implements OnInit {
     this.courseService.getCourses()
       .subscribe({
         next: courses => {
-          this.courses = courses;
+          this.courses = courses.map(course => ({
+            ...course,
+            costAmount: this.formatCostAmount(course.costAmount),
+          }));
         },
       });
   }
 
+  formatCostAmount(amount: string | number): string {
+    const parsedAmount = typeof amount === 'string' ? parseFloat(amount) : amount;
+    if (!isNaN(parsedAmount)) {
+      return parsedAmount.toFixed(2).replace('.', ',');
+    }
+    return '';
+  }
   addCourse = () => {
     const dialogRefAddCourse = this.dialog.open(AddCourseModalComponent, {autoFocus: false, maxHeight: '90vh'});
 

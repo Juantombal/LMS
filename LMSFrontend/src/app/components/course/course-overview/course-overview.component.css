@@ -55,6 +55,11 @@ tr.tr-course-data:hover {
 select {
   padding: 7px 5px;
 }
+
+.search-text {
+  margin-top:22px;
+}
+
 @media (max-width: 767px) {
   .course-overview h1 {
     text-align: center;

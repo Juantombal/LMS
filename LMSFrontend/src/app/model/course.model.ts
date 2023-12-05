@@ -4,7 +4,7 @@ export class Course {
   website: string;
   description: string;
   type: string
-  costAmount: number;
+  costAmount: string;
   courseDays: number;
   isActive: boolean;
 }

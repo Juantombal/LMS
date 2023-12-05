@@ -20,6 +20,7 @@ export class CourseOverviewComponent implements OnInit {
   filteredCourses: Courserole[] = [];
   sortColumn: string = '';
   isReverseSort: boolean = false;
+  searchText: string = '';
 
   constructor(
     private courseRoleService: CourseroleService,
@@ -54,16 +55,6 @@ export class CourseOverviewComponent implements OnInit {
       });
   }
 
-  courseDetails = (courseRoles: Courserole) => {
-    const dialogRefDatabaseDetails = this.dialog.open(CourseDetailsModalComponent, {data: {courseRoles: courseRoles, user: this.loggedInUser}, autoFocus: false, maxHeight: '90vh'});
-
-    dialogRefDatabaseDetails.afterClosed().subscribe(result => {
-      if (result === 'A') {
-        this.getCourses();
-      }
-    });
-  }
-
   filterRoles(): void {
     if (this.courseRoles) {
       const uniqueRoles = Array.from(new Set(this.courseRoles.map(courseRole => courseRole.role.name)));
@@ -72,13 +63,48 @@ export class CourseOverviewComponent implements OnInit {
   }
 
   filterCourses(): void {
-    if (this.selectedRole === 'Alle rollen') {
-      this.filteredCourses = this.courseRoles;
-    } else if (this.selectedRole && this.courseRoles) {
-      this.filteredCourses = this.courseRoles.filter(courseRole => courseRole.role.name === this.selectedRole);
+    if (!this.searchText || this.searchText.trim() === '') {
+      if (this.selectedRole === 'Alle rollen') {
+        this.filteredCourses = this.courseRoles;
+      } else {
+        this.filteredCourses = this.courseRoles.filter(courseRole =>
+          courseRole.role.name === this.selectedRole
+        );
+      }
+    } else {
+      const searchTerm = this.searchText.toLowerCase().trim();
+
+      if (this.selectedRole === 'Alle rollen') {
+        this.filteredCourses = this.courseRoles.filter(courseRole =>
+          courseRole.course.item.toLowerCase().includes(searchTerm)
+        );
+      } else {
+        this.filteredCourses = this.courseRoles.filter(courseRole =>
+          courseRole.role.name === this.selectedRole &&
+          courseRole.course.item.toLowerCase().includes(searchTerm)
+        );
+      }
     }
 
+    this.formatCostAmounts();
+    this.sortCourses();
+  }
 
+  formatCostAmounts(): void {
+    if (this.filteredCourses) {
+      this.filteredCourses.forEach(courseRole => {
+        if (courseRole.course && courseRole.course.costAmount !== undefined) {
+          const costAmount = parseFloat(String(courseRole.course.costAmount));
+          if (!isNaN(costAmount)) {
+            const roundedCost = costAmount.toFixed(2).replace('.', ',');
+            courseRole.course.costAmount = roundedCost;
+          }
+        }
+      });
+    }
+  }
+
+  sortCourses(): void {
     if (this.selectedRole !== 'Alle rollen') {
       const sortOrder: { [key: string]: number } = {
         'Prio1': 1,
@@ -88,14 +114,13 @@ export class CourseOverviewComponent implements OnInit {
       };
 
       this.filteredCourses.sort((a, b) => {
-        const prioA = sortOrder[a.prio] || 5; // Geef een hoge waarde (5) aan null en andere onbekende waarden
-        const prioB = sortOrder[b.prio] || 5; // Geef een hoge waarde (5) aan null en andere onbekende waarden
-
+        const prioA = sortOrder[a.prio] || 5;
+        const prioB = sortOrder[b.prio] || 5;
         return prioA - prioB;
       });
     }
 
-    if (this.selectedRole === 'Alle rollen') {
+    if (this.selectedRole === 'Alle rollen' && this.filteredCourses) {
       this.filteredCourses = this.filteredCourses.sort((a, b) => {
         return a.role.name.localeCompare(b.role.name);
       });
@@ -131,5 +156,15 @@ export class CourseOverviewComponent implements OnInit {
       value = value[prop];
     }
     return value;
+  }
+
+  courseDetails = (courseRoles: Courserole) => {
+    const dialogRefDatabaseDetails = this.dialog.open(CourseDetailsModalComponent, {data: {courseRoles: courseRoles, user: this.loggedInUser}, autoFocus: false, maxHeight: '90vh'});
+
+    dialogRefDatabaseDetails.afterClosed().subscribe(result => {
+      if (result === 'A') {
+        this.getCourses();
+      }
+    });
   }
 }
