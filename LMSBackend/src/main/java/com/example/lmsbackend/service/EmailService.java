@@ -8,13 +8,10 @@ import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,7 +22,6 @@ import org.thymeleaf.context.Context;
 @Service
 @Transactional
 public class EmailService {
-    private String path = "templates/";
     @Autowired
     private JavaMailSender emailSender;
 
@@ -35,6 +31,7 @@ public class EmailService {
     @Autowired
     private TemplateEngine templateEngine;
 
+    @Async
     public void sendEmailToUsers(String userRole, UserEntity user) throws ReadTemplateException, MessagingException {
         Role role = Role.valueOf(userRole);
 

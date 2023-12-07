@@ -1,5 +1,6 @@
 package com.example.lmsbackend.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -8,14 +9,19 @@ import java.util.Properties;
 
 @Configuration
 public class MailConfig {
+    @Value("${SMTP_USER}")
+    private String mailSenderUsername;
+
+    @Value("${SMTP_PASS}")
+    private String mailSenderPassword;
 
     @Bean
     public JavaMailSender javaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
-        mailSender.setUsername("torelinsania725@gmail.com");
-        mailSender.setPassword("iqnv cfqz dvyw jhgy");
+        mailSender.setUsername(mailSenderUsername);
+        mailSender.setPassword(mailSenderPassword);
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
