@@ -30,11 +30,11 @@
             </tr>
             <tr class="tr-course-data" *ngFor="let filteredCourse of filteredCourses; let i = index" (click)="courseDetails(filteredCourse)">
               <td *ngIf="selectedRole === 'Alle rollen'">{{ filteredCourse.role.name }}</td>
-              <td>{{ filteredCourse.course.item ? (filteredCourse.course.item.length <= 60 ? filteredCourse.course.item : (filteredCourse.course.item | slice:0:60) + '...') : '' }}</td>
+              <td class="item-cell{{ selectedRole === 'Alle rollen' ? ' alle-rollen' : '' }}">{{ filteredCourse.course.item ? (filteredCourse.course.item.length <= 50 ? filteredCourse.course.item : (filteredCourse.course.item | slice:0:50) + '...') : '' }}</td>
               <td><a href="{{filteredCourse.course.website}}" (click)="$event.stopPropagation()" target="_blank">
                 {{ filteredCourse.course.website ? (filteredCourse.course.website.length <= 20 ? filteredCourse.course.website : (filteredCourse.course.website | slice:0:20) + '...') : '' }}</a>
               </td>
-              <td>{{ filteredCourse.course.type }}</td>
+              <td>{{ filteredCourse.course.type ? (filteredCourse.course.type.length <= 40 ? filteredCourse.course.type : (filteredCourse.course.type | slice:0:40) + '...') : '' }}</td>
               <td>{{filteredCourse.prio}}</td>
               <td>€ {{ filteredCourse.course.costAmount }}</td>
             </tr>

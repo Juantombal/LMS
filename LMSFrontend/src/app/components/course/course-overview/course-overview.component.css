@@ -59,7 +59,12 @@ select {
 .search-text {
   margin-top:22px;
 }
-
+.item-cell.alle-rollen {
+  max-width: 260px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 @media (max-width: 767px) {
   .course-overview h1 {
     text-align: center;
