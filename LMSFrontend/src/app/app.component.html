@@ -1,7 +1,8 @@
 <div class="wrapper">
-  <app-navigation></app-navigation>
-  <div class="content">
+  <app-login *ngIf="!authService.isLoggedIn()"></app-login>
+  <app-navigation *ngIf="authService.isLoggedIn()"></app-navigation>
+  <div class="content" *ngIf="authService.isLoggedIn()">
     <router-outlet></router-outlet>
   </div>
-  <app-footer></app-footer>
+  <app-footer *ngIf="authService.isLoggedIn()"></app-footer>
 </div>

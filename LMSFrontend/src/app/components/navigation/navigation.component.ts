@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../../model/user.model";
 import {UserService} from "../../services/user.service";
+import {AuthenticationService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-navigation',
@@ -12,6 +13,7 @@ export class NavigationComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private authService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
@@ -22,5 +24,9 @@ export class NavigationComponent implements OnInit {
     this.userService.getUser().subscribe((user) => {
       this.loggedInUser = user;
     })
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

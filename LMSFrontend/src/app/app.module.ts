@@ -41,6 +41,8 @@ import { ReportCourseDetailComponent } from './components/report/report-course-d
 import { EvaluationModalComponent } from './components/course/evaluation-modal/evaluation-modal.component';
 import { CourseEvaluationOverviewComponent } from './components/course/course-evaluation-overview/course-evaluation-overview.component';
 import { CourseEvaluationDetailsComponent } from './components/course/course-evaluation-details/course-evaluation-details.component';
+import { LoginComponent } from './components/login/login.component';
+import {AuthenticationService} from "./services/auth.service";
 
 @NgModule({
   declarations: [
@@ -69,7 +71,8 @@ import { CourseEvaluationDetailsComponent } from './components/course/course-eva
     ReportCourseDetailComponent,
     EvaluationModalComponent,
     CourseEvaluationOverviewComponent,
-    CourseEvaluationDetailsComponent
+    CourseEvaluationDetailsComponent,
+    LoginComponent
   ],
     imports: [
         BrowserModule,
@@ -90,7 +93,8 @@ import { CourseEvaluationDetailsComponent } from './components/course/course-eva
     PdpService,
     ApplicationService,
     RoleService,
-    CourseroleService
+    CourseroleService,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })

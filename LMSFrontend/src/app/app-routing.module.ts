@@ -12,6 +12,7 @@ import {ReportOverviewComponent} from "./components/report/report-overview/repor
 import {
   CourseEvaluationOverviewComponent
 } from "./components/course/course-evaluation-overview/course-evaluation-overview.component";
+import {LoginComponent} from "./components/login/login.component";
 
 const routes: Routes = [
   { path: 'course', component: CourseOverviewComponent },

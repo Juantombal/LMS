@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="LMSBackend" target="19" />
+      <module name="LMSBackend" target="21" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

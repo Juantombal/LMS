@@ -5,8 +5,18 @@ import {User} from "../model/user.model";
 
 @Injectable()
 export class UserService extends ApiService {
+  private userId: number;
+
+  setUserId(id: number) {
+    this.userId = id;
+  }
+
+  getUserId(): number {
+    return this.userId;
+  }
+
   getUser(): Observable<User> {
-    return this.http.get<User>(this.apiAddress + 'user/' + 4, this.generateOptions());
+    return this.http.get<User>(this.apiAddress + 'user/' + this.getUserId(), this.generateOptions());
   }
 
   sendEmail(role: string, user: User): Observable<string> {

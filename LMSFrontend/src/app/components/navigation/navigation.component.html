@@ -28,6 +28,9 @@
               <li *ngIf="loggedInUser.role !== 'EMPLOYEE'" data-active-if="Cursusbeheer">
                 <a routerLinkActive="active-link" routerLink="/coursemanagement">Cursusbeheer</a>
               </li>
+              <li data-active-if="Uitloggen">
+                <a routerLinkActive="active-link" (click)="logout()" routerLink="">Uitloggen</a>
+              </li>
             </ul>
           </div>
         </nav>
